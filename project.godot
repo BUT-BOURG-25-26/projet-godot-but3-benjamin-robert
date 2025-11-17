@@ -10,11 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Moteur3D-Projet-Template"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/name="survivor2D"
+run/main_scene="uid://cr45653ucko6k"
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
-[rendering]
+[input]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+click={
+"deadzone": 0.2,
+"events": []
+}

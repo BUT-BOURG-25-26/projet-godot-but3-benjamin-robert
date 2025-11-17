@@ -1,0 +1,206 @@
+[gd_scene load_steps=46 format=3 uid="uid://b2g66sf655rqf"]
+
+[ext_resource type="Script" uid="uid://bwk8ep2rrn8yk" path="res://Scripts/enemy.gd" id="1_ofqcr"]
+[ext_resource type="Texture2D" uid="uid://45pfxog70c60" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Idle/0_Goblin_Idle_000.png" id="2_nus6a"]
+[ext_resource type="Texture2D" uid="uid://dkkc3bw2rinkj" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Idle/0_Goblin_Idle_001.png" id="3_imgxb"]
+[ext_resource type="Texture2D" uid="uid://cga6agswehuhm" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Idle/0_Goblin_Idle_002.png" id="4_pyrvc"]
+[ext_resource type="Texture2D" uid="uid://dri5ul44w3ric" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Idle/0_Goblin_Idle_003.png" id="5_pja2t"]
+[ext_resource type="Texture2D" uid="uid://5fgajfxh8xnv" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Idle/0_Goblin_Idle_004.png" id="6_jx5vc"]
+[ext_resource type="Texture2D" uid="uid://bb5sfe3v5yuha" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Idle/0_Goblin_Idle_005.png" id="7_7vco5"]
+[ext_resource type="Texture2D" uid="uid://5btxon44ellh" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Idle/0_Goblin_Idle_006.png" id="8_7xmqa"]
+[ext_resource type="Texture2D" uid="uid://2wux6yy2pnx" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Idle/0_Goblin_Idle_007.png" id="9_8w0mm"]
+[ext_resource type="Texture2D" uid="uid://byg0rmkjhigvn" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Idle/0_Goblin_Idle_008.png" id="10_ebugx"]
+[ext_resource type="Texture2D" uid="uid://dqal8vmxh1647" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Idle/0_Goblin_Idle_009.png" id="11_mpt27"]
+[ext_resource type="Texture2D" uid="uid://bmsbmu72o74ff" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Idle/0_Goblin_Idle_010.png" id="12_0dyvk"]
+[ext_resource type="Texture2D" uid="uid://uwo34kvipwee" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Idle/0_Goblin_Idle_011.png" id="13_anrbk"]
+[ext_resource type="Texture2D" uid="uid://c3aihp4wgdgb6" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Idle/0_Goblin_Idle_012.png" id="14_rcolj"]
+[ext_resource type="Texture2D" uid="uid://cuv2a1npekvs5" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Idle/0_Goblin_Idle_013.png" id="15_mhcg5"]
+[ext_resource type="Texture2D" uid="uid://dhouyl8mrsswu" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Idle/0_Goblin_Idle_014.png" id="16_twqvw"]
+[ext_resource type="Texture2D" uid="uid://dktwyi2hc53f8" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Idle/0_Goblin_Idle_015.png" id="17_1twfy"]
+[ext_resource type="Texture2D" uid="uid://bb373rd70sbad" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Idle/0_Goblin_Idle_016.png" id="18_qhwq3"]
+[ext_resource type="Texture2D" uid="uid://itfqpkuu1xo8" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Idle/0_Goblin_Idle_017.png" id="19_fv6oi"]
+[ext_resource type="Texture2D" uid="uid://cljh4s0156br3" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_000.png" id="20_wf4eh"]
+[ext_resource type="Texture2D" uid="uid://cbxt6rm4006n7" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_001.png" id="21_hvksc"]
+[ext_resource type="Texture2D" uid="uid://cliuap6xa760m" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_002.png" id="22_j0vx4"]
+[ext_resource type="Texture2D" uid="uid://doq5xwkjnv5lb" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_003.png" id="23_wad7k"]
+[ext_resource type="Texture2D" uid="uid://cv0a8fe64hrt" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_004.png" id="24_2ytd7"]
+[ext_resource type="Texture2D" uid="uid://dunf4dx2nsydo" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_005.png" id="25_3pfub"]
+[ext_resource type="Texture2D" uid="uid://cb34qu727ty1j" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_006.png" id="26_oque4"]
+[ext_resource type="Texture2D" uid="uid://dvs6dfqyblpx6" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_007.png" id="27_l8wrx"]
+[ext_resource type="Texture2D" uid="uid://b5upopc2kgu16" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_008.png" id="28_mqrwb"]
+[ext_resource type="Texture2D" uid="uid://ij2d5vr6p8l8" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_009.png" id="29_ghhmq"]
+[ext_resource type="Texture2D" uid="uid://cinbcb68bcrh3" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_010.png" id="30_i4rlt"]
+[ext_resource type="Texture2D" uid="uid://ch4r8q2ckyvaq" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_011.png" id="31_fmsty"]
+[ext_resource type="Texture2D" uid="uid://cgkd7084b4dpq" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_012.png" id="32_h52an"]
+[ext_resource type="Texture2D" uid="uid://bqhu2yrnwjeov" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_013.png" id="33_7h514"]
+[ext_resource type="Texture2D" uid="uid://b8052xff2yna2" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_014.png" id="34_kxtdn"]
+[ext_resource type="Texture2D" uid="uid://djf3r7xi2hb20" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_015.png" id="35_bb1ko"]
+[ext_resource type="Texture2D" uid="uid://cildadhl1g3f4" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_016.png" id="36_q85ee"]
+[ext_resource type="Texture2D" uid="uid://bn1djte2188yu" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_017.png" id="37_msu06"]
+[ext_resource type="Texture2D" uid="uid://cn2c3sk2wkuoa" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_018.png" id="38_dwu01"]
+[ext_resource type="Texture2D" uid="uid://cka5s1dgbbi8i" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_019.png" id="39_7kwq8"]
+[ext_resource type="Texture2D" uid="uid://cpcmsacrr8ht2" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_020.png" id="40_ah5vh"]
+[ext_resource type="Texture2D" uid="uid://rmi7jw8mo1cj" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_021.png" id="41_i62gx"]
+[ext_resource type="Texture2D" uid="uid://bgcfx23svjjlw" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_022.png" id="42_vdgsg"]
+[ext_resource type="Texture2D" uid="uid://b6f8f6q37yaax" path="res://Assets/Character/Enemy/Goblin/PNG/PNG Sequences/Walking/0_Goblin_Walking_023.png" id="43_d8efu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hsjdm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nus6a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_imgxb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pyrvc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pja2t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jx5vc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7vco5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7xmqa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8w0mm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ebugx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_mpt27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0dyvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_anrbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_rcolj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_mhcg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_twqvw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_1twfy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_qhwq3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_fv6oi")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_wf4eh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_hvksc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_j0vx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_wad7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_2ytd7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_3pfub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_oque4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_l8wrx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_mqrwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_ghhmq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_i4rlt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_fmsty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_h52an")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_7h514")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_kxtdn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_bb1ko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_q85ee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_msu06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_dwu01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_7kwq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_ah5vh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_i62gx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_vdgsg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_d8efu")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 30.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lp17p"]
+radius = 4.0
+height = 12.0
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_ofqcr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.03, 0.03)
+sprite_frames = SubResource("SpriteFrames_hsjdm")
+animation = &"Idle"
+speed_scale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_lp17p")

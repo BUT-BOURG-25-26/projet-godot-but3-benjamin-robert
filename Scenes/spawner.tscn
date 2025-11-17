@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdisvk4q18wd2"]
+
+[ext_resource type="Script" uid="uid://b0in0vctcv8xj" path="res://Scripts/spawner.gd" id="1_ic4ta"]
+[ext_resource type="PackedScene" uid="uid://b2g66sf655rqf" path="res://Scenes/enemy.tscn" id="2_b6u4f"]
+[ext_resource type="Script" uid="uid://dgv7uni4m1371" path="res://Scripts/EnemyType.gd" id="3_g4jis"]
+[ext_resource type="Resource" uid="uid://cf363ehdlucpe" path="res://Ressources/satyr.tres" id="4_b763y"]
+[ext_resource type="Resource" uid="uid://baif74ipwfby6" path="res://Ressources/wraith.tres" id="5_b763y"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_ic4ta")
+enemy = ExtResource("2_b6u4f")
+enemy_types = Array[ExtResource("3_g4jis")]([ExtResource("4_b763y"), ExtResource("5_b763y"), ExtResource("4_b763y"), ExtResource("4_b763y"), ExtResource("4_b763y")])
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Minute" type="Label" parent="UI/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="label" type="Label" parent="UI/HBoxContainer"]
+layout_mode = 2
+text = ":"
+
+[node name="Second" type="Label" parent="UI/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 9.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
