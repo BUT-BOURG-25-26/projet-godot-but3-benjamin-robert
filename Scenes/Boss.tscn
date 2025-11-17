@@ -1,0 +1,69 @@
+[gd_scene load_steps=15 format=3 uid="uid://c0q5viy0tep10"]
+
+[ext_resource type="PackedScene" uid="uid://b2g66sf655rqf" path="res://Scenes/enemy.tscn" id="1_jdskg"]
+[ext_resource type="Texture2D" uid="uid://cwrg7gh4d4f3a" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_000.png" id="2_6njix"]
+[ext_resource type="Texture2D" uid="uid://c3j4avbcs0dto" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_001.png" id="3_gj2j4"]
+[ext_resource type="Texture2D" uid="uid://c8w46al2copl1" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_002.png" id="4_sbogr"]
+[ext_resource type="Texture2D" uid="uid://yijsj2v3484h" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_003.png" id="5_ly62n"]
+[ext_resource type="Texture2D" uid="uid://c7j088f07j3p3" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_004.png" id="6_ohr08"]
+[ext_resource type="Texture2D" uid="uid://dxwg7ncy266pj" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_005.png" id="7_wa1i8"]
+[ext_resource type="Texture2D" uid="uid://bk0nxiif74bc" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_006.png" id="8_p8vu2"]
+[ext_resource type="Texture2D" uid="uid://0cco1s033qtp" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_007.png" id="9_7k66r"]
+[ext_resource type="Texture2D" uid="uid://bv7gsnoroqsa8" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_008.png" id="10_6r7pj"]
+[ext_resource type="Texture2D" uid="uid://b6b7p0463cem5" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_009.png" id="11_ij1pr"]
+[ext_resource type="Texture2D" uid="uid://bylnj8htlqw5m" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_010.png" id="12_nitbp"]
+[ext_resource type="Texture2D" uid="uid://b68wcmcwrxag7" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_011.png" id="13_3h3yq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jdskg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6njix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gj2j4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sbogr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ly62n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ohr08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wa1i8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_p8vu2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7k66r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6r7pj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ij1pr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_nitbp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3h3yq")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="Enemy" instance=ExtResource("1_jdskg")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(0.09, 0.09)
+sprite_frames = SubResource("SpriteFrames_jdskg")
+animation = &"Idle"
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 11)

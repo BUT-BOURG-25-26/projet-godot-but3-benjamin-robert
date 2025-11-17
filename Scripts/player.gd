@@ -7,6 +7,10 @@ extends CharacterBody2D
 @onready var camera = $Camera2D
 @onready var tilemap = get_parent().get_node("map") # TileMap est dans le même parent
 
+# Variables pour la santé et les dégâts
+@export var health: float = 100  # Définition de la santé
+@export var damage: float = 10   # Définition des dégâts
+
 # Animation actuelle
 var current_animation: String = "Idle"
 
@@ -68,3 +72,16 @@ func _process(delta: float) -> void:
 	# Bloquer le joueur aux limites de la map
 	global_position.x = clamp(global_position.x, min_x, max_x)
 	global_position.y = clamp(global_position.y, min_y, max_y)
+
+
+
+# Fonction pour recevoir des dégâts
+func take_damage(amount: float) -> void:
+	health -= amount
+	print("Player health: ", health)
+	if health <= 0:
+		_die()
+
+# Fonction pour gérer la mort du joueur
+func _die() -> void:
+	pass

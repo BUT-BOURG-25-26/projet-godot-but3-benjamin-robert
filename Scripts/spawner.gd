@@ -41,4 +41,4 @@ func amount(number : int = 1):
 
 func _on_timer_timeout() -> void:
 	second += 1
-	amount(second % 10)
+	amount(second % 2) # valeur temporaire

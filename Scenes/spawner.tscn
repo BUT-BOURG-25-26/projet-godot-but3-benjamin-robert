@@ -9,7 +9,7 @@
 [node name="Spawner" type="Node2D"]
 script = ExtResource("1_ic4ta")
 enemy = ExtResource("2_b6u4f")
-enemy_types = Array[ExtResource("3_g4jis")]([ExtResource("4_b763y"), ExtResource("5_b763y"), ExtResource("4_b763y"), ExtResource("4_b763y"), ExtResource("4_b763y")])
+enemy_types = Array[ExtResource("3_g4jis")]([ExtResource("5_b763y"), ExtResource("4_b763y"), ExtResource("4_b763y"), ExtResource("4_b763y"), ExtResource("4_b763y")])
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -34,7 +34,7 @@ text = "00"
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="Timer2" type="Timer" parent="."]
+[node name="TimerBoss" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
 
