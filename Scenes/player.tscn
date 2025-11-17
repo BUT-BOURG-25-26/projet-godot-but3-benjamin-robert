@@ -317,7 +317,7 @@ script = ExtResource("1_hbt6w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-7.10543e-15, -3)
-scale = Vector2(0.03, 0.03)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_ivnpj")
 animation = &"Idle"
 speed_scale = 2.0
@@ -327,4 +327,4 @@ position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_bkbeo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
+zoom = Vector2(0.75, 0.75)
