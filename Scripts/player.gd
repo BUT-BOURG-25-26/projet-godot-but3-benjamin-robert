@@ -1,70 +1,87 @@
-# player.gd
 class_name Player
 extends CharacterBody2D
 
-@export var speed: float = 100
-@onready var animated_sprite = $AnimatedSprite2D
-@onready var camera = $Camera2D
-@onready var tilemap = get_parent().get_node("map") # TileMap est dans le même parent
+@export var speed: float = 100.0
 
-# Animation actuelle
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var camera: Camera2D = $Camera2D
+@onready var tilemap: TileMap = get_parent().get_node("map") # le TileMap doit s’appeler "map"
+
 var current_animation: String = "Idle"
 
-# Limites de la map
 var min_x: float
 var max_x: float
 var min_y: float
 var max_y: float
+var has_map_limits: bool = false
 
-func _ready():
-	# Calcul des limites de la TileMap
-	var used_rect = tilemap.get_used_rect()
-	var tile_size = tilemap.tile_set.tile_size
+func _ready() -> void:
+	if tilemap == null:
+		push_error("TileMap 'map' introuvable dans le parent du Player.")
+		return
+	
+	if tilemap.tile_set == null:
+		push_warning("La TileMap n'a pas de TileSet.")
+		return
 
-	min_x = used_rect.position.x * tile_size.x
-	min_y = used_rect.position.y * tile_size.y
-	max_x = (used_rect.position.x + used_rect.size.x) * tile_size.x
-	max_y = (used_rect.position.y + used_rect.size.y) * tile_size.y
+	var used_rect: Rect2i = tilemap.get_used_rect()
+	if used_rect.size == Vector2i.ZERO:
+		push_warning("TileMap vide : limites désactivées.")
+		return
 
-	# Limites de la caméra
-	camera.limit_left = min_x
-	camera.limit_top = min_y
-	camera.limit_right = max_x
-	camera.limit_bottom = max_y
+	var tile_size: Vector2i = tilemap.tile_set.tile_size
 
-func _process(delta: float) -> void:
-	# Entrées
-	var input_vector = Vector2(
+	# Convertir Vector2i -> Vector2 manuellement
+	var tile_size_v2 = Vector2(tile_size.x, tile_size.y)
+	var used_pos_v2 = Vector2(used_rect.position.x, used_rect.position.y)
+	var used_size_v2 = Vector2(used_rect.size.x, used_rect.size.y)
+
+	var origin_local: Vector2 = used_pos_v2 * tile_size_v2
+	var size_local: Vector2 = used_size_v2 * tile_size_v2
+
+	# Convertir en global
+	var origin_global: Vector2 = tilemap.to_global(origin_local)
+
+	min_x = origin_global.x
+	min_y = origin_global.y
+	max_x = origin_global.x + size_local.x
+	max_y = origin_global.y + size_local.y
+
+	has_map_limits = true
+
+	# Limites cam
+	camera.limit_left = int(min_x)
+	camera.limit_top = int(min_y)
+	camera.limit_right = int(max_x)
+	camera.limit_bottom = int(max_y)
+
+
+func _physics_process(delta: float) -> void:
+	var input_vector := Vector2(
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	)
 
-	# Normalisation du vecteur de mouvement
-	if input_vector.length() > 0:
+	if input_vector.length() > 0.0:
 		input_vector = input_vector.normalized()
-
-	# Calcul de la vitesse
-	velocity = input_vector * speed
+		velocity = input_vector * speed
+	else:
+		velocity = Vector2.ZERO
 
 	# Animation
-	if velocity.length() > 0:
+	if velocity.length() > 0.0:
 		if current_animation != "Walking":
 			current_animation = "Walking"
 			animated_sprite.play("Walking")
 
-		# Orientation horizontale
-		if velocity.x > 0:
-			animated_sprite.flip_h = false
-		elif velocity.x < 0:
-			animated_sprite.flip_h = true
+		animated_sprite.flip_h = velocity.x < 0.0
 	else:
 		if current_animation != "Idle":
 			current_animation = "Idle"
 			animated_sprite.play("Idle")
 
-	# Déplacement
 	move_and_slide()
 
-	# Bloquer le joueur aux limites de la map
-	global_position.x = clamp(global_position.x, min_x, max_x)
-	global_position.y = clamp(global_position.y, min_y, max_y)
+	if has_map_limits:
+		global_position.x = clamp(global_position.x, min_x, max_x)
+		global_position.y = clamp(global_position.y, min_y, max_y)
