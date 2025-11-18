@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6fa57debf2rp"]
+
+[ext_resource type="Script" uid="uid://ftudn2ey5is8" path="res://Scenes/mainmenu.gd" id="1_pposm"]
+[ext_resource type="Texture2D" uid="uid://mw63gd422ffj" path="res://Ressources/Capture d'écran 2024-07-14 004146.png" id="2_web8u"]
+
+[node name="Mainmenu" type="Node2D"]
+script = ExtResource("1_pposm")
+
+[node name="Title" type="Label" parent="."]
+offset_right = 1920.0
+offset_bottom = 500.0
+theme_override_colors/font_color = Color(0.8912906, 4.1873755e-06, 8.663535e-07, 1)
+theme_override_font_sizes/font_size = 120
+text = "Benjamin robert simulator
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_top = 500.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="MainButtons" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="play" type="Button" parent="CenterContainer/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "PLAY"
+
+[node name="settings" type="Button" parent="CenterContainer/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "SETTINGS
+"
+
+[node name="credit" type="Button" parent="CenterContainer/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "CREDIT
+"
+
+[node name="quit" type="Button" parent="CenterContainer/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "QUIT
+"
+
+[node name="SettingsMenu" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Sprite2D" type="Sprite2D" parent="CenterContainer/SettingsMenu"]
+position = Vector2(2.0001059, -250)
+scale = Vector2(3.4972684, 2.4838707)
+texture = ExtResource("2_web8u")
+
+[connection signal="pressed" from="CenterContainer/MainButtons/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CenterContainer/MainButtons/settings" to="." method="_on_settings_pressed"]
