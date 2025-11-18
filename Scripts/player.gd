@@ -7,6 +7,11 @@ extends CharacterBody2D
 @onready var camera: Camera2D = $Camera2D
 @onready var tilemap: TileMap = get_parent().get_node("map") # le TileMap doit s’appeler "map"
 
+# Variables pour la santé et les dégâts
+@export var health: float = 100  # Définition de la santé
+@export var damage: float = 10   # Définition des dégâts
+
+# Animation actuelle
 var current_animation: String = "Idle"
 
 var min_x: float
@@ -81,3 +86,14 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.play("Idle")
 
 	move_and_slide()
+
+# Fonction pour recevoir des dégâts
+func take_damage(amount: float) -> void:
+	health -= amount
+	print("Player health: ", health)
+	if health <= 0:
+		_die()
+
+# Fonction pour gérer la mort du joueur
+func _die() -> void:
+	pass
