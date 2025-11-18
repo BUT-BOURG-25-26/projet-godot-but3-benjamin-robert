@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-@export var speed: float = 500.0
+@export var speed: float = 5000.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera: Camera2D = $Camera2D
@@ -81,7 +81,3 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.play("Idle")
 
 	move_and_slide()
-
-	if has_map_limits:
-		global_position.x = clamp(global_position.x, min_x, max_x)
-		global_position.y = clamp(global_position.y, min_y, max_y)
