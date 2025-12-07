@@ -141,6 +141,5 @@ title = "Minotaur"
 sprite_frames = SubResource("SpriteFrames_267lf")
 health = 100.0
 damage = 4.0
-role = 0
 speed = 300.0
 metadata/_custom_type_script = "uid://dgv7uni4m1371"

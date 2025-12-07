@@ -141,6 +141,5 @@ title = "Golem de bois"
 sprite_frames = SubResource("SpriteFrames_gkjqk")
 health = 160.0
 damage = 4.0
-role = 0
 speed = 100.0
 metadata/_custom_type_script = "uid://dgv7uni4m1371"

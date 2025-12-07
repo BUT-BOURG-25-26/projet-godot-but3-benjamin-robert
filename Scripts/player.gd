@@ -6,10 +6,13 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera: Camera2D = $Camera2D
 @onready var tilemap: TileMap = get_parent().get_node("map") # le TileMap doit s’appeler "map"
+@onready var healthbar = $Healthbar
 
 # Variables pour la santé et les dégâts
-@export var health: float = 100  # Définition de la santé
-@export var damage: float = 10   # Définition des dégâts
+@export var max_health: float = 100.0 
+var health: float 
+@export var damage: float = 10 
+var is_dead: bool = false
 
 # Animation actuelle
 var current_animation: String = "Idle"
@@ -21,6 +24,12 @@ var max_y: float
 var has_map_limits: bool = false
 
 func _ready() -> void:
+	
+	# --- INIT HEALTH ---
+	health = max_health
+	healthbar.init_health(health, max_health)
+	
+	# --- MAP ---
 	if tilemap == null:
 		push_error("TileMap 'map' introuvable dans le parent du Player.")
 		return
@@ -73,7 +82,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = Vector2.ZERO
 
-	# Animation
+	# --- Animations ---
 	if velocity.length() > 0.0:
 		if current_animation != "Walking":
 			current_animation = "Walking"
@@ -89,11 +98,29 @@ func _physics_process(delta: float) -> void:
 
 # Fonction pour recevoir des dégâts
 func take_damage(amount: float) -> void:
+	if is_dead:
+		return
 	health -= amount
 	print("Player health: ", health)
 	if health <= 0:
+		health = 0
+		is_dead = true
+		healthbar.health = 0
 		_die()
+		return
+	healthbar.health = health
 
-# Fonction pour gérer la mort du joueur
+func heal(amount: float) -> void:
+	health += amount
+	if health > max_health:
+		health = max_health
+	healthbar.health = health
+	print("Player healed. Health: ", health)
+
 func _die() -> void:
-	pass
+	print("Le joueur est mort")
+	visible = false 
+	set_physics_process(false)
+	set_process(false)
+	$CollisionShape2D.set_deferred("disabled", true)
+	# écran de game over

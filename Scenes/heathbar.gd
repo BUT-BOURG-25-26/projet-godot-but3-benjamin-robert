@@ -5,11 +5,11 @@ extends ProgressBar
 
 var health = 0 : set = _set_health
 
-func init_health(_health):
+func init_health(_health, _max_health):
 	health = _health
-	max_value = health
+	max_value = _max_health
 	value = health
-	damage_bar.max_value = health
+	damage_bar.max_value = _max_health
 	damage_bar.value = health
 	
 func _set_health(new_health):

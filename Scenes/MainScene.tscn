@@ -10,6 +10,7 @@ script = ExtResource("1_qxria")
 metadata/_edit_horizontal_guides_ = [-392.0]
 
 [node name="map" parent="." instance=ExtResource("1_7rqgy")]
+position = Vector2(0, -1)
 
 [node name="map9" parent="." instance=ExtResource("1_7rqgy")]
 position = Vector2(-4096, -4096)
