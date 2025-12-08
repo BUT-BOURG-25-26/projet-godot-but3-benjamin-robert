@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr45653ucko6k"]
+[gd_scene load_steps=5 format=3 uid="uid://cr45653ucko6k"]
 
 [ext_resource type="PackedScene" uid="uid://gypl4ytd1dj6" path="res://Ressources/map.tscn" id="1_7rqgy"]
 [ext_resource type="Script" uid="uid://bckxgxj734ign" path="res://Scenes/main_scene.gd" id="1_qxria"]
@@ -7,8 +7,10 @@
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_qxria")
+metadata/_edit_horizontal_guides_ = [-392.0]
 
 [node name="map" parent="." instance=ExtResource("1_7rqgy")]
+position = Vector2(0, -1)
 
 [node name="map9" parent="." instance=ExtResource("1_7rqgy")]
 position = Vector2(-4096, -4096)

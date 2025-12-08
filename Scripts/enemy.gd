@@ -12,6 +12,7 @@ var attack_timer : float = 0.0  # Timer pour gérer le cooldown des attaques
 
 # Variables pour l'ennemi
 var health : float
+var max_health : float
 var damage : float
 var speed : float
 var role : Enemy.Role  # Référence l'énumération Role, cette fois via Enemy
@@ -29,10 +30,13 @@ var type : Enemy:
 func _ready() -> void:
 	# Initialisation si nécessaire pour s'assurer que health, damage et role sont bien définis
 	health = type.health
+	max_health = type.health
 	damage = type.damage
 	role = type.role  # Récupère le rôle depuis la ressource Enemy
 
 func _physics_process(delta: float) -> void:
+	if not is_instance_valid(player_reference):
+		return
 	# Vérifie la distance du joueur
 	var distance_to_player = position.distance_to(player_reference.position)
 	var direction : Vector2 = Vector2.ZERO  # Initialisation par défaut
@@ -95,7 +99,8 @@ func _melee_behavior(delta: float):
 # Attaque de mêlée
 func _attack_melee():
 	print("Melee attack on player")
-	player_reference.health -= damage  # Inflige les dégâts au joueur
+	if player_reference.has_method("take_damage"):
+		player_reference.take_damage(damage) # Inflige les dégâts au joueur
 
 # Comportement Ranged : Attaque à distance
 func _ranged_behavior(delta: float):
@@ -111,16 +116,26 @@ func _ranged_behavior(delta: float):
 # Attaque à distance
 func _attack_ranged():
 	print("Ranged attack on player")
-	player_reference.health -= damage  # Inflige les dégâts au joueur
+	if player_reference.has_method("take_damage"):
+		player_reference.take_damage(damage)  # Inflige les dégâts au joueur
 
 # Comportement Healer : Soigner les alliés proches
 func _healer_behavior():
-	# Vérifie si un ennemi allié est à portée pour être soigné
 	for ally in get_tree().get_nodes_in_group("allied_enemies"):
-		if position.distance_to(ally.position) < 100:  # Portée de soin
+		# il ne se soigne pas lui-même
+		if ally == self: continue
+		
+		if position.distance_to(ally.position) < 100:
 			_heal_ally(ally)
 
-# Soigne un allié
 func _heal_ally(ally: CharacterBody2D):
-	print("Healing ally")
-	ally.health += damage  # On utilise la variable "damage" comme montant de soin ici
+	if ally.has_method("heal"):
+		print("Healing ally")
+		ally.heal(damage) # "damage" sert de puissance de soin ici
+
+# Fonction pour recevoir du soin (appelée par un autre Healer)
+func heal(amount: float) -> void:
+	health += amount
+	if health > max_health:
+		health = max_health
+	print("Enemy healed! Current HP: ", health)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://d3ib53xnwaqds"]
+[gd_scene load_steps=74 format=3 uid="uid://d3ib53xnwaqds"]
 
 [ext_resource type="Script" uid="uid://hfssvtetbx0i" path="res://Scripts/player.gd" id="1_hbt6w"]
 [ext_resource type="Texture2D" uid="uid://dkjh7t4ac6cet" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_000.png" id="2_y6ibu"]
@@ -70,6 +70,7 @@
 [ext_resource type="Texture2D" uid="uid://co43rm24glcr3" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_021.png" id="56_c8fwu"]
 [ext_resource type="Texture2D" uid="uid://djvc0g21slucx" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_022.png" id="57_utri4"]
 [ext_resource type="Texture2D" uid="uid://bf2u36m0v6ecg" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_023.png" id="58_fbdrs"]
+[ext_resource type="PackedScene" uid="uid://cjgqm3ik54dca" path="res://Scenes/heathbar.tscn" id="71_3uvy8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ivnpj"]
 animations = [{
@@ -328,3 +329,9 @@ shape = SubResource("CapsuleShape2D_bkbeo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.75, 0.75)
+
+[node name="Healthbar" parent="." instance=ExtResource("71_3uvy8")]
+offset_left = 429.0
+offset_top = -404.0
+offset_right = 944.0
+offset_bottom = -379.0

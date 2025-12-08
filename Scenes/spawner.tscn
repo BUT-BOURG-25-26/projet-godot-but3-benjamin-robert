@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://baif74ipwfby6" path="res://Ressources/wraith.tres" id="5_b763y"]
 [ext_resource type="Resource" uid="uid://bn5v6cryvl1x" path="res://Ressources/minotaur_boss.tres" id="5_f333s"]
 [ext_resource type="Resource" uid="uid://b1caon13dvvut" path="res://Ressources/golem_pierre.tres" id="5_gjq3i"]
-[ext_resource type="PackedScene" uid="uid://bjlkuwr2xrolh" path="res://Scenes/boss.tscn" id="6_kh5ph"]
+[ext_resource type="PackedScene" uid="uid://bjlkuwr2xrolh" path="res://Scenes/Boss.tscn" id="6_kh5ph"]
 [ext_resource type="Resource" uid="uid://sx167c5ilc42" path="res://Ressources/golem_bois.tres" id="6_yocef"]
 
 [node name="Spawner" type="Node2D"]
@@ -18,6 +18,8 @@ boss_scene = ExtResource("6_kh5ph")
 boss_data_list = Array[ExtResource("3_g4jis")]([ExtResource("5_gjq3i"), ExtResource("6_yocef"), ExtResource("5_f333s")])
 
 [node name="UI" type="CanvasLayer" parent="."]
+scale = Vector2(1.6, 1.6)
+transform = Transform2D(1.6, 0, 0, 1.6, 0, 0)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI"]
 offset_right = 40.0
