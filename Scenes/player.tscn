@@ -331,7 +331,7 @@ shape = SubResource("CapsuleShape2D_bkbeo")
 zoom = Vector2(0.75, 0.75)
 
 [node name="Healthbar" parent="." instance=ExtResource("71_3uvy8")]
-offset_left = 429.0
-offset_top = -404.0
-offset_right = 944.0
-offset_bottom = -379.0
+offset_left = 694.0
+offset_top = -656.0
+offset_right = 1209.0
+offset_bottom = -616.0
