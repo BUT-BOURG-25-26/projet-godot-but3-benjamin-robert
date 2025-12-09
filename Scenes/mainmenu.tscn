@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6fa57debf2rp"]
+[gd_scene load_steps=10 format=3 uid="uid://c6fa57debf2rp"]
 
 [ext_resource type="Script" uid="uid://ftudn2ey5is8" path="res://Scenes/mainmenu.gd" id="1_pposm"]
+[ext_resource type="Texture2D" uid="uid://bhs4gtyledkkq" path="res://Assets/play.png" id="2_lah54"]
+[ext_resource type="Script" uid="uid://48pupaujdxsd" path="res://Scenes/play.gd" id="2_web8u"]
+[ext_resource type="Script" uid="uid://b3evalolrf2ui" path="res://Scenes/settings.gd" id="3_rtnl3"]
+[ext_resource type="Texture2D" uid="uid://kggn5kmu78fg" path="res://Assets/settings.png" id="4_5326e"]
+[ext_resource type="Script" uid="uid://vslicxl8vinw" path="res://Scenes/credit.gd" id="4_v4pkt"]
+[ext_resource type="Script" uid="uid://bxfrm758o04yo" path="res://Scenes/quit.gd" id="5_lah54"]
+[ext_resource type="Texture2D" uid="uid://bvwkaota3yu4k" path="res://Assets/credit.png" id="6_l2o7r"]
+[ext_resource type="Texture2D" uid="uid://bno2atpspaew" path="res://Assets/quit.png" id="7_juwjy"]
 
 [node name="Mainmenu" type="Node2D"]
 script = ExtResource("1_pposm")
@@ -26,32 +34,26 @@ offset_bottom = 1080.0
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="play" type="Button" parent="CenterContainer/MainButtons"]
+[node name="play" type="TextureButton" parent="CenterContainer/MainButtons"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
-text = "PLAY"
+texture_normal = ExtResource("2_lah54")
+script = ExtResource("2_web8u")
 
-[node name="settings" type="Button" parent="CenterContainer/MainButtons"]
+[node name="settings" type="TextureButton" parent="CenterContainer/MainButtons"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
-text = "SETTINGS
-"
+texture_normal = ExtResource("4_5326e")
+script = ExtResource("3_rtnl3")
 
-[node name="credit" type="Button" parent="CenterContainer/MainButtons"]
+[node name="credit" type="TextureButton" parent="CenterContainer/MainButtons"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
-text = "CREDIT
-"
+texture_normal = ExtResource("6_l2o7r")
+script = ExtResource("4_v4pkt")
 
-[node name="quit" type="Button" parent="CenterContainer/MainButtons"]
+[node name="quit" type="TextureButton" parent="CenterContainer/MainButtons"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
-text = "QUIT
-"
+texture_normal = ExtResource("7_juwjy")
+script = ExtResource("5_lah54")
 
 [node name="SettingsMenu" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
-
-[connection signal="pressed" from="CenterContainer/MainButtons/play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="CenterContainer/MainButtons/settings" to="." method="_on_settings_pressed"]
