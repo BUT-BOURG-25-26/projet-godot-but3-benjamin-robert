@@ -33,7 +33,7 @@ var second : int:
 
 # --- Fonctions de Spawn ---
 
-# Apparition d'un ENNEMI NORMAL (inchangé)
+# Apparition d'un ENNEMI NORMAL
 func spawn(pos: Vector2):
 	# Vérification de sécurité
 	if regular_enemy_scene == null:
@@ -81,7 +81,7 @@ func amount(number : int = 1):
 
 # --- Logique des Timers ---
 
-# Timer pour l'apparition des ennemis normaux et la progression du temps (inchangé)
+# Timer pour l'apparition des ennemis normaux et la progression du temps
 func _on_timer_timeout() -> void:
 	second += 1
 	amount(second % 2) # valeur temporaire

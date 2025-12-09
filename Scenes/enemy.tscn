@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b2g66sf655rqf"]
+[gd_scene load_steps=17 format=3 uid="uid://b2g66sf655rqf"]
 
 [ext_resource type="Script" uid="uid://bwk8ep2rrn8yk" path="res://Scripts/enemy.gd" id="1_ofqcr"]
 [ext_resource type="Texture2D" uid="uid://dply1ji7mv66" path="res://Assets/Character/Enemy/Wraith_03/PNG Sequences/Idle/Wraith_03_Idle_000.png" id="2_ta2yt"]
@@ -62,6 +62,9 @@ animations = [{
 radius = 38.0
 height = 86.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ta2yt"]
+radius = 405.01974
+
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_ofqcr")
 
@@ -75,3 +78,14 @@ speed_scale = 2.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5, 23)
 shape = SubResource("CapsuleShape2D_lp17p")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+light_mask = 7
+visibility_layer = 7
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+light_mask = 7
+visibility_layer = 7
+shape = SubResource("CircleShape2D_ta2yt")
