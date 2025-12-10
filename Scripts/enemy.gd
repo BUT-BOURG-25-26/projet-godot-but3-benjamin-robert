@@ -1,141 +1,173 @@
 extends CharacterBody2D
 
-@export var player_reference : CharacterBody2D
+# --- RÉFÉRENCES ---
+var player_reference : Node2D = null
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
-@export var enemy : Enemy  # Référence à la ressource Enemy
+@onready var interaction_area : Area2D = $InteractionArea
 
-var is_moving : bool = true  # Permet de contrôler si l'ennemi peut se déplacer
+# --- RESSOURCE ET STATS ---
+@export var type : Resource:
+	set(value):
+		type = value
+		if is_inside_tree(): _apply_stats()
 
-# (Possibilité de les ajoutés dans la ressource pour une meilleure personnalisation)
-var attack_cooldown : float = 1.0  # Délai entre les attaques
-var attack_timer : float = 0.0  # Timer pour gérer le cooldown des attaques
-
-# Variables pour l'ennemi
 var health : float
 var max_health : float
 var damage : float
 var speed : float
-var role : Enemy.Role  # Référence l'énumération Role, cette fois via Enemy
+var role : int # 0=Melee, 1=Ranged, 2=Healer
 
-# Quand on définit le type d'ennemi
-var type : Enemy:
-	set(value):
-		type = value
-		$AnimatedSprite2D.sprite_frames = value.sprite_frames
-		health = value.health  # Récupère la santé depuis la ressource
-		damage = value.damage  # Récupère les dégâts depuis la ressource
-		role = value.role  # Récupère le rôle depuis la ressource Enemy
-		speed = value.speed # Récupère la vitesse depuis la ressource
+# --- LOGIQUE ---
+var attack_cooldown : float = 1.0
+var attack_timer : float = 0.0
+# Liste pour le Healer
+var allies_in_range : Array = [] 
+var is_player_in_area : bool = false # Pour le Ranger
 
 func _ready() -> void:
-	# Initialisation si nécessaire pour s'assurer que health, damage et role sont bien définis
+	# 1. CORRECTION CRUCIALE : On rejoint le groupe des alliés
+	add_to_group("allied_enemies")
+	
+	if type: _apply_stats()
+	
+	# ASTUCE DEBUG : Décommente pour tester le soin au démarrage
+	# health = 1 
+	
+	# Trouver le joueur
+	var players = get_tree().get_nodes_in_group("player")
+	if players.size() > 0:
+		player_reference = players[0]
+	
+	# Connexion des signaux
+	if not interaction_area.body_entered.is_connected(_on_interaction_area_entered):
+		interaction_area.body_entered.connect(_on_interaction_area_entered)
+	if not interaction_area.body_exited.is_connected(_on_interaction_area_exited):
+		interaction_area.body_exited.connect(_on_interaction_area_exited)
+
+func _apply_stats() -> void:
+	if not type: return
+	$AnimatedSprite2D.sprite_frames = type.sprite_frames
 	health = type.health
 	max_health = type.health
 	damage = type.damage
-	role = type.role  # Récupère le rôle depuis la ressource Enemy
+	role = type.role
+	speed = type.speed
 
 func _physics_process(delta: float) -> void:
 	if not is_instance_valid(player_reference):
 		return
-	# Vérifie la distance du joueur
-	var distance_to_player = position.distance_to(player_reference.position)
-	var direction : Vector2 = Vector2.ZERO  # Initialisation par défaut
 
-	# Si l'ennemi est de type "ranged" (attaque à distance) et le joueur est à la bonne distance, on arrête l'ennemi
-	if role == Enemy.Role.RANGED:
-		# Si le joueur est trop loin (plus de 50), l'ennemi se rapproche
-		if distance_to_player > 50:
-			is_moving = true
-			direction = (player_reference.position - position).normalized()  # Dirige vers le joueur
-		# Si le joueur est dans la portée optimale (entre 20 et 50), l'ennemi s'arrête
-		elif distance_to_player <= 50:
-			is_moving = false
-	# Pour les ennemis "melee", ils continuent de se déplacer jusqu'à la portée de l'attaque
-	elif role == Enemy.Role.MELEE:
-		# Si l'ennemi est trop loin (plus de 2), il se rapproche
-		if distance_to_player > 2:
-			is_moving = true
-			direction = (player_reference.position - position).normalized()
-		# Si l'ennemi est à portée de mêlée (2 ou moins), il peut attaquer
-		elif distance_to_player <= 2:
-			is_moving = false
+	# --- 1. DÉPLACEMENT ---
+	var should_move = true
+	var dist_to_player = global_position.distance_to(player_reference.global_position)
+	
+	if role == 1: # RANGED
+		if is_player_in_area: should_move = false
+	elif role == 0: # MELEE
+		if dist_to_player < 10.0: should_move = false
 
-	# Si l'ennemi peut se déplacer, il se déplace
-	if is_moving:
+	if should_move:
+		var direction = (player_reference.global_position - global_position).normalized()
 		velocity = direction * speed
-		move_and_collide(velocity * delta)
+		move_and_slide()
+		_handle_animation(direction)
+	else:
+		velocity = Vector2.ZERO
+		_handle_animation(Vector2.ZERO)
 
-	# Comportement basé sur le rôle
+	# --- 2. ACTIONS ---
+	attack_timer += delta
+	if attack_timer >= attack_cooldown:
+		_try_action()
+
+func _try_action():
 	match role:
-		Enemy.Role.MELEE:
-			_melee_behavior(delta)
-		Enemy.Role.RANGED:
-			_ranged_behavior(delta)
-		Enemy.Role.HEALER:
+		0: # MELEE
+			if global_position.distance_to(player_reference.global_position) < 30.0:
+				_attack_player("Melee")
+		1: # RANGED
+			if is_player_in_area:
+				_attack_player("Ranged")
+		2: # HEALER
 			_healer_behavior()
 
-	# Animation
-	_handle_animation(direction)
-
-func _handle_animation(direction: Vector2) -> void:
-	if direction.length() > 0.1:
-		if not sprite.is_playing():
-			sprite.play("Walking")
-	else:
-		sprite.play("Idle")
-
-	# Orientation gauche / droite
-	if direction.x != 0:
-		sprite.flip_h = direction.x < 0
-
-# Comportement Melee : Attaque en corps à corps
-func _melee_behavior(delta: float):
-	if position.distance_to(player_reference.position) < 2:  # Portée de l'attaque
-		attack_timer += delta  # Incrémente le timer du cooldown
-		if attack_timer >= attack_cooldown:  # Vérifie si le cooldown est écoulé
-			_attack_melee()
-			attack_timer = 0.0  # Réinitialise le timer après l'attaque
-
-# Attaque de mêlée
-func _attack_melee():
-	print("Melee attack on player")
+func _attack_player(attack_type: String):
+	print(attack_type + " attack!")
 	if player_reference.has_method("take_damage"):
-		player_reference.take_damage(damage) # Inflige les dégâts au joueur
+		player_reference.take_damage(damage)
+	attack_timer = 0.0
 
-# Comportement Ranged : Attaque à distance
-func _ranged_behavior(delta: float):
-	# Si le joueur est dans la portée optimale, on peut attaquer
-	var distance_to_player = position.distance_to(player_reference.position)
-	if distance_to_player <= 80:
-		attack_timer += delta  # Incrémente le timer du cooldown
-		if attack_timer >= attack_cooldown:  # Vérifie si le cooldown est écoulé
-			_attack_ranged()
-			attack_timer = 0.0  # Réinitialise le timer après l'attaque
-
-
-# Attaque à distance
-func _attack_ranged():
-	print("Ranged attack on player")
-	if player_reference.has_method("take_damage"):
-		player_reference.take_damage(damage)  # Inflige les dégâts au joueur
-
-# Comportement Healer : Soigner les alliés proches
+# --- COMPORTEMENT HEALER (RYTHMIQUE) ---
 func _healer_behavior():
-	for ally in get_tree().get_nodes_in_group("allied_enemies"):
-		# il ne se soigne pas lui-même
-		if ally == self: continue
+	# Si personne autour, on reset le timer quand même pour ne pas spammer le CPU
+	if allies_in_range.is_empty(): 
+		attack_timer = 0.0
+		return
+	
+	print("--- HEALER PULSE ---")
+	print("J'ai ", allies_in_range.size(), " alliés potentiels.")
+
+	var healed_someone = false
+	
+	for ally in allies_in_range:
+		if not is_instance_valid(ally): continue
 		
-		if position.distance_to(ally.position) < 100:
-			_heal_ally(ally)
+		print(" -> Check : ", ally.name, " | HP: ", ally.health, "/", ally.max_health)
 
-func _heal_ally(ally: CharacterBody2D):
-	if ally.has_method("heal"):
-		print("Healing ally")
-		ally.heal(damage) # "damage" sert de puissance de soin ici
+		if ally.has_method("heal"):
+			if ally.health < ally.max_health:
+				print("    !!! SOIN LANCÉ !!!")
+				ally.heal(damage)
+				healed_someone = true
+			else:
+				print("    ... PV Max.")
+		else:
+			print("    ERREUR: Pas de fonction heal().")
+	
+	if healed_someone:
+		print(">> Soin effectué.")
+	else:
+		print(">> Rien à soigner pour ce cycle.")
+	
+	# 2. CORRECTION CRUCIALE : ON RESET LE TIMER DANS TOUS LES CAS
+	# Le Healer a "joué son tour", il doit attendre le cooldown
+	attack_timer = 0.0 
+	print("-------------------")
 
-# Fonction pour recevoir du soin (appelée par un autre Healer)
+# --- GESTION AREA 2D ---
+func _on_interaction_area_entered(body):
+	# RANGER
+	if role == 1 and body == player_reference:
+		is_player_in_area = true
+		
+	# HEALER
+	if role == 2 and body != self:
+		print("ZONE ENTREE: ", body.name)
+		if body.is_in_group("allied_enemies"):
+			print(" -> Allié ajouté.")
+			allies_in_range.append(body)
+		else:
+			print(" -> Ignoré (Pas un allié).")
+
+func _on_interaction_area_exited(body):
+	# RANGER
+	if role == 1 and body == player_reference:
+		is_player_in_area = false
+		
+	# HEALER
+	if role == 2 and body in allies_in_range:
+		print("ZONE SORTIE: ", body.name)
+		allies_in_range.erase(body)
+
+# --- ANIMATION & RECEPTION SOIN ---
+func _handle_animation(direction: Vector2) -> void:
+	if direction.length() > 0:
+		if sprite.animation != "Walking": sprite.play("Walking")
+		if direction.x != 0: sprite.flip_h = direction.x < 0
+	else:
+		if sprite.animation != "Idle": sprite.play("Idle")
+
 func heal(amount: float) -> void:
 	health += amount
-	if health > max_health:
-		health = max_health
-	print("Enemy healed! Current HP: ", health)
+	if health > max_health: health = max_health
+	print(">>> ", name, " REÇOIT SOIN. PV: ", health)
