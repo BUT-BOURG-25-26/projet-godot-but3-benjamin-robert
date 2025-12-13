@@ -317,7 +317,7 @@ radius = 4.0
 height = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3uvy8"]
-size = Vector2(145, 130.5)
+size = Vector2(208, 254)
 
 [node name="player" type="CharacterBody2D"]
 collision_layer = 2
@@ -350,7 +350,7 @@ offset_bottom = -616.0
 position = Vector2(54, 21)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-4.5, -2.75)
+position = Vector2(27, 29)
 shape = SubResource("RectangleShape2D_3uvy8")
 
 [node name="InvincibilityTimer" type="Timer" parent="."]

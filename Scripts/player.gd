@@ -61,6 +61,7 @@ func _physics_process(delta: float) -> void:
 	)
 	if input_vector.length() > 0.0: 
 		input_vector = input_vector.normalized()
+		velocity = input_vector * speed
 		
 		if input_vector.x != 0:
 			var look_left = input_vector.x < 0.0
@@ -97,11 +98,8 @@ func _handle_animation() -> void:
 			current_animation = "Idle"
 			animated_sprite.play("Idle")
 
-# --- NOUVELLES FONCTIONS D'ATTAQUE ---
-
 func attack() -> void:
 	is_attacking = true
-	# On lance l'animation immédiatement
 	animated_sprite.play("Walking_slash")
 	current_animation = "Walking_slash"
 	
@@ -112,7 +110,7 @@ func attack() -> void:
 		if body != self and body.has_method("take_damage"):
 			# On vérifie si c'est un ennemi (optionnel, via les Groupes)
 			if body.is_in_group("enemies"): 
-				body.take_damage(damage)
+				body.take_damage(damage, global_position)
 				print("Coup porté sur : ", body.name)
 
 func _on_animation_finished() -> void:
