@@ -59,9 +59,8 @@ func _physics_process(delta: float) -> void:
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	)
-	if input_vector.length() > 0.0 and not is_attacking: 
+	if input_vector.length() > 0.0: 
 		input_vector = input_vector.normalized()
-		velocity = input_vector * speed
 		
 		if input_vector.x != 0:
 			var look_left = input_vector.x < 0.0
