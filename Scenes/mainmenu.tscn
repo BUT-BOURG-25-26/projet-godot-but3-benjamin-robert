@@ -57,3 +57,5 @@ script = ExtResource("5_lah54")
 [node name="SettingsMenu" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
+
+[connection signal="pressed" from="CenterContainer/MainButtons/play" to="." method="_on_play_pressed"]
