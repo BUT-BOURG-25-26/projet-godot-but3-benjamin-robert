@@ -23,9 +23,12 @@ var attack_timer : float = 0.0
 # Liste pour le Healer
 var allies_in_range : Array = [] 
 var is_player_in_area : bool = false # Pour le Ranger
+var is_attacking : bool = false
 
 func _ready() -> void:
 	add_to_group("allied_enemies")
+	
+	sprite.animation_finished.connect(_on_animation_finished)
 	
 	if type: _apply_stats()
 	
@@ -53,6 +56,11 @@ func _physics_process(delta: float) -> void:
 	if not is_instance_valid(player_reference):
 		return
 
+	if is_attacking:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+		
 	# --- 1. DÉPLACEMENT ---
 	var should_move = true
 	var dist_to_player = global_position.distance_to(player_reference.global_position)
@@ -88,6 +96,8 @@ func _try_action():
 			_healer_behavior()
 
 func _attack_player(attack_type: String):
+	is_attacking = true
+	sprite.play("Attack")
 	print(attack_type + " attack!")
 	if player_reference.has_method("take_damage"):
 		player_reference.take_damage(damage, global_position)
@@ -122,6 +132,8 @@ func _healer_behavior():
 	
 	if healed_someone:
 		print(">> Soin effectué.")
+		is_attacking = true
+		sprite.play("Attack")
 	else:
 		print(">> Rien à soigner pour ce cycle.")
 	
@@ -156,11 +168,18 @@ func _on_interaction_area_exited(body):
 
 # --- ANIMATION & RECEPTION SOIN ---
 func _handle_animation(direction: Vector2) -> void:
+	if is_attacking:
+		return
 	if direction.length() > 0:
 		if sprite.animation != "Walking": sprite.play("Walking")
 		if direction.x != 0: sprite.flip_h = direction.x < 0
 	else:
 		if sprite.animation != "Idle": sprite.play("Idle")
+		
+func _on_animation_finished() -> void:
+	if sprite.animation == "Attack":
+		is_attacking = false
+		sprite.play("Idle")
 
 func heal(amount: float) -> void:
 	health += amount

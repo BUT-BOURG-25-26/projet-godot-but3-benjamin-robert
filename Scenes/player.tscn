@@ -120,9 +120,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("16_e2o0t")
 }],
-"loop": true,
+"loop": false,
 "name": &"Dying",
-"speed": 20.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -328,8 +328,8 @@ script = ExtResource("1_hbt6w")
 position = Vector2(-7.10543e-15, -3)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_ivnpj")
-animation = &"Hurt"
-frame = 11
+animation = &"Dying"
+frame = 14
 frame_progress = 1.0
 speed_scale = 2.0
 
