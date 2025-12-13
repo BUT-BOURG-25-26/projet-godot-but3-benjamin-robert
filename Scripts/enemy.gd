@@ -90,10 +90,10 @@ func _try_action():
 func _attack_player(attack_type: String):
 	print(attack_type + " attack!")
 	if player_reference.has_method("take_damage"):
-		player_reference.take_damage(damage)
+		player_reference.take_damage(damage, global_position)
 	attack_timer = 0.0
 
-# --- COMPORTEMENT HEALER (RYTHMIQUE) ---
+# --- COMPORTEMENT HEALER ---
 func _healer_behavior():
 	# Si personne autour, on reset le timer quand même pour ne pas spammer le CPU
 	if allies_in_range.is_empty(): 

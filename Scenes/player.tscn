@@ -352,3 +352,7 @@ position = Vector2(54, 21)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-4.5, -2.75)
 shape = SubResource("RectangleShape2D_3uvy8")
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true

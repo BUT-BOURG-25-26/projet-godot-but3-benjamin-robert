@@ -2,12 +2,14 @@ class_name Player
 extends CharacterBody2D
 
 @export var speed: float = 400.0
+@export var knockback_force: float = 600.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera: Camera2D = $Camera2D
 @onready var tilemap: TileMap = get_parent().get_node("map") # le TileMap doit s’appeler "map"
 @onready var healthbar = $Healthbar
 @onready var hitbox: Area2D = $Hitbox
+@onready var invincibility_timer: Timer = $InvincibilityTimer
 
 # Variables pour la santé et les dégâts
 @export var max_health: float = 100.0 
@@ -16,19 +18,18 @@ var health: float
 var is_dead: bool = false
 var is_attacking: bool = false
 var is_hurt: bool = false
+var is_invincible: bool = false
 
 # Animation actuelle
 var current_animation: String = "Idle"
 
-var min_x: float
-var max_x: float
-var min_y: float
-var max_y: float
+var min_x: float; var max_x: float; var min_y: float; var max_y: float
 var has_map_limits: bool = false
 
 func _ready() -> void:
 	
 	animated_sprite.animation_finished.connect(_on_animation_finished)
+	invincibility_timer.timeout.connect(_on_invincibility_timeout)
 	
 	# --- INIT HEALTH ---
 	health = max_health
@@ -41,10 +42,14 @@ func _physics_process(delta: float) -> void:
 	if is_dead: return
 	
 	if is_hurt:
-		velocity = Vector2.ZERO
+		velocity = velocity.move_toward(Vector2.ZERO, 1500 * delta)
 		move_and_slide()
 		return
 	
+	if is_invincible and not is_hurt:
+		# Calcul pour faire clignoter l'opacité -> fait varier l'alpha entre 0.3 et 0.8
+		animated_sprite.modulate.a = 0.5 + 0.3 * sin(Time.get_ticks_msec() * 0.02)
+		
 	# GESTION DE L'INPUT D'ATTAQUE
 	if Input.is_action_just_pressed("ui_accept") and not is_attacking:
 		attack()
@@ -54,27 +59,19 @@ func _physics_process(delta: float) -> void:
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	)
-	if input_vector.length() > 0.0:
+	if input_vector.length() > 0.0 and not is_attacking: 
 		input_vector = input_vector.normalized()
 		velocity = input_vector * speed
 		
-		# Gestion de la direction du sprite ET de la Hitbox
 		if input_vector.x != 0:
 			var look_left = input_vector.x < 0.0
 			animated_sprite.flip_h = look_left
-			
-			# On inverse la position de la hitbox pour qu'elle soit du bon côté
-			# Si la hitbox est à x = 20 par défaut
-			if look_left:
-				hitbox.scale.x = -1 # Ou hitbox.position.x = -20
-			else:
-				hitbox.scale.x = 1  # Ou hitbox.position.x = 20
+			hitbox.scale.x = -1 if look_left else 1
 	else:
 		velocity = Vector2.ZERO
 
 	move_and_slide()
-
-	# 3. ANIMATIONS
+	# ANIMATIONS
 	_handle_animation()
 
 func _handle_animation() -> void:
@@ -84,7 +81,7 @@ func _handle_animation() -> void:
 			current_animation = "Hurt"
 			animated_sprite.play("Hurt")
 		return
-	# Si on attaque, on force l'animation d'attaque et on ignore le reste
+		
 	if is_attacking:
 		if current_animation != "Walking_slash":
 			current_animation = "Walking_slash"
@@ -110,9 +107,7 @@ func attack() -> void:
 	current_animation = "Walking_slash"
 	
 	# GESTION DES DÉGÂTS
-	# On récupère tous les corps qui sont dans la Hitbox (Area2D)
 	var bodies = hitbox.get_overlapping_bodies()
-	
 	for body in bodies:
 		# On vérifie si ce n'est pas le joueur lui-même et si l'objet a une fonction take_damage
 		if body != self and body.has_method("take_damage"):
@@ -127,13 +122,16 @@ func _on_animation_finished() -> void:
 		is_attacking = false
 	elif animated_sprite.animation == "Hurt":
 		is_hurt = false
-		# On repasse en Idle immédiatement pour éviter un "blink"
+		animated_sprite.modulate = Color(1, 1, 1, 1)
+		# On repasse en Idle immédiatement
 		current_animation = "Idle"
 		animated_sprite.play("Idle")
 
 # Fonction pour recevoir des dégâts
-func take_damage(amount: float) -> void:
+func take_damage(amount: float, source_position: Vector2 = Vector2.ZERO) -> void:
 	if is_dead: return
+	
+	if is_invincible: return
 	
 	health -= amount
 	print("Player health: ", health)
@@ -148,6 +146,27 @@ func take_damage(amount: float) -> void:
 		is_hurt = true
 		animated_sprite.play("Hurt")
 		current_animation = "Hurt"
+		is_invincible = true # On devient invincible
+		
+		# --- CALCUL DU KNOCKBACK ---
+		# Si la source n'est pas zero (on a reçu la position de l'ennemi)
+		if source_position != Vector2.ZERO:
+			# Direction = (Ma position - Position Ennemi).normalized()
+			var knockback_direction = (global_position - source_position).normalized()
+			velocity = knockback_direction * knockback_force
+		
+		# --- EFFET VISUEL (ROUGE) ---
+		animated_sprite.modulate = Color(1, 0, 0, 0.8)
+		
+		# On lance l'animation et le timer
+		animated_sprite.play("Hurt")
+		current_animation = "Hurt"
+		invincibility_timer.start()
+
+# Fin de l'invincibilité
+func _on_invincibility_timeout() -> void:
+	is_invincible = false
+	animated_sprite.modulate = Color(1, 1, 1, 1)
 
 func heal(amount: float) -> void:
 	health += amount
