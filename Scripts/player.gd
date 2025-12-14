@@ -22,6 +22,8 @@ var is_invincible: bool = false
 
 # Animation actuelle
 var current_animation: String = "Idle"
+# Nouvelle variable pour la direction
+var last_direction: Vector2 = Vector2.RIGHT
 
 var min_x: float; var max_x: float; var min_y: float; var max_y: float
 var has_map_limits: bool = false
@@ -60,13 +62,16 @@ func _physics_process(delta: float) -> void:
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	)
 	if input_vector.length() > 0.0: 
+		# On mémorise la direction avant de normaliser
+		last_direction = input_vector
+		
 		input_vector = input_vector.normalized()
 		velocity = input_vector * speed
 		
 		if input_vector.x != 0:
 			var look_left = input_vector.x < 0.0
 			animated_sprite.flip_h = look_left
-			hitbox.scale.x = -1 if look_left else 1
+			# Note: on ne touche plus hitbox.scale.x ici, c'est géré dans attack()
 	else:
 		velocity = Vector2.ZERO
 
@@ -98,10 +103,41 @@ func _handle_animation() -> void:
 			current_animation = "Idle"
 			animated_sprite.play("Idle")
 
+# --- NOUVELLES FONCTIONS D'ATTAQUE ---
+
 func attack() -> void:
 	is_attacking = true
+	
+	# 1. ORIENTATION DE LA HITBOX
+	hitbox.position = Vector2.ZERO
+	hitbox.rotation = 0
+	hitbox.scale = Vector2(1, 1)
+
+	if abs(last_direction.x) > abs(last_direction.y):
+		# HORIZONTAL
+		if last_direction.x > 0:
+			hitbox.position = Vector2(20, 0)
+			hitbox.rotation_degrees = 0
+			animated_sprite.flip_h = false
+		else:
+			hitbox.position = Vector2(-20, 0)
+			hitbox.rotation_degrees = 180
+			animated_sprite.flip_h = true
+	else:
+		# VERTICAL
+		if last_direction.y > 0: # Bas
+			hitbox.position = Vector2(0, 20)
+			hitbox.rotation_degrees = 90
+		else: # Haut
+			hitbox.position = Vector2(0, -20)
+			hitbox.rotation_degrees = -90
+
+	# On lance l'animation immédiatement
 	animated_sprite.play("Walking_slash")
 	current_animation = "Walking_slash"
+	
+	# Petite attente pour que la hitbox se mette à jour physiquement
+	await get_tree().process_frame
 	
 	# GESTION DES DÉGÂTS
 	var bodies = hitbox.get_overlapping_bodies()
