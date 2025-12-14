@@ -46,6 +46,7 @@ func _ready() -> void:
 	if not interaction_area.body_exited.is_connected(_on_interaction_area_exited):
 		interaction_area.body_exited.connect(_on_interaction_area_exited)
 
+
 func _apply_stats() -> void:
 	if not type: return
 	$AnimatedSprite2D.sprite_frames = type.sprite_frames
@@ -54,6 +55,7 @@ func _apply_stats() -> void:
 	damage = type.damage
 	role = type.role
 	speed = type.speed
+
 
 func _physics_process(delta: float) -> void:
 	if is_hurt:
@@ -94,6 +96,7 @@ func _physics_process(delta: float) -> void:
 	if attack_timer >= attack_cooldown:
 		_try_action()
 
+
 func take_damage(amount: float, source_position: Vector2 = Vector2.ZERO) -> void:
 	health -= amount
 	
@@ -110,6 +113,7 @@ func take_damage(amount: float, source_position: Vector2 = Vector2.ZERO) -> void
 
 	if health <= 0:
 		_die()
+		
 		
 func _show_damage_popup(amount: float) -> void:
 	var label = Label.new()
@@ -152,6 +156,7 @@ func _show_damage_popup(amount: float) -> void:
 	# Nettoyage
 	tween.chain().tween_callback(label.queue_free)
 		
+		
 func _die() -> void:
 	print(name + " est mort.")
 	queue_free() # Supprime l'ennemi
@@ -167,6 +172,7 @@ func _try_action():
 		2: # HEALER
 			_healer_behavior()
 
+
 func _attack_player(attack_type: String):
 	is_attacking = true
 	sprite.play("Attack")
@@ -174,6 +180,7 @@ func _attack_player(attack_type: String):
 	if player_reference.has_method("take_damage"):
 		player_reference.take_damage(damage, global_position)
 	attack_timer = 0.0
+
 
 # --- COMPORTEMENT HEALER ---
 func _healer_behavior():
@@ -213,6 +220,7 @@ func _healer_behavior():
 	attack_timer = 0.0 
 	print("-------------------")
 
+
 # --- GESTION AREA 2D ---
 func _on_interaction_area_entered(body):
 	# RANGER
@@ -228,6 +236,7 @@ func _on_interaction_area_entered(body):
 		else:
 			print(" -> Ignoré (Pas un allié).")
 
+
 func _on_interaction_area_exited(body):
 	# RANGER
 	if role == 1 and body == player_reference:
@@ -237,6 +246,7 @@ func _on_interaction_area_exited(body):
 	if role == 2 and body in allies_in_range:
 		print("ZONE SORTIE: ", body.name)
 		allies_in_range.erase(body)
+
 
 # --- ANIMATION & RECEPTION SOIN ---
 func _handle_animation(direction: Vector2) -> void:
@@ -248,10 +258,12 @@ func _handle_animation(direction: Vector2) -> void:
 	else:
 		if sprite.animation != "Idle": sprite.play("Idle")
 		
+		
 func _on_animation_finished() -> void:
 	if sprite.animation == "Attack":
 		is_attacking = false
 		sprite.play("Idle")
+
 
 func heal(amount: float) -> void:
 	health += amount

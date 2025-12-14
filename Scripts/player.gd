@@ -28,6 +28,7 @@ var last_direction: Vector2 = Vector2.RIGHT
 var min_x: float; var max_x: float; var min_y: float; var max_y: float
 var has_map_limits: bool = false
 
+
 func _ready() -> void:
 	
 	animated_sprite.animation_finished.connect(_on_animation_finished)
@@ -39,6 +40,7 @@ func _ready() -> void:
 	
 	# --- MAP SETUP ---
 	_setup_map_limits()
+
 
 func _physics_process(delta: float) -> void:
 	if is_dead: return
@@ -79,6 +81,7 @@ func _physics_process(delta: float) -> void:
 	# ANIMATIONS
 	_handle_animation()
 
+
 func _handle_animation() -> void:
 	# Priorité au hurt
 	if is_hurt:
@@ -103,8 +106,8 @@ func _handle_animation() -> void:
 			current_animation = "Idle"
 			animated_sprite.play("Idle")
 
-# --- NOUVELLES FONCTIONS D'ATTAQUE ---
 
+# --- NOUVELLES FONCTIONS D'ATTAQUE ---
 func attack() -> void:
 	is_attacking = true
 	
@@ -149,6 +152,7 @@ func attack() -> void:
 				body.take_damage(damage, global_position)
 				print("Coup porté sur : ", body.name)
 
+
 func _on_animation_finished() -> void:
 	# Cette fonction est appelée automatiquement par le signal animation_finished
 	if animated_sprite.animation == "Walking_slash":
@@ -159,6 +163,7 @@ func _on_animation_finished() -> void:
 		# On repasse en Idle immédiatement
 		current_animation = "Idle"
 		animated_sprite.play("Idle")
+
 
 # Fonction pour recevoir des dégâts
 func take_damage(amount: float, source_position: Vector2 = Vector2.ZERO) -> void:
@@ -196,10 +201,12 @@ func take_damage(amount: float, source_position: Vector2 = Vector2.ZERO) -> void
 		current_animation = "Hurt"
 		invincibility_timer.start()
 
+
 # Fin de l'invincibilité
 func _on_invincibility_timeout() -> void:
 	is_invincible = false
 	animated_sprite.modulate = Color(1, 1, 1, 1)
+
 
 func heal(amount: float) -> void:
 	health += amount
@@ -208,6 +215,7 @@ func heal(amount: float) -> void:
 	healthbar.health = health
 	print("Player healed. Health: ", health)
 
+
 func _die() -> void:
 	print("Le joueur est mort")
 	visible = false 
@@ -215,6 +223,7 @@ func _die() -> void:
 	set_process(false)
 	$CollisionShape2D.set_deferred("disabled", true)
 	# écran de game over
+
 
 func _setup_map_limits():
 	if tilemap == null:
