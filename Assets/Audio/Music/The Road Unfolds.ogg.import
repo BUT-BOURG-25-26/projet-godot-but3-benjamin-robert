@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cpuc7ieounlgm"
+path="res://.godot/imported/The Road Unfolds.ogg-9f58842d59782039e4f701e999270194.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/The Road Unfolds.ogg"
+dest_files=["res://.godot/imported/The Road Unfolds.ogg-9f58842d59782039e4f701e999270194.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
