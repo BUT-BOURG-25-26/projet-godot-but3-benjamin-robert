@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://d3ib53xnwaqds"]
+[gd_scene load_steps=78 format=3 uid="uid://d3ib53xnwaqds"]
 
 [ext_resource type="Script" uid="uid://hfssvtetbx0i" path="res://Scripts/player.gd" id="1_hbt6w"]
 [ext_resource type="Texture2D" uid="uid://dkjh7t4ac6cet" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_000.png" id="2_y6ibu"]
@@ -71,6 +71,9 @@
 [ext_resource type="Texture2D" uid="uid://dm7ftnp2kh5ha" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Slashing/0_Valkyrie_Run Slashing_010.png" id="69_ts2c8"]
 [ext_resource type="Texture2D" uid="uid://cefs7pw5m84xd" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Slashing/0_Valkyrie_Run Slashing_011.png" id="70_hcgbs"]
 [ext_resource type="PackedScene" uid="uid://cjgqm3ik54dca" path="res://Scenes/heathbar.tscn" id="71_3uvy8"]
+[ext_resource type="AudioStream" uid="uid://caxdkgadwfadq" path="res://Assets/Audio/SFX/HurtSound.wav" id="72_ss172"]
+[ext_resource type="AudioStream" uid="uid://cnda2ehg54nhd" path="res://Assets/Audio/SFX/HitSword.wav" id="73_jmelf"]
+[ext_resource type="AudioStream" uid="uid://c7xybvb4b5mrw" path="res://Assets/Audio/SFX/GameOver.wav" id="74_bjdqd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ivnpj"]
 animations = [{
@@ -358,3 +361,14 @@ shape = SubResource("RectangleShape2D_3uvy8")
 [node name="InvincibilityTimer" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("72_ss172")
+volume_db = -5.0
+
+[node name="HitSword" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("73_jmelf")
+volume_db = -5.0
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("74_bjdqd")

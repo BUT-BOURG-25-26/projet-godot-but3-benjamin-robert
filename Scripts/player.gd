@@ -155,6 +155,7 @@ func attack() -> void:
 
 	animated_sprite.play("Walking_slash")
 	current_animation = "Walking_slash"
+	$HitSword.play()
 
 	await get_tree().process_frame
 
@@ -191,12 +192,14 @@ func take_damage(amount: float, source_position: Vector2 = Vector2.ZERO) -> void
 		return
 
 	health -= amount
+	$HurtSound.play()
 
 	if health <= 0:
 		health = 0
 		is_dead = true
 		healthbar.health = 0
 		_die()
+		$GameOver.play()
 	else:
 		healthbar.health = health
 		is_hurt = true
