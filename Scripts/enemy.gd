@@ -25,13 +25,9 @@ var allies_in_range : Array = []
 var is_player_in_area : bool = false # Pour le Ranger
 
 func _ready() -> void:
-	# 1. CORRECTION CRUCIALE : On rejoint le groupe des alliés
 	add_to_group("allied_enemies")
 	
 	if type: _apply_stats()
-	
-	# ASTUCE DEBUG : Décommente pour tester le soin au démarrage
-	# health = 1 
 	
 	# Trouver le joueur
 	var players = get_tree().get_nodes_in_group("player")
@@ -129,7 +125,6 @@ func _healer_behavior():
 	else:
 		print(">> Rien à soigner pour ce cycle.")
 	
-	# 2. CORRECTION CRUCIALE : ON RESET LE TIMER DANS TOUS LES CAS
 	# Le Healer a "joué son tour", il doit attendre le cooldown
 	attack_timer = 0.0 
 	print("-------------------")
