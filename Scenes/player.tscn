@@ -348,6 +348,8 @@ offset_bottom = -616.0
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(54, 21)
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(27, 29)
