@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6fa57debf2rp"]
+[gd_scene load_steps=11 format=3 uid="uid://c6fa57debf2rp"]
 
 [ext_resource type="Script" uid="uid://ftudn2ey5is8" path="res://Scenes/mainmenu.gd" id="1_pposm"]
+[ext_resource type="Texture2D" uid="uid://b3naw0im2pfdj" path="res://Assets/fond_menu.png" id="2_eybw1"]
 [ext_resource type="Texture2D" uid="uid://bhs4gtyledkkq" path="res://Assets/play.png" id="2_lah54"]
 [ext_resource type="Script" uid="uid://48pupaujdxsd" path="res://Scenes/play.gd" id="2_web8u"]
 [ext_resource type="Script" uid="uid://b3evalolrf2ui" path="res://Scenes/settings.gd" id="3_rtnl3"]
@@ -12,6 +13,11 @@
 
 [node name="Mainmenu" type="Node2D"]
 script = ExtResource("1_pposm")
+
+[node name="FondMenu" type="Sprite2D" parent="."]
+position = Vector2(959.00006, 538)
+scale = Vector2(0.7013345, 0.70133466)
+texture = ExtResource("2_eybw1")
 
 [node name="Title" type="Label" parent="."]
 offset_right = 1920.0
@@ -34,11 +40,6 @@ offset_bottom = 1080.0
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="play" type="TextureButton" parent="CenterContainer/MainButtons"]
-layout_mode = 2
-texture_normal = ExtResource("2_lah54")
-script = ExtResource("2_web8u")
-
 [node name="settings" type="TextureButton" parent="CenterContainer/MainButtons"]
 layout_mode = 2
 texture_normal = ExtResource("4_5326e")
@@ -49,13 +50,30 @@ layout_mode = 2
 texture_normal = ExtResource("6_l2o7r")
 script = ExtResource("4_v4pkt")
 
-[node name="quit" type="TextureButton" parent="CenterContainer/MainButtons"]
-layout_mode = 2
-texture_normal = ExtResource("7_juwjy")
-script = ExtResource("5_lah54")
-
 [node name="SettingsMenu" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[connection signal="pressed" from="CenterContainer/MainButtons/play" to="." method="_on_play_pressed"]
+[node name="Container2" type="Container" parent="."]
+offset_left = 35.0
+offset_top = 926.0
+offset_right = 388.0
+offset_bottom = 1036.0
+
+[node name="quit" type="TextureButton" parent="Container2"]
+layout_mode = 2
+texture_normal = ExtResource("7_juwjy")
+script = ExtResource("5_lah54")
+
+[node name="Container" type="Container" parent="."]
+offset_left = 1526.0
+offset_top = 925.0
+offset_right = 1879.0
+offset_bottom = 1035.0
+
+[node name="play" type="TextureButton" parent="Container"]
+layout_mode = 2
+texture_normal = ExtResource("2_lah54")
+script = ExtResource("2_web8u")
+
+[connection signal="pressed" from="Container/play" to="." method="_on_play_pressed"]
