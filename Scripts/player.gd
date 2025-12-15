@@ -30,6 +30,7 @@ var has_map_limits: bool = false
 
 
 func _ready() -> void:
+	add_to_group("player")
 	
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	invincibility_timer.timeout.connect(_on_invincibility_timeout)

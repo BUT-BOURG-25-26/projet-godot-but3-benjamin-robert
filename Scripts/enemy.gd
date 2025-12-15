@@ -11,6 +11,9 @@ var player_reference : Node2D = null
 		type = value
 		if is_inside_tree(): _apply_stats()
 
+@export var projectile_scene : PackedScene 
+var projectile_stats : ProjectileData
+
 var health : float
 var max_health : float
 var damage : float
@@ -55,6 +58,8 @@ func _apply_stats() -> void:
 	damage = type.damage
 	role = type.role
 	speed = type.speed
+	if "projectile_data" in type and type.projectile_data:
+		projectile_stats = type.projectile_data
 
 
 func _physics_process(delta: float) -> void:
@@ -177,8 +182,24 @@ func _attack_player(attack_type: String):
 	is_attacking = true
 	sprite.play("Attack")
 	print(attack_type + " attack!")
-	if player_reference.has_method("take_damage"):
-		player_reference.take_damage(damage, global_position)
+	# ---Logique de tir (Ranged) & Corps à corps (Melee) ---
+	if attack_type == "Ranged":
+		if projectile_scene and projectile_stats:
+			var p = projectile_scene.instantiate()
+			get_tree().current_scene.add_child(p)
+			p.global_position = global_position
+			
+			var dir = (player_reference.global_position - global_position).normalized()
+			
+			# On configure le projectile avec ses données
+			p.setup(projectile_stats, dir, "player", self)
+		else:
+			print("ERREUR: Projectile Scene ou Stats manquants sur " + name)
+			
+	else:
+		# Logique MELEE
+		if player_reference.has_method("take_damage"):
+			player_reference.take_damage(damage, global_position)
 	attack_timer = 0.0
 
 

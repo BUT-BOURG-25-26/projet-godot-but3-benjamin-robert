@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=39 format=3 uid="uid://baif74ipwfby6"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=40 format=3 uid="uid://baif74ipwfby6"]
 
+[ext_resource type="Resource" uid="uid://cd6isvjqxkkck" path="res://Ressources/fleche_eau.tres" id="1_5qm3t"]
 [ext_resource type="Script" uid="uid://dgv7uni4m1371" path="res://Scripts/EnemyType.gd" id="1_sx524"]
 [ext_resource type="Texture2D" uid="uid://csnbbpmixr6m" path="res://Assets/Character/Enemy/Wraith_03/PNG Sequences/Attacking/Wraith_03_Attack_000.png" id="2_cwepd"]
 [ext_resource type="Texture2D" uid="uid://dply1ji7mv66" path="res://Assets/Character/Enemy/Wraith_03/PNG Sequences/Idle/Wraith_03_Idle_000.png" id="2_xb1kv"]
@@ -172,4 +173,5 @@ health = 10.0
 damage = 2.0
 role = 1
 speed = 75.0
+projectile_data = ExtResource("1_5qm3t")
 metadata/_custom_type_script = "uid://dgv7uni4m1371"
