@@ -18,6 +18,7 @@ var health : float
 var max_health : float
 var damage : float
 var speed : float
+var exp_drop : float
 var role : int # 0=Melee, 1=Ranged, 2=Healer
 
 # --- LOGIQUE ---

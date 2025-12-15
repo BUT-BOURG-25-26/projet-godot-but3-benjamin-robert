@@ -8,6 +8,7 @@ class_name Enemy
 @export var role : Role
 @export var speed : float
 @export var projectile_data : ProjectileData
+@export var exp_drop : float
 
 enum Role {
 	MELEE,
