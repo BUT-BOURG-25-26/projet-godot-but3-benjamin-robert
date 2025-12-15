@@ -86,6 +86,7 @@ func _on_timer_timeout() -> void:
 	second += 1
 	amount(second % 2) # valeur temporaire
 
+
 # Logique de spawn du Boss (MODIFIÉE)
 func _on_timer_boss_timeout() -> void:
 	if boss_data_list.is_empty():

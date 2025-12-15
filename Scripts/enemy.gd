@@ -11,6 +11,9 @@ var player_reference : Node2D = null
 		type = value
 		if is_inside_tree(): _apply_stats()
 
+@export var projectile_scene : PackedScene 
+var projectile_stats : ProjectileData
+
 var health : float
 var max_health : float
 var damage : float
@@ -23,9 +26,15 @@ var attack_timer : float = 0.0
 # Liste pour le Healer
 var allies_in_range : Array = [] 
 var is_player_in_area : bool = false # Pour le Ranger
+var is_attacking : bool = false
+var is_hurt : bool = false
+var knockback_force : float = 200.0 # Force du recul subi par l'ennemi
 
 func _ready() -> void:
+	add_to_group("enemies")
 	add_to_group("allied_enemies")
+	
+	sprite.animation_finished.connect(_on_animation_finished)
 	
 	if type: _apply_stats()
 	
@@ -40,6 +49,7 @@ func _ready() -> void:
 	if not interaction_area.body_exited.is_connected(_on_interaction_area_exited):
 		interaction_area.body_exited.connect(_on_interaction_area_exited)
 
+
 func _apply_stats() -> void:
 	if not type: return
 	$AnimatedSprite2D.sprite_frames = type.sprite_frames
@@ -48,11 +58,26 @@ func _apply_stats() -> void:
 	damage = type.damage
 	role = type.role
 	speed = type.speed
+	if "projectile_data" in type and type.projectile_data:
+		projectile_stats = type.projectile_data
+
 
 func _physics_process(delta: float) -> void:
+	if is_hurt:
+		velocity = velocity.move_toward(Vector2.ZERO, 800 * delta)
+		move_and_slide()
+		if velocity.length() < 10.0:
+			is_hurt = false
+			velocity = Vector2.ZERO
+		return
 	if not is_instance_valid(player_reference):
 		return
 
+	if is_attacking:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+		
 	# --- 1. DÉPLACEMENT ---
 	var should_move = true
 	var dist_to_player = global_position.distance_to(player_reference.global_position)
@@ -76,6 +101,71 @@ func _physics_process(delta: float) -> void:
 	if attack_timer >= attack_cooldown:
 		_try_action()
 
+
+func take_damage(amount: float, source_position: Vector2 = Vector2.ZERO) -> void:
+	health -= amount
+	
+	_show_damage_popup(amount)
+	
+	sprite.modulate = Color(1, 0, 0)
+	var timer = get_tree().create_timer(0.2)
+	timer.timeout.connect(func(): sprite.modulate = Color(1, 1, 1))
+	
+	if source_position != Vector2.ZERO:
+		var knockback_dir = (global_position - source_position).normalized()
+		velocity = knockback_dir * knockback_force
+		is_hurt = true
+
+	if health <= 0:
+		_die()
+		
+		
+func _show_damage_popup(amount: float) -> void:
+	var label = Label.new()
+	label.text = str(int(amount))
+	label.z_index = 20
+	
+	# --- STYLE ---
+	var settings = LabelSettings.new()
+	settings.font_size = 24
+	settings.font_color = Color.WHITE
+	settings.outline_size = 6
+	settings.outline_color = Color(0.8, 0, 0)
+	settings.shadow_size = 4
+	settings.shadow_color = Color(0, 0, 0, 0.5)
+	settings.shadow_offset = Vector2(2, 2)
+	label.label_settings = settings
+	
+	# --- POSITION ---
+	var random_offset = Vector2(randf_range(-20, 20), randf_range(-10, 10))
+	# Important : On ajoute le label à la scène principale
+	get_tree().current_scene.add_child(label)
+	label.global_position = global_position + Vector2(0, -40) + random_offset
+	label.pivot_offset = Vector2(20, 10)
+	
+	var tween = get_tree().create_tween() 
+	
+	tween.set_parallel(true)
+	tween.tween_property(label, "position:y", label.position.y - 60, 0.8).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
+	
+	# Animation Scale
+	label.scale = Vector2.ZERO
+	tween.tween_property(label, "scale", Vector2(1.5, 1.5), 0.3).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	tween.set_parallel(false)
+	tween.tween_property(label, "scale", Vector2(1.0, 1.0), 0.1)
+	tween.set_parallel(true)
+	
+	# Fade out
+	tween.tween_property(label, "modulate:a", 0.0, 0.4).set_delay(0.4)
+	
+	# Nettoyage
+	tween.chain().tween_callback(label.queue_free)
+		
+		
+func _die() -> void:
+	print(name + " est mort.")
+	queue_free() # Supprime l'ennemi
+
 func _try_action():
 	match role:
 		0: # MELEE
@@ -87,13 +177,33 @@ func _try_action():
 		2: # HEALER
 			_healer_behavior()
 
+
 func _attack_player(attack_type: String):
+	is_attacking = true
+	sprite.play("Attack")
 	print(attack_type + " attack!")
-	if player_reference.has_method("take_damage"):
-		player_reference.take_damage(damage)
+	# ---Logique de tir (Ranged) & Corps à corps (Melee) ---
+	if attack_type == "Ranged":
+		if projectile_scene and projectile_stats:
+			var p = projectile_scene.instantiate()
+			get_tree().current_scene.add_child(p)
+			p.global_position = global_position
+			
+			var dir = (player_reference.global_position - global_position).normalized()
+			
+			# On configure le projectile avec ses données
+			p.setup(projectile_stats, dir, "player", self)
+		else:
+			print("ERREUR: Projectile Scene ou Stats manquants sur " + name)
+			
+	else:
+		# Logique MELEE
+		if player_reference.has_method("take_damage"):
+			player_reference.take_damage(damage, global_position)
 	attack_timer = 0.0
 
-# --- COMPORTEMENT HEALER (RYTHMIQUE) ---
+
+# --- COMPORTEMENT HEALER ---
 func _healer_behavior():
 	# Si personne autour, on reset le timer quand même pour ne pas spammer le CPU
 	if allies_in_range.is_empty(): 
@@ -122,12 +232,15 @@ func _healer_behavior():
 	
 	if healed_someone:
 		print(">> Soin effectué.")
+		is_attacking = true
+		sprite.play("Attack")
 	else:
 		print(">> Rien à soigner pour ce cycle.")
 	
 	# Le Healer a "joué son tour", il doit attendre le cooldown
 	attack_timer = 0.0 
 	print("-------------------")
+
 
 # --- GESTION AREA 2D ---
 func _on_interaction_area_entered(body):
@@ -144,6 +257,7 @@ func _on_interaction_area_entered(body):
 		else:
 			print(" -> Ignoré (Pas un allié).")
 
+
 func _on_interaction_area_exited(body):
 	# RANGER
 	if role == 1 and body == player_reference:
@@ -154,13 +268,23 @@ func _on_interaction_area_exited(body):
 		print("ZONE SORTIE: ", body.name)
 		allies_in_range.erase(body)
 
+
 # --- ANIMATION & RECEPTION SOIN ---
 func _handle_animation(direction: Vector2) -> void:
+	if is_attacking:
+		return
 	if direction.length() > 0:
 		if sprite.animation != "Walking": sprite.play("Walking")
 		if direction.x != 0: sprite.flip_h = direction.x < 0
 	else:
 		if sprite.animation != "Idle": sprite.play("Idle")
+		
+		
+func _on_animation_finished() -> void:
+	if sprite.animation == "Attack":
+		is_attacking = false
+		sprite.play("Idle")
+
 
 func heal(amount: float) -> void:
 	health += amount

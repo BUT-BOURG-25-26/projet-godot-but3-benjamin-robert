@@ -1,17 +1,29 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=33 format=3 uid="uid://bn5v6cryvl1x"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=45 format=3 uid="uid://bn5v6cryvl1x"]
 
 [ext_resource type="Script" uid="uid://dgv7uni4m1371" path="res://Scripts/EnemyType.gd" id="1_fon7l"]
+[ext_resource type="Texture2D" uid="uid://b8qjxafxjn68m" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Attacking/Minotaur_03_Attacking_000.png" id="2_irqe0"]
 [ext_resource type="Texture2D" uid="uid://cwrg7gh4d4f3a" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_000.png" id="2_sgib6"]
+[ext_resource type="Texture2D" uid="uid://dvxvva6037bd1" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Attacking/Minotaur_03_Attacking_001.png" id="3_7waiu"]
 [ext_resource type="Texture2D" uid="uid://c3j4avbcs0dto" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_001.png" id="3_xih56"]
 [ext_resource type="Texture2D" uid="uid://c8w46al2copl1" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_002.png" id="4_265o0"]
+[ext_resource type="Texture2D" uid="uid://dn13by4fkc1rq" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Attacking/Minotaur_03_Attacking_002.png" id="4_x5frg"]
 [ext_resource type="Texture2D" uid="uid://yijsj2v3484h" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_003.png" id="5_c5qyf"]
+[ext_resource type="Texture2D" uid="uid://8r10b187bmtb" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Attacking/Minotaur_03_Attacking_003.png" id="5_o5be0"]
 [ext_resource type="Texture2D" uid="uid://c7j088f07j3p3" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_004.png" id="6_v01us"]
+[ext_resource type="Texture2D" uid="uid://kneuogd4bgk8" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Attacking/Minotaur_03_Attacking_004.png" id="6_w3sav"]
 [ext_resource type="Texture2D" uid="uid://dxwg7ncy266pj" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_005.png" id="7_fg5s7"]
+[ext_resource type="Texture2D" uid="uid://dlbdcqkishi44" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Attacking/Minotaur_03_Attacking_005.png" id="7_umj1w"]
 [ext_resource type="Texture2D" uid="uid://bk0nxiif74bc" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_006.png" id="8_35vgn"]
+[ext_resource type="Texture2D" uid="uid://c4alws2eew05d" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Attacking/Minotaur_03_Attacking_006.png" id="8_lqfxe"]
+[ext_resource type="Texture2D" uid="uid://370y4cm8rcu7" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Attacking/Minotaur_03_Attacking_007.png" id="9_3c1wr"]
 [ext_resource type="Texture2D" uid="uid://0cco1s033qtp" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_007.png" id="9_oicxr"]
 [ext_resource type="Texture2D" uid="uid://bv7gsnoroqsa8" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_008.png" id="10_esetd"]
+[ext_resource type="Texture2D" uid="uid://8ub010fjlrlw" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Attacking/Minotaur_03_Attacking_008.png" id="10_rny0g"]
 [ext_resource type="Texture2D" uid="uid://b6b7p0463cem5" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_009.png" id="11_7wtig"]
+[ext_resource type="Texture2D" uid="uid://d3pquajskqhs6" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Attacking/Minotaur_03_Attacking_009.png" id="11_j7ubj"]
+[ext_resource type="Texture2D" uid="uid://bh4mgrb6cdvv7" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Attacking/Minotaur_03_Attacking_010.png" id="12_6dldb"]
 [ext_resource type="Texture2D" uid="uid://bylnj8htlqw5m" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_010.png" id="12_v27ra"]
+[ext_resource type="Texture2D" uid="uid://krqi2qncpiyl" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Attacking/Minotaur_03_Attacking_011.png" id="13_1cfyp"]
 [ext_resource type="Texture2D" uid="uid://b68wcmcwrxag7" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Idle/Minotaur_03_Idle_011.png" id="13_irqe0"]
 [ext_resource type="Texture2D" uid="uid://bnnqd8ybtboj4" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Walking/Minotaur_03_Walking_000.png" id="14_7waiu"]
 [ext_resource type="Texture2D" uid="uid://bssyds8tdnj53" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Walking/Minotaur_03_Walking_001.png" id="15_x5frg"]
@@ -32,8 +44,49 @@
 [ext_resource type="Texture2D" uid="uid://deom4qkfb6crh" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Walking/Minotaur_03_Walking_016.png" id="30_o8twk"]
 [ext_resource type="Texture2D" uid="uid://b0x7724ob72wl" path="res://Assets/Character/Enemy/Minotaur_03/PNG Sequences/Walking/Minotaur_03_Walking_017.png" id="31_wlcsi"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_267lf"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_k4cmx"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_irqe0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7waiu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x5frg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o5be0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_w3sav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_umj1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lqfxe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3c1wr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rny0g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_j7ubj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6dldb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_1cfyp")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 20.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_sgib6")
@@ -138,7 +191,7 @@ animations = [{
 [resource]
 script = ExtResource("1_fon7l")
 title = "Minotaur"
-sprite_frames = SubResource("SpriteFrames_267lf")
+sprite_frames = SubResource("SpriteFrames_k4cmx")
 health = 100.0
 damage = 4.0
 speed = 300.0

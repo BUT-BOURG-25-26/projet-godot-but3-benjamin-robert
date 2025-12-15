@@ -1,0 +1,64 @@
+[gd_scene load_steps=12 format=3 uid="uid://dc3w3fatkl5p3"]
+
+[ext_resource type="Texture2D" uid="uid://b53clsjeqilrj" path="res://Assets/Projectiles/Water Arrow/PNG/Water Arrow_Frame_01.png" id="1_ar0ab"]
+[ext_resource type="Script" uid="uid://ca0qho4qu702f" path="res://Scenes/projectile.gd" id="1_augfd"]
+[ext_resource type="Texture2D" uid="uid://cx5fij58vbsvo" path="res://Assets/Projectiles/Water Arrow/PNG/Water Arrow_Frame_02.png" id="2_ekur6"]
+[ext_resource type="Texture2D" uid="uid://g8p7hydmbvk" path="res://Assets/Projectiles/Water Arrow/PNG/Water Arrow_Frame_03.png" id="3_xxsyy"]
+[ext_resource type="Texture2D" uid="uid://xy5l2sbm2gvs" path="res://Assets/Projectiles/Water Arrow/PNG/Water Arrow_Frame_04.png" id="4_dsm84"]
+[ext_resource type="Texture2D" uid="uid://rb5q5cbrcw60" path="res://Assets/Projectiles/Water Arrow/PNG/Water Arrow_Frame_05.png" id="5_xsjeh"]
+[ext_resource type="Texture2D" uid="uid://c7pdhakd32xv7" path="res://Assets/Projectiles/Water Arrow/PNG/Water Arrow_Frame_06.png" id="6_tomee"]
+[ext_resource type="Texture2D" uid="uid://bgrtpxil8184k" path="res://Assets/Projectiles/Water Arrow/PNG/Water Arrow_Frame_07.png" id="7_likag"]
+[ext_resource type="Texture2D" uid="uid://b5kbwfn48pxah" path="res://Assets/Projectiles/Water Arrow/PNG/Water Arrow_Frame_08.png" id="8_urmru"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qycw7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ar0ab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ekur6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xxsyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dsm84")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xsjeh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tomee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_likag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_urmru")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rsyq6"]
+size = Vector2(85.5, 76)
+
+[node name="Projectile" type="Area2D"]
+position = Vector2(300, 2)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_augfd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 3.1415927
+scale = Vector2(0.34, 0.34)
+sprite_frames = SubResource("SpriteFrames_qycw7")
+frame_progress = 0.83419055
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(33, 1)
+shape = SubResource("RectangleShape2D_rsyq6")

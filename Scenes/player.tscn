@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://d3ib53xnwaqds"]
+[gd_scene load_steps=75 format=3 uid="uid://d3ib53xnwaqds"]
 
 [ext_resource type="Script" uid="uid://hfssvtetbx0i" path="res://Scripts/player.gd" id="1_hbt6w"]
 [ext_resource type="Texture2D" uid="uid://dkjh7t4ac6cet" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_000.png" id="2_y6ibu"]
@@ -46,30 +46,30 @@
 [ext_resource type="Texture2D" uid="uid://chl04fy1siquv" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Idle/0_Valkyrie_Idle_015.png" id="32_ick47"]
 [ext_resource type="Texture2D" uid="uid://cn4vgu7o0yk3o" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Idle/0_Valkyrie_Idle_016.png" id="33_45kis"]
 [ext_resource type="Texture2D" uid="uid://d3fi22ilpgm0v" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Idle/0_Valkyrie_Idle_017.png" id="34_l0jaw"]
-[ext_resource type="Texture2D" uid="uid://c57oxxiyiwu78" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_000.png" id="35_ktwe4"]
-[ext_resource type="Texture2D" uid="uid://hb3j5yg2q0gm" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_001.png" id="36_wbso4"]
-[ext_resource type="Texture2D" uid="uid://drpoy1s8fryk5" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_002.png" id="37_dihix"]
-[ext_resource type="Texture2D" uid="uid://ddpckuuobryiy" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_003.png" id="38_0yyuf"]
-[ext_resource type="Texture2D" uid="uid://bu2gqoljog3s7" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_004.png" id="39_yxlo1"]
-[ext_resource type="Texture2D" uid="uid://2n52vg73cisn" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_005.png" id="40_4oggj"]
-[ext_resource type="Texture2D" uid="uid://b8ipr8t05duil" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_006.png" id="41_my7u8"]
-[ext_resource type="Texture2D" uid="uid://6m0ixk063834" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_007.png" id="42_3rc1n"]
-[ext_resource type="Texture2D" uid="uid://pxidf3tf8hsv" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_008.png" id="43_ovmre"]
-[ext_resource type="Texture2D" uid="uid://r4muenmil4k0" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_009.png" id="44_u3agu"]
-[ext_resource type="Texture2D" uid="uid://cljapiel8ryge" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_010.png" id="45_ugwoj"]
-[ext_resource type="Texture2D" uid="uid://kkjtyo87hxwl" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_011.png" id="46_0vtfd"]
-[ext_resource type="Texture2D" uid="uid://dbrl2animjtx5" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_012.png" id="47_3ake2"]
-[ext_resource type="Texture2D" uid="uid://bpa6kkayv6qjb" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_013.png" id="48_1mw78"]
-[ext_resource type="Texture2D" uid="uid://dhwm4b7p12crc" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_014.png" id="49_u0eap"]
-[ext_resource type="Texture2D" uid="uid://okopahrjj433" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_015.png" id="50_iloi8"]
-[ext_resource type="Texture2D" uid="uid://ch8s7275v2i33" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_016.png" id="51_dedvn"]
-[ext_resource type="Texture2D" uid="uid://dy24wu7raey7j" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_017.png" id="52_7w18b"]
-[ext_resource type="Texture2D" uid="uid://tyajies7xfbw" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_018.png" id="53_dd5vg"]
-[ext_resource type="Texture2D" uid="uid://c6lj2c24fnvsh" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_019.png" id="54_rvep3"]
-[ext_resource type="Texture2D" uid="uid://c4vp1q6l0q31p" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_020.png" id="55_s7b00"]
-[ext_resource type="Texture2D" uid="uid://co43rm24glcr3" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_021.png" id="56_c8fwu"]
-[ext_resource type="Texture2D" uid="uid://djvc0g21slucx" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_022.png" id="57_utri4"]
-[ext_resource type="Texture2D" uid="uid://bf2u36m0v6ecg" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Walking/0_Valkyrie_Walking_023.png" id="58_fbdrs"]
+[ext_resource type="Texture2D" uid="uid://bk06x1kim8h5h" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Running/0_Valkyrie_Running_000.png" id="47_3uvy8"]
+[ext_resource type="Texture2D" uid="uid://3fyr154lixur" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Running/0_Valkyrie_Running_001.png" id="48_ss172"]
+[ext_resource type="Texture2D" uid="uid://crgohhvgqnwmd" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Running/0_Valkyrie_Running_002.png" id="49_jmelf"]
+[ext_resource type="Texture2D" uid="uid://ds7kj13b2esua" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Running/0_Valkyrie_Running_003.png" id="50_bjdqd"]
+[ext_resource type="Texture2D" uid="uid://bd3f0mtq0nsa" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Running/0_Valkyrie_Running_004.png" id="51_feq18"]
+[ext_resource type="Texture2D" uid="uid://crkwkgps5htgq" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Running/0_Valkyrie_Running_005.png" id="52_wcnj3"]
+[ext_resource type="Texture2D" uid="uid://dr7wj1efxe1na" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Running/0_Valkyrie_Running_006.png" id="53_jsob3"]
+[ext_resource type="Texture2D" uid="uid://sesfqrwcbihv" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Running/0_Valkyrie_Running_007.png" id="54_pg0gw"]
+[ext_resource type="Texture2D" uid="uid://b63flbum0qkmm" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Running/0_Valkyrie_Running_008.png" id="55_qavoy"]
+[ext_resource type="Texture2D" uid="uid://bfjcr50vkb34g" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Running/0_Valkyrie_Running_009.png" id="56_w4w4b"]
+[ext_resource type="Texture2D" uid="uid://b42pgg1eqyes8" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Running/0_Valkyrie_Running_010.png" id="57_h5cax"]
+[ext_resource type="Texture2D" uid="uid://dkat00ddjenf8" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Running/0_Valkyrie_Running_011.png" id="58_dj0x0"]
+[ext_resource type="Texture2D" uid="uid://c0woo5b8a40j1" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Slashing/0_Valkyrie_Run Slashing_000.png" id="59_f1uaf"]
+[ext_resource type="Texture2D" uid="uid://5ubpj0sn4gh0" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Slashing/0_Valkyrie_Run Slashing_001.png" id="60_6hq81"]
+[ext_resource type="Texture2D" uid="uid://daxywwadxoy3u" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Slashing/0_Valkyrie_Run Slashing_002.png" id="61_5cld6"]
+[ext_resource type="Texture2D" uid="uid://crh1daidvea4g" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Slashing/0_Valkyrie_Run Slashing_003.png" id="62_o736f"]
+[ext_resource type="Texture2D" uid="uid://s6gmhlhqx7w0" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Slashing/0_Valkyrie_Run Slashing_004.png" id="63_ketbw"]
+[ext_resource type="Texture2D" uid="uid://bawq72djy2jui" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Slashing/0_Valkyrie_Run Slashing_005.png" id="64_4grkl"]
+[ext_resource type="Texture2D" uid="uid://darjxkjhfnk7p" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Slashing/0_Valkyrie_Run Slashing_006.png" id="65_6yrdb"]
+[ext_resource type="Texture2D" uid="uid://drk4u8dxwt0vy" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Slashing/0_Valkyrie_Run Slashing_007.png" id="66_ue0p1"]
+[ext_resource type="Texture2D" uid="uid://b10v1ujodcsy8" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Slashing/0_Valkyrie_Run Slashing_008.png" id="67_isbcs"]
+[ext_resource type="Texture2D" uid="uid://y22rhbya2as2" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Slashing/0_Valkyrie_Run Slashing_009.png" id="68_142e3"]
+[ext_resource type="Texture2D" uid="uid://dm7ftnp2kh5ha" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Slashing/0_Valkyrie_Run Slashing_010.png" id="69_ts2c8"]
+[ext_resource type="Texture2D" uid="uid://cefs7pw5m84xd" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Slashing/0_Valkyrie_Run Slashing_011.png" id="70_hcgbs"]
 [ext_resource type="PackedScene" uid="uid://cjgqm3ik54dca" path="res://Scenes/heathbar.tscn" id="71_3uvy8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ivnpj"]
@@ -120,9 +120,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("16_e2o0t")
 }],
-"loop": true,
+"loop": false,
 "name": &"Dying",
-"speed": 20.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -161,9 +161,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("28_mfl33")
 }],
-"loop": true,
+"loop": false,
 "name": &"Hurt",
-"speed": 22.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -226,80 +226,85 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("35_ktwe4")
+"texture": ExtResource("47_3uvy8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("36_wbso4")
+"texture": ExtResource("48_ss172")
 }, {
 "duration": 1.0,
-"texture": ExtResource("37_dihix")
+"texture": ExtResource("49_jmelf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("38_0yyuf")
+"texture": ExtResource("50_bjdqd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("39_yxlo1")
+"texture": ExtResource("51_feq18")
 }, {
 "duration": 1.0,
-"texture": ExtResource("40_4oggj")
+"texture": ExtResource("52_wcnj3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("41_my7u8")
+"texture": ExtResource("53_jsob3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("42_3rc1n")
+"texture": ExtResource("54_pg0gw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("43_ovmre")
+"texture": ExtResource("55_qavoy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("44_u3agu")
+"texture": ExtResource("56_w4w4b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("45_ugwoj")
+"texture": ExtResource("57_h5cax")
 }, {
 "duration": 1.0,
-"texture": ExtResource("46_0vtfd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("47_3ake2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("48_1mw78")
-}, {
-"duration": 1.0,
-"texture": ExtResource("49_u0eap")
-}, {
-"duration": 1.0,
-"texture": ExtResource("50_iloi8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("51_dedvn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("52_7w18b")
-}, {
-"duration": 1.0,
-"texture": ExtResource("53_dd5vg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("54_rvep3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("55_s7b00")
-}, {
-"duration": 1.0,
-"texture": ExtResource("56_c8fwu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("57_utri4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("58_fbdrs")
+"texture": ExtResource("58_dj0x0")
 }],
 "loop": true,
 "name": &"Walking",
-"speed": 30.0
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("59_f1uaf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_6hq81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_5cld6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_o736f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_ketbw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_4grkl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_6yrdb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_ue0p1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_isbcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_142e3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_ts2c8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_hcgbs")
+}],
+"loop": false,
+"name": &"Walking_slash",
+"speed": 10.0
 }, {
 "frames": [],
 "loop": true,
@@ -311,6 +316,9 @@ animations = [{
 radius = 4.0
 height = 8.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3uvy8"]
+size = Vector2(208, 254)
+
 [node name="player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
@@ -320,7 +328,9 @@ script = ExtResource("1_hbt6w")
 position = Vector2(-7.10543e-15, -3)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_ivnpj")
-animation = &"Idle"
+animation = &"Dying"
+frame = 14
+frame_progress = 1.0
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -335,3 +345,14 @@ offset_left = 694.0
 offset_top = -656.0
 offset_right = 1209.0
 offset_bottom = -616.0
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(54, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(27, 29)
+shape = SubResource("RectangleShape2D_3uvy8")
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true

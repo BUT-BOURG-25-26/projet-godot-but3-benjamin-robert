@@ -1,18 +1,30 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=33 format=3 uid="uid://b1caon13dvvut"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=45 format=3 uid="uid://b1caon13dvvut"]
 
 [ext_resource type="Script" uid="uid://dgv7uni4m1371" path="res://Scripts/EnemyType.gd" id="1_5783c"]
+[ext_resource type="Texture2D" uid="uid://c4wk7nsh2s6hp" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Attacking/Golem_01_Attacking_000.png" id="2_10ljf"]
 [ext_resource type="Texture2D" uid="uid://d1761jfn5t5bw" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Idle/Golem_01_Idle_000.png" id="2_ihh1y"]
 [ext_resource type="Texture2D" uid="uid://dbfti02yvevny" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Idle/Golem_01_Idle_001.png" id="3_ocbac"]
+[ext_resource type="Texture2D" uid="uid://bkklunr76ured" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Attacking/Golem_01_Attacking_001.png" id="3_pffai"]
+[ext_resource type="Texture2D" uid="uid://cl8vshv2yycbq" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Attacking/Golem_01_Attacking_002.png" id="4_klqfw"]
 [ext_resource type="Texture2D" uid="uid://bhuk8waxa4j3" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Idle/Golem_01_Idle_002.png" id="4_njvyw"]
 [ext_resource type="Texture2D" uid="uid://s61qfv3s6jly" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Idle/Golem_01_Idle_003.png" id="5_43hsg"]
+[ext_resource type="Texture2D" uid="uid://gmfyle4po7yx" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Attacking/Golem_01_Attacking_003.png" id="5_vlgh3"]
 [ext_resource type="Texture2D" uid="uid://dgq34gtynu2ex" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Idle/Golem_01_Idle_004.png" id="6_dq7uo"]
+[ext_resource type="Texture2D" uid="uid://p3fvyolt6anr" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Attacking/Golem_01_Attacking_004.png" id="6_kq3l8"]
+[ext_resource type="Texture2D" uid="uid://cdo5068kneg6w" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Attacking/Golem_01_Attacking_005.png" id="7_3wdwi"]
 [ext_resource type="Texture2D" uid="uid://dmmw5jjghe6vm" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Idle/Golem_01_Idle_005.png" id="7_21bux"]
+[ext_resource type="Texture2D" uid="uid://bwyyx6h6wq7kt" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Attacking/Golem_01_Attacking_006.png" id="8_gymms"]
 [ext_resource type="Texture2D" uid="uid://3470eig7ngt2" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Idle/Golem_01_Idle_006.png" id="8_h38qr"]
 [ext_resource type="Texture2D" uid="uid://d1gvlskbqok4g" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Idle/Golem_01_Idle_007.png" id="9_b58h8"]
+[ext_resource type="Texture2D" uid="uid://bb6e6oduogxu1" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Attacking/Golem_01_Attacking_007.png" id="9_f6itk"]
 [ext_resource type="Texture2D" uid="uid://cqckf5k36hv0e" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Idle/Golem_01_Idle_008.png" id="10_kme0x"]
+[ext_resource type="Texture2D" uid="uid://c62w58gpwwoxx" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Attacking/Golem_01_Attacking_008.png" id="10_tvxmi"]
+[ext_resource type="Texture2D" uid="uid://de0p2afw88d0n" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Attacking/Golem_01_Attacking_009.png" id="11_sitjt"]
 [ext_resource type="Texture2D" uid="uid://d4cfw3k5ka7vi" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Idle/Golem_01_Idle_009.png" id="11_yfc18"]
+[ext_resource type="Texture2D" uid="uid://ceysc7krw7n3n" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Attacking/Golem_01_Attacking_010.png" id="12_4c5la"]
 [ext_resource type="Texture2D" uid="uid://dc5qwypypqk6n" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Idle/Golem_01_Idle_010.png" id="12_aqqo0"]
 [ext_resource type="Texture2D" uid="uid://b7as1a321r0pn" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Idle/Golem_01_Idle_011.png" id="13_10ljf"]
+[ext_resource type="Texture2D" uid="uid://d2iygd8qx7vru" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Attacking/Golem_01_Attacking_011.png" id="13_if4sl"]
 [ext_resource type="Texture2D" uid="uid://db4vyb6r1my80" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Walking/Golem_01_Walking_000.png" id="14_pffai"]
 [ext_resource type="Texture2D" uid="uid://byx52nb68s28c" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Walking/Golem_01_Walking_001.png" id="15_klqfw"]
 [ext_resource type="Texture2D" uid="uid://b0nsgg3wlsfls" path="res://Assets/Character/Enemy/Golem_01/PNG Sequences/Walking/Golem_01_Walking_002.png" id="16_vlgh3"]
@@ -34,6 +46,47 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y7kms"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_10ljf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pffai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_klqfw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vlgh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kq3l8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3wdwi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gymms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_f6itk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tvxmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sitjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4c5la")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_if4sl")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 20.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_ihh1y")
@@ -139,7 +192,7 @@ animations = [{
 script = ExtResource("1_5783c")
 title = "Golem de pierre"
 sprite_frames = SubResource("SpriteFrames_y7kms")
-health = 120.0
+health = 120.405
 damage = 3.0
 speed = 100.0
 metadata/_custom_type_script = "uid://dgv7uni4m1371"
