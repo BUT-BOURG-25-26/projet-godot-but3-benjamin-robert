@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6fa57debf2rp"]
+[gd_scene load_steps=13 format=3 uid="uid://c6fa57debf2rp"]
 
 [ext_resource type="Script" uid="uid://dc5xyavl8p06n" path="res://Scenes/mainmenu.gd" id="1_pposm"]
 [ext_resource type="Texture2D" uid="uid://b3naw0im2pfdj" path="res://Assets/fond_menu.png" id="2_eybw1"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://bxfrm758o04yo" path="res://Scripts/quit.gd" id="5_lah54"]
 [ext_resource type="Texture2D" uid="uid://bvwkaota3yu4k" path="res://Assets/credit.png" id="6_l2o7r"]
 [ext_resource type="Texture2D" uid="uid://bno2atpspaew" path="res://Assets/quit.png" id="7_juwjy"]
+[ext_resource type="AudioStream" uid="uid://bvxvj1wt6ugbk" path="res://Assets/Audio/Music/MainMenu.ogg" id="11_hu3kb"]
+[ext_resource type="AudioStream" uid="uid://byog4pmq00pgw" path="res://Assets/Audio/SFX/Hover.wav" id="12_vv4ip"]
 
 [node name="Mainmenu" type="Node2D"]
 script = ExtResource("1_pposm")
@@ -75,5 +77,13 @@ offset_bottom = 1035.0
 layout_mode = 2
 texture_normal = ExtResource("2_lah54")
 script = ExtResource("2_web8u")
+
+[node name="MainMenu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_hu3kb")
+volume_db = -15.0
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("12_vv4ip")
 
 [connection signal="pressed" from="Container/play" to="." method="_on_play_pressed"]

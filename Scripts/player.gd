@@ -276,8 +276,8 @@ func gain_xp(amount: float) -> void:
 	$CollectSound.play()
 	
 	current_pitch += 0.1
-	if current_pitch > 2.5:
-		current_pitch = 2.5
+	if current_pitch > 3:
+		current_pitch = 3
 		
 	pitch_timer.start()
 	
