@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://b82x3sa02rsnk" path="res://Assets/Audio/SFX/OnClickStart.wav" id="11_c7wuu"]
 [ext_resource type="AudioStream" uid="uid://bvxvj1wt6ugbk" path="res://Assets/Audio/Music/MainMenu.ogg" id="11_hu3kb"]
 [ext_resource type="AudioStream" uid="uid://byog4pmq00pgw" path="res://Assets/Audio/SFX/Hover.wav" id="12_vv4ip"]
-[ext_resource type="AudioStream" uid="uid://bxpv1p06j4wf3" path="res://Assets/Audio/SFX/OnClick.wav" id="14_2jq6c"]
+[ext_resource type="AudioStream" uid="uid://dk11dtp1e76ck" path="res://Assets/Audio/SFX/OnClick.wav" id="14_2jq6c"]
 
 [node name="Mainmenu" type="Node2D"]
 script = ExtResource("1_pposm")
@@ -80,9 +80,6 @@ layout_mode = 2
 texture_normal = ExtResource("2_lah54")
 script = ExtResource("2_web8u")
 
-[node name="OnClickStart" type="AudioStreamPlayer" parent="Container/play"]
-stream = ExtResource("11_c7wuu")
-
 [node name="MainMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_hu3kb")
 volume_db = -15.0
@@ -91,8 +88,12 @@ volume_db = -15.0
 unique_name_in_owner = true
 stream = ExtResource("12_vv4ip")
 
+[node name="OnClickStart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_c7wuu")
+
 [node name="OnClick" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
 stream = ExtResource("14_2jq6c")
 
+[connection signal="pressed" from="CenterContainer/MainButtons/credit" to="." method="_on_credit_pressed"]
+[connection signal="pressed" from="Container2/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Container/play" to="." method="_on_play_pressed"]
