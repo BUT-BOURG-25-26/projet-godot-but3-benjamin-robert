@@ -11,6 +11,10 @@ extends CharacterBody2D
 @onready var hitbox: Area2D = $Hitbox
 @onready var invincibility_timer: Timer = $InvincibilityTimer
 
+# --- AUDIO XP ---
+@onready var pitch_timer = $PitchResetTimer
+var current_pitch: float = 1.0
+
 # -----------------------------
 # INPUTS (JOYSTICKS)
 # -----------------------------
@@ -54,6 +58,7 @@ func _ready() -> void:
 	healthbar.init_health(health, max_health)
 
 	_setup_map_limits()
+	pitch_timer.timeout.connect(_on_pitch_reset)
 
 
 func _physics_process(delta: float) -> void:
@@ -155,13 +160,14 @@ func attack() -> void:
 
 	animated_sprite.play("Walking_slash")
 	current_animation = "Walking_slash"
-	$HitSword.play()
+	$MissSword.play()
 
 	await get_tree().process_frame
 
 	for body in hitbox.get_overlapping_bodies():
-		if body != self and body.has_method("take_damage") and body.is_in_group("enemies"):
+		if body != self and body.has_method("take_damage") and body.is_in_group("enemies"): # a touché un ennemi
 			body.take_damage(damage, global_position)
+			$HitSword.play()
 
 
 # -----------------------------
@@ -257,3 +263,33 @@ func _setup_map_limits():
 	camera.limit_top = int(min_y)
 	camera.limit_right = int(max_x)
 	camera.limit_bottom = int(max_y)
+
+
+# -----------------------------
+# EXP (à revoir avec corentin)
+# -----------------------------
+func gain_xp(amount: float) -> void:
+	# Sa logique d'XP existante
+	# exp_drop += amount ext... 
+
+	$CollectSound.pitch_scale = current_pitch
+	$CollectSound.play()
+	
+	current_pitch += 0.1
+	if current_pitch > 2.5:
+		current_pitch = 2.5
+		
+	pitch_timer.start()
+	
+func _on_pitch_reset() -> void:
+	current_pitch = 1.0
+
+# -----------------------------
+# DEBUG / TEST (A SUPPRIMER PLUS TARD)
+# -----------------------------
+func _input(event: InputEvent) -> void:
+	# Si on appuie sur la touche "T" du clavier
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_T:
+			print("Test XP Sound !")
+			gain_xp(10)

@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://c242f6mlcyrgm"
-path="res://.godot/imported/HitSword.wav-9b9110ee94f1a635610e57b12904d36b.sample"
+uid="uid://cnda2ehg54nhd"
+path="res://.godot/imported/MissSword.wav-6382475d2adf1490f6171c420876b6b1.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/SFX/HitSword.wav"
-dest_files=["res://.godot/imported/HitSword.wav-9b9110ee94f1a635610e57b12904d36b.sample"]
+source_file="res://Assets/Audio/SFX/MissSword.wav"
+dest_files=["res://.godot/imported/MissSword.wav-6382475d2adf1490f6171c420876b6b1.sample"]
 
 [params]
 
