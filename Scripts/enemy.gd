@@ -64,6 +64,7 @@ func _apply_stats() -> void:
 		attack_range = type.attack_range
 	if "projectile_data" in type and type.projectile_data:
 		projectile_stats = type.projectile_data
+	exp_drop  = type.exp_drop
 
 
 func _physics_process(delta: float) -> void:
@@ -168,6 +169,7 @@ func _show_damage_popup(amount: float) -> void:
 		
 func _die() -> void:
 	print(name + " est mort.")
+	GameManager.add_score(exp_drop)
 	queue_free() # Supprime l'ennemi
 
 func _try_action():

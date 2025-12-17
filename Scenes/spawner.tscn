@@ -22,8 +22,15 @@ scale = Vector2(1.6, 1.6)
 transform = Transform2D(1.6, 0, 0, 1.6, 0, 0)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI"]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_right = -720.0001
+offset_bottom = 33.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+alignment = 1
 
 [node name="Minute" type="Label" parent="UI/HBoxContainer"]
 unique_name_in_owner = true
@@ -43,7 +50,7 @@ text = "00"
 autostart = true
 
 [node name="TimerBoss" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 60.0
 autostart = true
 
 [node name="Timer3" type="Timer" parent="."]

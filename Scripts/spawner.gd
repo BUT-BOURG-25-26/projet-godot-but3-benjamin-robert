@@ -16,20 +16,63 @@ var _current_spawn_amount: int = 1 # Le nombre de fois que ce Boss doit apparaî
 
 var distance : float = 400 # distance d'apparition
 
+@onready var timer_container = $UI/HBoxContainer
+
 var minute : int:
 	set(value):
-		minute = value
-		if has_node("%Minute"):
-			%Minute.text = str(value)
+		if value != minute:
+			minute = value
+			if has_node("%Minute"):
+				%Minute.text = str(value)
+			_animate_new_minute()
 		
 var second : int:
 	set(value):
 		second = value
-		if second >= 10: # valeur de test
-			second -= 10 # valeur de test
+		if second >= 60:
+			second -= 60
 			minute += 1
+			
 		if has_node("%Second"):
 			%Second.text = str(second).lpad(2,'0')
+			
+		_animate_heartbeat()
+
+# --- ANIMATIONS DU TIMER ---
+
+func _animate_heartbeat() -> void:
+	if not timer_container: return
+
+	timer_container.pivot_offset = Vector2(timer_container.size.x / 2, timer_container.size.y)	
+	var tween = create_tween() 
+	tween.tween_property(timer_container, "scale", Vector2(1.05, 1.05), 0.05).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(timer_container, "scale", Vector2(1.0, 1.0), 0.1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+	if second > 50:
+		timer_container.modulate = Color(1, 0.5, 0.5) 
+	else:
+		timer_container.modulate = Color.WHITE
+
+func _animate_new_minute() -> void:
+	if not timer_container: return
+	
+	var tween = create_tween()
+	
+	# 1. Flash Rouge
+	tween.tween_property(timer_container, "modulate", Color(1, 0, 0), 0.2) # Rouge pur
+	tween.parallel().tween_property(timer_container, "scale", Vector2(1.5, 1.5), 0.2).set_trans(Tween.TRANS_ELASTIC)
+	
+	# 2. Retour à la normale
+	tween.tween_property(timer_container, "modulate", Color.WHITE, 0.5)
+	tween.parallel().tween_property(timer_container, "scale", Vector2(1.0, 1.0), 0.3)
+
+# --- Logique des Timers ---
+
+# Timer pour l'apparition des ennemis normaux et la progression du temps
+func _on_timer_timeout() -> void:
+	second += 1
+	amount(second % 2) # valeur temporaire
+
 
 # --- Fonctions de Spawn ---
 
@@ -78,14 +121,6 @@ func get_random_position() -> Vector2:
 func amount(number : int = 1):
 	for i in range(number):
 		spawn(get_random_position())	
-
-# --- Logique des Timers ---
-
-# Timer pour l'apparition des ennemis normaux et la progression du temps
-func _on_timer_timeout() -> void:
-	second += 1
-	amount(second % 2) # valeur temporaire
-
 
 # Logique de spawn du Boss (MODIFIÉE)
 func _on_timer_boss_timeout() -> void:

@@ -197,4 +197,5 @@ damage = 3.0
 speed = 100.0
 exp_drop = 30.0
 attack_range = 150.0
+score = 100.0
 metadata/_custom_type_script = "uid://dgv7uni4m1371"
