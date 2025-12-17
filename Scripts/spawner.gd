@@ -58,11 +58,11 @@ func _animate_new_minute() -> void:
 	
 	var tween = create_tween()
 	
-	# 1. Flash Rouge
+	# Flash Rouge
 	tween.tween_property(timer_container, "modulate", Color(1, 0, 0), 0.2) # Rouge pur
 	tween.parallel().tween_property(timer_container, "scale", Vector2(1.5, 1.5), 0.2).set_trans(Tween.TRANS_ELASTIC)
 	
-	# 2. Retour à la normale
+	# Retour à la normale
 	tween.tween_property(timer_container, "modulate", Color.WHITE, 0.5)
 	tween.parallel().tween_property(timer_container, "scale", Vector2(1.0, 1.0), 0.3)
 
