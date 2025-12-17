@@ -48,7 +48,7 @@ func _animate_heartbeat() -> void:
 	tween.tween_property(timer_container, "scale", Vector2(1.05, 1.05), 0.05).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(timer_container, "scale", Vector2(1.0, 1.0), 0.1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
-	if second > 50:
+	if second > 54:
 		timer_container.modulate = Color(1, 0.5, 0.5) 
 	else:
 		timer_container.modulate = Color.WHITE

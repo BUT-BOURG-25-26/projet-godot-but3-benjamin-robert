@@ -94,6 +94,7 @@ stream = ExtResource("11_c7wuu")
 [node name="OnClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_2jq6c")
 
+[connection signal="pressed" from="CenterContainer/MainButtons/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="CenterContainer/MainButtons/credit" to="." method="_on_credit_pressed"]
 [connection signal="pressed" from="Container2/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Container/play" to="." method="_on_play_pressed"]
