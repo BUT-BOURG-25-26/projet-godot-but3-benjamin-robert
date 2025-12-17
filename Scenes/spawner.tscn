@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bdisvk4q18wd2"]
+[gd_scene load_steps=15 format=3 uid="uid://bdisvk4q18wd2"]
 
 [ext_resource type="Script" uid="uid://b0in0vctcv8xj" path="res://Scripts/spawner.gd" id="1_ic4ta"]
 [ext_resource type="PackedScene" uid="uid://b2g66sf655rqf" path="res://Scenes/enemy.tscn" id="2_b6u4f"]
@@ -23,6 +23,13 @@ font_size = 28
 font = ExtResource("10_xbrvg")
 font_size = 28
 
+[sub_resource type="LabelSettings" id="LabelSettings_xbrvg"]
+font = ExtResource("10_xbrvg")
+font_size = 58
+font_color = Color(1, 0, 0, 1)
+outline_size = 11
+outline_color = Color(0.59905666, 1.4318898e-06, 4.3317675e-07, 1)
+
 [node name="Spawner" type="Node2D"]
 script = ExtResource("1_ic4ta")
 regular_enemy_scene = ExtResource("2_b6u4f")
@@ -41,8 +48,6 @@ offset_top = 20.0
 offset_right = -720.0001
 offset_bottom = 48.0
 grow_horizontal = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
 alignment = 1
 
 [node name="Minute" type="Label" parent="UI/HBoxContainer"]
@@ -61,6 +66,18 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "00"
 label_settings = SubResource("LabelSettings_8i5kq")
+
+[node name="WarningLabel" type="Label" parent="UI"]
+visible = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 68.125
+offset_right = -720.0001
+offset_bottom = 91.125
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "BOSS APPROACHING"
+label_settings = SubResource("LabelSettings_xbrvg")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
