@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cr45653ucko6k"]
+[gd_scene load_steps=16 format=3 uid="uid://cr45653ucko6k"]
 
 [ext_resource type="PackedScene" uid="uid://gypl4ytd1dj6" path="res://Ressources/map.tscn" id="1_7rqgy"]
 [ext_resource type="Script" uid="uid://bckxgxj734ign" path="res://Scripts/main_scene.gd" id="1_qxria"]
@@ -10,7 +10,23 @@
 [ext_resource type="Script" path="res://Scenes/control_atk.gd" id="8_0iob3"]
 [ext_resource type="Texture2D" uid="uid://y33bx8xwyqrt" path="res://Assets/joystick_atk.png" id="8_f140w"]
 [ext_resource type="AudioStream" uid="uid://cpuc7ieounlgm" path="res://Assets/Audio/Music/The Road Unfolds.ogg" id="10_4b75m"]
+[ext_resource type="Shader" uid="uid://cpci5gkhc2su4" path="res://Scenes/MainScene.gdshader" id="10_6t1o7"]
 [ext_resource type="Script" uid="uid://dvh5h82p5cely" path="res://Scripts/scoreLabel.gd" id="10_8ju71"]
+[ext_resource type="FontFile" uid="uid://tdf6cv67s386" path="res://Assets/Police/PressStart2P.ttf" id="11_5qxwa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xc4hf"]
+shader = ExtResource("10_6t1o7")
+shader_parameter/speed = 1.00000004424012
+shader_parameter/size = 0.2
+shader_parameter/pause = 0.50000002375
+
+[sub_resource type="LabelSettings" id="LabelSettings_6rnll"]
+font = ExtResource("11_5qxwa")
+font_size = 28
+outline_size = 4
+outline_color = Color(0.29411766, 0.15686275, 0.019607844, 1)
+shadow_color = Color(0, 0, 0, 0.5019608)
+shadow_offset = Vector2(4, 4)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_qxria")
@@ -109,8 +125,14 @@ mouse_filter = 2
 texture = ExtResource("8_f140w")
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer/CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
+modulate = Color(1, 0.84313726, 0, 1)
+self_modulate = Color(1, 0.84313726, 0, 1)
+material = SubResource("ShaderMaterial_xc4hf")
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 55.0
+offset_bottom = 38.0
+label_settings = SubResource("LabelSettings_6rnll")
 script = ExtResource("10_8ju71")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
