@@ -4,12 +4,11 @@
 [ext_resource type="Script" uid="uid://bckxgxj734ign" path="res://Scripts/main_scene.gd" id="1_qxria"]
 [ext_resource type="PackedScene" uid="uid://bdisvk4q18wd2" path="res://Scenes/spawner.tscn" id="2_qxria"]
 [ext_resource type="PackedScene" uid="uid://d3ib53xnwaqds" path="res://Scenes/player.tscn" id="4_q68mp"]
-[ext_resource type="Script" path="res://Scenes/control.gd" id="5_q68mp"]
+[ext_resource type="Script" uid="uid://bap1ngud8olqa" path="res://Scripts/control.gd" id="5_q68mp"]
 [ext_resource type="Texture2D" uid="uid://biffit7h5232p" path="res://Assets/joystick.png" id="5_qxria"]
 [ext_resource type="Texture2D" uid="uid://c8vtux7bfq1p3" path="res://Assets/background.png" id="5_y4jh7"]
-[ext_resource type="Script" path="res://Scenes/control_atk.gd" id="8_0iob3"]
+[ext_resource type="Script" uid="uid://b22ktgnwer3ru" path="res://Scripts/control_atk.gd" id="8_0iob3"]
 [ext_resource type="Texture2D" uid="uid://y33bx8xwyqrt" path="res://Assets/joystick_atk.png" id="8_f140w"]
-[ext_resource type="PackedScene" uid="uid://n7fyarxo4u0k" path="res://Scenes/PowerUpUI.tscn" id="10_4b75m"]
 [ext_resource type="AudioStream" uid="uid://cpuc7ieounlgm" path="res://Assets/Audio/Music/The Road Unfolds.ogg" id="10_4b75m"]
 [ext_resource type="Shader" uid="uid://cpci5gkhc2su4" path="res://Scenes/MainScene.gdshader" id="10_6t1o7"]
 [ext_resource type="Script" uid="uid://dvh5h82p5cely" path="res://Scripts/scoreLabel.gd" id="10_8ju71"]
@@ -95,9 +94,6 @@ mouse_filter = 2
 texture = ExtResource("5_qxria")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="CanvasLayer"]
-
-[node name="PowerUpUi" parent="CanvasLayer/CanvasLayer2" instance=ExtResource("10_4b75m")]
-visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CanvasLayer"]
 

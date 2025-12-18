@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dc3w3fatkl5p3"]
 
 [ext_resource type="Texture2D" uid="uid://b53clsjeqilrj" path="res://Assets/Projectiles/Water Arrow/PNG/Water Arrow_Frame_01.png" id="1_ar0ab"]
-[ext_resource type="Script" uid="uid://ca0qho4qu702f" path="res://Scenes/projectile.gd" id="1_augfd"]
+[ext_resource type="Script" uid="uid://ca0qho4qu702f" path="res://Scripts/projectile.gd" id="1_augfd"]
 [ext_resource type="Texture2D" uid="uid://cx5fij58vbsvo" path="res://Assets/Projectiles/Water Arrow/PNG/Water Arrow_Frame_02.png" id="2_ekur6"]
 [ext_resource type="Texture2D" uid="uid://g8p7hydmbvk" path="res://Assets/Projectiles/Water Arrow/PNG/Water Arrow_Frame_03.png" id="3_xxsyy"]
 [ext_resource type="Texture2D" uid="uid://xy5l2sbm2gvs" path="res://Assets/Projectiles/Water Arrow/PNG/Water Arrow_Frame_04.png" id="4_dsm84"]
