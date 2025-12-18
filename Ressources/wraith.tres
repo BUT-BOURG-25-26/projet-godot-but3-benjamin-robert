@@ -175,4 +175,5 @@ role = 1
 speed = 75.0
 projectile_data = ExtResource("1_5qm3t")
 exp_drop = 50.0
+score = 5.0
 metadata/_custom_type_script = "uid://dgv7uni4m1371"

@@ -30,6 +30,7 @@ var is_player_in_area : bool = false # Pour le Ranger
 var is_attacking : bool = false
 var is_hurt : bool = false
 var knockback_force : float = 200.0 # Force du recul subi par l'ennemi
+var attack_range : float = 60.0 # valeur par défaut (à modifier surtout pour les boss melee)
 
 func _ready() -> void:
 	add_to_group("enemies")
@@ -61,8 +62,11 @@ func _apply_stats() -> void:
 	role = type.role
 	speed = type.speed
 	exp_drop = type.exp_drop if "exp_drop" in type else 10
+	if "attack_range" in type and type.attack_range > 0:
+		attack_range = type.attack_range
 	if "projectile_data" in type and type.projectile_data:
 		projectile_stats = type.projectile_data
+	exp_drop  = type.exp_drop
 
 
 
@@ -171,14 +175,13 @@ func _die() -> void:
 	# Donner l'XP au joueur
 	if is_instance_valid(player_reference) and player_reference.has_method("gain_exp"):
 		player_reference.gain_exp(int(exp_drop))
-
-	queue_free()
-
+	GameManager.add_score(exp_drop)
+	queue_free() # Supprime l'ennemi
 
 func _try_action():
 	match role:
 		0: # MELEE
-			if global_position.distance_to(player_reference.global_position) < 30.0:
+			if global_position.distance_to(player_reference.global_position) < attack_range:
 				_attack_player("Melee")
 		1: # RANGED
 			if is_player_in_area:

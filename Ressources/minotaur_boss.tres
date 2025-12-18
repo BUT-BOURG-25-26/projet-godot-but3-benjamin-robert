@@ -195,4 +195,7 @@ sprite_frames = SubResource("SpriteFrames_k4cmx")
 health = 100.0
 damage = 4.0
 speed = 300.0
+exp_drop = 100.0
+attack_range = 150.0
+score = 300.0
 metadata/_custom_type_script = "uid://dgv7uni4m1371"

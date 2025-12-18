@@ -67,6 +67,7 @@ height = 86.0
 radius = 405.01974
 
 [node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_ofqcr")
 projectile_scene = ExtResource("2_m4x7e")
 

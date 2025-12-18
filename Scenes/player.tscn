@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://d3ib53xnwaqds"]
+[gd_scene load_steps=80 format=3 uid="uid://d3ib53xnwaqds"]
 
 [ext_resource type="Script" uid="uid://hfssvtetbx0i" path="res://Scripts/player.gd" id="1_hbt6w"]
 [ext_resource type="Texture2D" uid="uid://dkjh7t4ac6cet" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_000.png" id="2_y6ibu"]
@@ -71,6 +71,11 @@
 [ext_resource type="Texture2D" uid="uid://dm7ftnp2kh5ha" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Slashing/0_Valkyrie_Run Slashing_010.png" id="69_ts2c8"]
 [ext_resource type="Texture2D" uid="uid://cefs7pw5m84xd" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Slashing/0_Valkyrie_Run Slashing_011.png" id="70_hcgbs"]
 [ext_resource type="PackedScene" uid="uid://cjgqm3ik54dca" path="res://Scenes/heathbar.tscn" id="71_3uvy8"]
+[ext_resource type="AudioStream" uid="uid://caxdkgadwfadq" path="res://Assets/Audio/SFX/HurtSound.wav" id="72_ss172"]
+[ext_resource type="AudioStream" uid="uid://cnda2ehg54nhd" path="res://Assets/Audio/SFX/MissSword.wav" id="73_jmelf"]
+[ext_resource type="AudioStream" uid="uid://c7xybvb4b5mrw" path="res://Assets/Audio/SFX/GameOver.wav" id="74_bjdqd"]
+[ext_resource type="AudioStream" uid="uid://c242f6mlcyrgm" path="res://Assets/Audio/SFX/HitSword.wav" id="75_feq18"]
+[ext_resource type="AudioStream" uid="uid://b8wrwcbch6yuk" path="res://Assets/Audio/SFX/CollectSound.wav" id="76_wcnj3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ivnpj"]
 animations = [{
@@ -348,6 +353,8 @@ offset_bottom = -616.0
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(54, 21)
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(27, 29)
@@ -355,4 +362,27 @@ shape = SubResource("RectangleShape2D_3uvy8")
 
 [node name="InvincibilityTimer" type="Timer" parent="."]
 wait_time = 1.5
+one_shot = true
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("72_ss172")
+volume_db = -5.0
+
+[node name="MissSword" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("73_jmelf")
+volume_db = -5.0
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("74_bjdqd")
+
+[node name="HitSword" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("75_feq18")
+volume_db = -5.0
+
+[node name="CollectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("76_wcnj3")
+volume_db = 7.0
+
+[node name="PitchResetTimer" type="Timer" parent="."]
+wait_time = 0.7
 one_shot = true

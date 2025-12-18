@@ -18,6 +18,8 @@ func _ready():
 
 func _on_hover_in():
 	_start_pulse()
+	%Hover.pitch_scale = randf_range(0.95, 1.05) # évite le son "robotique" lors de spam
+	%Hover.play()
 
 
 func _on_hover_out():

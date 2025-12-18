@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdisvk4q18wd2"]
+[gd_scene load_steps=15 format=3 uid="uid://bdisvk4q18wd2"]
 
 [ext_resource type="Script" uid="uid://b0in0vctcv8xj" path="res://Scripts/spawner.gd" id="1_ic4ta"]
 [ext_resource type="PackedScene" uid="uid://b2g66sf655rqf" path="res://Scenes/enemy.tscn" id="2_b6u4f"]
@@ -9,6 +9,26 @@
 [ext_resource type="Resource" uid="uid://b1caon13dvvut" path="res://Ressources/golem_pierre.tres" id="5_gjq3i"]
 [ext_resource type="PackedScene" uid="uid://bjlkuwr2xrolh" path="res://Scenes/Boss.tscn" id="6_kh5ph"]
 [ext_resource type="Resource" uid="uid://sx167c5ilc42" path="res://Ressources/golem_bois.tres" id="6_yocef"]
+[ext_resource type="FontFile" uid="uid://tdf6cv67s386" path="res://Assets/Police/PressStart2P.ttf" id="10_xbrvg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b6o4h"]
+font = ExtResource("10_xbrvg")
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_istys"]
+font = ExtResource("10_xbrvg")
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_8i5kq"]
+font = ExtResource("10_xbrvg")
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_xbrvg"]
+font = ExtResource("10_xbrvg")
+font_size = 58
+font_color = Color(1, 0, 0, 1)
+outline_size = 11
+outline_color = Color(0.59905666, 1.4318898e-06, 4.3317675e-07, 1)
 
 [node name="Spawner" type="Node2D"]
 script = ExtResource("1_ic4ta")
@@ -22,28 +42,48 @@ scale = Vector2(1.6, 1.6)
 transform = Transform2D(1.6, 0, 0, 1.6, 0, 0)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI"]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_right = -720.0001
+offset_bottom = 48.0
+grow_horizontal = 2
+alignment = 1
 
 [node name="Minute" type="Label" parent="UI/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
+label_settings = SubResource("LabelSettings_b6o4h")
 
-[node name="label" type="Label" parent="UI/HBoxContainer"]
+[node name="Separator" type="Label" parent="UI/HBoxContainer"]
 layout_mode = 2
 text = ":"
+label_settings = SubResource("LabelSettings_istys")
 
 [node name="Second" type="Label" parent="UI/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "00"
+label_settings = SubResource("LabelSettings_8i5kq")
+
+[node name="WarningLabel" type="Label" parent="UI"]
+visible = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 68.125
+offset_right = -720.0001
+offset_bottom = 91.125
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "BOSS APPROACHING"
+label_settings = SubResource("LabelSettings_xbrvg")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [node name="TimerBoss" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 60.0
 autostart = true
 
 [node name="Timer3" type="Timer" parent="."]

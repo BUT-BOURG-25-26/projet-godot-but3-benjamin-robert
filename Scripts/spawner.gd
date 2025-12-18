@@ -16,20 +16,68 @@ var _current_spawn_amount: int = 1 # Le nombre de fois que ce Boss doit apparaî
 
 var distance : float = 400 # distance d'apparition
 
+@onready var timer_container = $UI/HBoxContainer
+@onready var warning_label = $UI/WarningLabel
+
 var minute : int:
 	set(value):
-		minute = value
-		if has_node("%Minute"):
-			%Minute.text = str(value)
+		if value != minute:
+			minute = value
+			if has_node("%Minute"):
+				%Minute.text = str(value)
+			_animate_new_minute()
 		
 var second : int:
 	set(value):
 		second = value
-		if second >= 10: # valeur de test
-			second -= 10 # valeur de test
+		if second >= 60:
+			second -= 60
 			minute += 1
+			
 		if has_node("%Second"):
 			%Second.text = str(second).lpad(2,'0')
+			
+		_animate_heartbeat()
+		
+func _ready() -> void:
+	if warning_label:
+		warning_label.visible = false 
+
+# --- ANIMATIONS DU TIMER ---
+
+func _animate_heartbeat() -> void:
+	if not timer_container: return
+
+	timer_container.pivot_offset = Vector2(timer_container.size.x / 2, timer_container.size.y)	
+	var tween = create_tween() 
+	tween.tween_property(timer_container, "scale", Vector2(1.05, 1.05), 0.05).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(timer_container, "scale", Vector2(1.0, 1.0), 0.1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+	if second > 54:
+		timer_container.modulate = Color(1, 0.5, 0.5) 
+	else:
+		timer_container.modulate = Color.WHITE
+
+func _animate_new_minute() -> void:
+	if not timer_container: return
+	
+	var tween = create_tween()
+	
+	# Flash Rouge
+	tween.tween_property(timer_container, "modulate", Color(1, 0, 0), 0.2) # Rouge pur
+	tween.parallel().tween_property(timer_container, "scale", Vector2(1.5, 1.5), 0.2).set_trans(Tween.TRANS_ELASTIC)
+	
+	# Retour à la normale
+	tween.tween_property(timer_container, "modulate", Color.WHITE, 0.5)
+	tween.parallel().tween_property(timer_container, "scale", Vector2(1.0, 1.0), 0.3)
+
+# --- Logique des Timers ---
+
+# Timer pour l'apparition des ennemis normaux et la progression du temps
+func _on_timer_timeout() -> void:
+	second += 1
+	amount(second % 2) # valeur temporaire
+
 
 # --- Fonctions de Spawn ---
 
@@ -79,19 +127,12 @@ func amount(number : int = 1):
 	for i in range(number):
 		spawn(get_random_position())	
 
-# --- Logique des Timers ---
-
-# Timer pour l'apparition des ennemis normaux et la progression du temps
-func _on_timer_timeout() -> void:
-	second += 1
-	amount(second % 2) # valeur temporaire
-
-
 # Logique de spawn du Boss (MODIFIÉE)
 func _on_timer_boss_timeout() -> void:
 	if boss_data_list.is_empty():
 		push_error("ERREUR: 'boss_data_list' est vide. Impossible de faire apparaître un Boss.")
 		return
+	_trigger_warning_animation()
 	
 	# Récupérer la ressource Boss à l'index actuel
 	var boss_data_to_spawn: Enemy = boss_data_list[_current_boss_index]
@@ -113,3 +154,35 @@ func _on_timer_boss_timeout() -> void:
 		
 		_current_boss_index = 0 # Retour au premier Boss (Index 0)
 		_current_spawn_amount += 1 # Augmente le nombre de Boss pour chaque prochaine apparition
+		
+# --- ANIMATION D'ALERTE (Nouveau) ---
+func _trigger_warning_animation() -> void:
+	if not warning_label: return
+	var max_opacity = 0.6
+	warning_label.visible = true
+	warning_label.modulate.a = 0.0 # On commence transparent
+	
+	warning_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	
+	warning_label.pivot_offset = warning_label.size / 2
+	
+	var tween = create_tween()
+	
+	# Apparition
+	tween.parallel().tween_property(warning_label, "scale", Vector2(1.0, 1.0), 0.3).from(Vector2(2.0, 2.0)).set_trans(Tween.TRANS_BOUNCE)
+	tween.parallel().tween_property(warning_label, "modulate:a", max_opacity, 0.2)
+	
+	# Clignotement (Rouge / Jaune)
+	var yellow_transp = Color.YELLOW
+	yellow_transp.a = max_opacity
+	
+	var red_transp = Color.RED
+	red_transp.a = max_opacity
+	for i in range(4): # Clignote 4 fois
+		tween.tween_property(warning_label, "modulate", yellow_transp, 0.2)
+		tween.tween_property(warning_label, "modulate", red_transp, 0.2)
+		
+	# Disparition
+	tween.tween_property(warning_label, "modulate:a", 0.0, 0.5)
+	
+	tween.tween_callback(warning_label.hide)
