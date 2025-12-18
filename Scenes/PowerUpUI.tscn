@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://n7fyarxo4u0k"]
+
+[ext_resource type="Script" uid="uid://bnp6rat6oe2ct" path="res://Scenes/power_up_ui.gd" id="1_2glyd"]
+
+[node name="PowerUpUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2glyd")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 300.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 300.0
+
+[node name="attaque" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="vitesse" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="portée" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="Panel/HBoxContainer/attaque" to="." method="_on_attaque_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/vitesse" to="." method="_on_vitesse_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/portée" to="." method="_on_portee_pressed"]

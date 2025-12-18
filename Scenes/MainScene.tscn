@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cr45653ucko6k"]
+[gd_scene load_steps=11 format=3 uid="uid://cr45653ucko6k"]
 
 [ext_resource type="PackedScene" uid="uid://gypl4ytd1dj6" path="res://Ressources/map.tscn" id="1_7rqgy"]
 [ext_resource type="Script" path="res://Scripts/main_scene.gd" id="1_qxria"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c8vtux7bfq1p3" path="res://Assets/background.png" id="5_y4jh7"]
 [ext_resource type="Script" uid="uid://b22ktgnwer3ru" path="res://Scenes/control_atk.gd" id="8_0iob3"]
 [ext_resource type="Texture2D" uid="uid://y33bx8xwyqrt" path="res://Assets/joystick_atk.png" id="8_f140w"]
+[ext_resource type="PackedScene" uid="uid://n7fyarxo4u0k" path="res://Scenes/PowerUpUI.tscn" id="10_4b75m"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_qxria")
@@ -74,6 +75,11 @@ offset_right = 199.0
 offset_bottom = 201.0
 mouse_filter = 2
 texture = ExtResource("5_qxria")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="CanvasLayer"]
+
+[node name="PowerUpUi" parent="CanvasLayer/CanvasLayer2" instance=ExtResource("10_4b75m")]
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CanvasLayer"]
 

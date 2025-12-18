@@ -228,6 +228,43 @@ func _die() -> void:
 	set_process(false)
 	$CollisionShape2D.set_deferred("disabled", true)
 
+# -----------------------------
+# XP / LEVEL
+# -----------------------------
+@export var base_exp_to_next_level: int = 100
+@export var exp_growth_per_level: int = 50
+
+var current_exp: int = 0
+var level: int = 1
+var exp_to_next_level: int = base_exp_to_next_level
+
+
+func gain_exp(amount: int) -> void:
+	current_exp += amount
+	print("XP +", amount, " -> ", current_exp, "/", exp_to_next_level)
+
+	if current_exp >= exp_to_next_level:
+		current_exp -= exp_to_next_level
+		level += 1
+		_update_exp_curve()
+		_on_level_up()
+
+
+func _update_exp_curve() -> void:
+	# +50 XP par niveau
+	exp_to_next_level = base_exp_to_next_level + (level - 1) * exp_growth_per_level
+
+
+func _on_level_up() -> void:
+	print("LEVEL UP ! Niveau :", level)
+	print("Prochain niveau à :", exp_to_next_level, " XP")
+
+	var ui = get_tree().get_first_node_in_group("powerup_ui")
+	if ui:
+		ui.open()
+	else:
+		print("❌ PowerUpUI introuvable (pas dans le groupe powerup_ui ?)")
+
 
 # -----------------------------
 # MAP LIMITS + CAMERA

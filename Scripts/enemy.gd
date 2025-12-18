@@ -52,15 +52,18 @@ func _ready() -> void:
 
 
 func _apply_stats() -> void:
-	if not type: return
+	if not type:
+		return
 	$AnimatedSprite2D.sprite_frames = type.sprite_frames
 	health = type.health
 	max_health = type.health
 	damage = type.damage
 	role = type.role
 	speed = type.speed
+	exp_drop = type.exp_drop if "exp_drop" in type else 10
 	if "projectile_data" in type and type.projectile_data:
 		projectile_stats = type.projectile_data
+
 
 
 func _physics_process(delta: float) -> void:
@@ -165,7 +168,12 @@ func _show_damage_popup(amount: float) -> void:
 		
 func _die() -> void:
 	print(name + " est mort.")
-	queue_free() # Supprime l'ennemi
+	# Donner l'XP au joueur
+	if is_instance_valid(player_reference) and player_reference.has_method("gain_exp"):
+		player_reference.gain_exp(int(exp_drop))
+
+	queue_free()
+
 
 func _try_action():
 	match role:
