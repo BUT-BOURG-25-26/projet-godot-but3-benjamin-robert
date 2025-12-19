@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://d3ib53xnwaqds"]
+[gd_scene load_steps=95 format=3 uid="uid://d3ib53xnwaqds"]
 
 [ext_resource type="Script" uid="uid://hfssvtetbx0i" path="res://Scripts/player.gd" id="1_hbt6w"]
 [ext_resource type="Resource" uid="uid://bcylb54eirom" path="res://Ressources/tir_feu.tres" id="2_6yrdb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dkjh7t4ac6cet" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_000.png" id="2_y6ibu"]
 [ext_resource type="Texture2D" uid="uid://ixvqwh425gcx" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_001.png" id="3_ekwva"]
 [ext_resource type="Texture2D" uid="uid://dgfxns86ngdtc" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Throwing/0_Valkyrie_Run Throwing_000.png" id="3_ue0p1"]
+[ext_resource type="Resource" uid="uid://b0v2mxc0qdfi6" path="res://Ressources/bulle_eau.tres" id="4_142e3"]
 [ext_resource type="Texture2D" uid="uid://6vqy86biawhq" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_002.png" id="4_fl7cw"]
 [ext_resource type="Texture2D" uid="uid://c1dyfn7f6fdim" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Throwing/0_Valkyrie_Run Throwing_001.png" id="4_isbcs"]
 [ext_resource type="Texture2D" uid="uid://ceegfxyryoufa" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Throwing/0_Valkyrie_Run Throwing_002.png" id="5_142e3"]
@@ -385,6 +386,8 @@ collision_mask = 2
 script = ExtResource("1_hbt6w")
 projectile_scene = ExtResource("2_ue0p1")
 projectile_data = ExtResource("2_6yrdb")
+static_projectile_scene = ExtResource("2_ue0p1")
+static_projectile_data = ExtResource("4_142e3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-7.10543e-15, -3)
