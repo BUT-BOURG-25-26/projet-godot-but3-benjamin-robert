@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="ProjectileData" load_steps=11 format=3 uid="uid://bcylb54eirom"]
+
+[ext_resource type="Texture2D" uid="uid://panb8t8acfp4" path="res://Assets/Projectiles/Fire Spell/PNG/Fire Spell_Frame_01.png" id="1_0drki"]
+[ext_resource type="Texture2D" uid="uid://df4augpxshew7" path="res://Assets/Projectiles/Fire Spell/PNG/Fire Spell_Frame_02.png" id="2_53hxs"]
+[ext_resource type="Texture2D" uid="uid://dk2k5hwa0urhy" path="res://Assets/Projectiles/Fire Spell/PNG/Fire Spell_Frame_03.png" id="3_ca2bt"]
+[ext_resource type="Texture2D" uid="uid://da3sjhhimnd6b" path="res://Assets/Projectiles/Fire Spell/PNG/Fire Spell_Frame_04.png" id="4_bb0b1"]
+[ext_resource type="Texture2D" uid="uid://dnfsd3ar4pwo6" path="res://Assets/Projectiles/Fire Spell/PNG/Fire Spell_Frame_05.png" id="5_kblin"]
+[ext_resource type="Texture2D" uid="uid://cbba6e8eibtwa" path="res://Assets/Projectiles/Fire Spell/PNG/Fire Spell_Frame_06.png" id="6_mbi57"]
+[ext_resource type="Texture2D" uid="uid://b1vmenj81fn8b" path="res://Assets/Projectiles/Fire Spell/PNG/Fire Spell_Frame_07.png" id="7_pbocf"]
+[ext_resource type="Texture2D" uid="uid://ctn8011hb82sp" path="res://Assets/Projectiles/Fire Spell/PNG/Fire Spell_Frame_08.png" id="8_2jev5"]
+[ext_resource type="Script" uid="uid://c3o38ceyfauq1" path="res://Scripts/ProjectileData.gd" id="9_fbmfh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wmcfa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0drki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_53hxs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ca2bt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bb0b1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kblin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mbi57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pbocf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2jev5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[resource]
+script = ExtResource("9_fbmfh")
+frames = SubResource("SpriteFrames_wmcfa")
+animation_name = "tir_feu"
+metadata/_custom_type_script = "uid://c3o38ceyfauq1"
