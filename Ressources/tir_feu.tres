@@ -45,5 +45,4 @@ animations = [{
 [resource]
 script = ExtResource("9_fbmfh")
 frames = SubResource("SpriteFrames_wmcfa")
-animation_name = "tir_feu"
 metadata/_custom_type_script = "uid://c3o38ceyfauq1"

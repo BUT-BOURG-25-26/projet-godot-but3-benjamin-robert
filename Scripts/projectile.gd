@@ -49,3 +49,5 @@ func _on_body_entered(body: Node2D) -> void:
 	# Si on touche un mur (TileMap)
 	elif body is TileMap: 
 		queue_free()
+		
+		

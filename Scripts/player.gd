@@ -15,11 +15,17 @@ extends CharacterBody2D
 @onready var pitch_timer = $PitchResetTimer
 var current_pitch: float = 1.0
 
+# --- RANGED ATTACK ---
+@export var projectile_scene : PackedScene
+@export var projectile_data : Resource
+@export var fire_rate : float = 1 #(0.2 = très vite, 1.0 = lent)
+var current_fire_timer : float = 0.0
+
 # -----------------------------
 # INPUTS (JOYSTICKS)
 # -----------------------------
 var move_input: Vector2 = Vector2.ZERO      # joystick déplacement
-var attack_input: Vector2 = Vector2.ZERO    # joystick attaque (FUTUR)
+var attack_input: Vector2 = Vector2.ZERO    # joystick attaque
 
 # -----------------------------
 # STATS
@@ -84,6 +90,9 @@ func _physics_process(delta: float) -> void:
 	# -----------------------------
 	var input_vector := move_input
 
+	if current_fire_timer > 0:
+		current_fire_timer -= delta
+	
 	if input_vector == Vector2.ZERO:
 		input_vector = Vector2(
 			Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
@@ -169,16 +178,26 @@ func attack() -> void:
 			body.take_damage(damage, global_position)
 			$HitSword.play()
 
-
 # -----------------------------
-# ATTAQUE À DISTANCE (FUTUR)
+# ATTAQUE À DISTANCE
 # -----------------------------
 func ranged_attack(direction: Vector2) -> void:
-	# SLOT FUTUR :
-	# - instancier projectile
-	# - utiliser direction.normalized()
-	pass
+	if is_dead: return
+	
+	if current_fire_timer > 0:
+		return
 
+	if not projectile_scene or not projectile_data:
+		return
+
+	var p = projectile_scene.instantiate()
+	get_tree().current_scene.add_child(p)
+	p.global_position = global_position
+	
+	if p.has_method("setup"):
+		p.setup(projectile_data, direction, "enemies", self)
+		
+	current_fire_timer = fire_rate
 
 # -----------------------------
 # CALLBACKS
