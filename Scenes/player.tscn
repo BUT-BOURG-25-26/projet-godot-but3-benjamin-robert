@@ -1,19 +1,34 @@
-[gd_scene load_steps=80 format=3 uid="uid://d3ib53xnwaqds"]
+[gd_scene load_steps=95 format=3 uid="uid://d3ib53xnwaqds"]
 
 [ext_resource type="Script" uid="uid://hfssvtetbx0i" path="res://Scripts/player.gd" id="1_hbt6w"]
+[ext_resource type="Resource" uid="uid://bcylb54eirom" path="res://Ressources/tir_feu.tres" id="2_6yrdb"]
+[ext_resource type="PackedScene" uid="uid://dc3w3fatkl5p3" path="res://Scenes/projectile.tscn" id="2_ue0p1"]
 [ext_resource type="Texture2D" uid="uid://dkjh7t4ac6cet" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_000.png" id="2_y6ibu"]
 [ext_resource type="Texture2D" uid="uid://ixvqwh425gcx" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_001.png" id="3_ekwva"]
+[ext_resource type="Texture2D" uid="uid://dgfxns86ngdtc" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Throwing/0_Valkyrie_Run Throwing_000.png" id="3_ue0p1"]
+[ext_resource type="Resource" uid="uid://b0v2mxc0qdfi6" path="res://Ressources/bulle_eau.tres" id="4_142e3"]
 [ext_resource type="Texture2D" uid="uid://6vqy86biawhq" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_002.png" id="4_fl7cw"]
+[ext_resource type="Texture2D" uid="uid://c1dyfn7f6fdim" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Throwing/0_Valkyrie_Run Throwing_001.png" id="4_isbcs"]
+[ext_resource type="Texture2D" uid="uid://ceegfxyryoufa" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Throwing/0_Valkyrie_Run Throwing_002.png" id="5_142e3"]
 [ext_resource type="Texture2D" uid="uid://ba2drbmkcdl26" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_003.png" id="5_e5jpu"]
 [ext_resource type="Texture2D" uid="uid://crx8nuux1yp6t" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_004.png" id="6_toy7t"]
+[ext_resource type="Texture2D" uid="uid://boa0b7n2tnhjh" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Throwing/0_Valkyrie_Run Throwing_003.png" id="6_ts2c8"]
+[ext_resource type="Texture2D" uid="uid://dbt4fn888qk28" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Throwing/0_Valkyrie_Run Throwing_004.png" id="7_hcgbs"]
 [ext_resource type="Texture2D" uid="uid://2cifxkuyko8w" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_005.png" id="7_xmuvt"]
 [ext_resource type="Texture2D" uid="uid://cnrq2m86f5wcd" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_006.png" id="8_ctfk4"]
+[ext_resource type="Texture2D" uid="uid://dt6htc1aqmek5" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Throwing/0_Valkyrie_Run Throwing_005.png" id="8_mpfyg"]
 [ext_resource type="Texture2D" uid="uid://slt3xcxoua6o" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_007.png" id="9_8raf7"]
+[ext_resource type="Texture2D" uid="uid://kulf27nkdj7k" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Throwing/0_Valkyrie_Run Throwing_006.png" id="9_un823"]
+[ext_resource type="Texture2D" uid="uid://dkxlekys0ofjh" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Throwing/0_Valkyrie_Run Throwing_007.png" id="10_aclic"]
 [ext_resource type="Texture2D" uid="uid://b7am546cb2blj" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_008.png" id="10_vserd"]
+[ext_resource type="Texture2D" uid="uid://bpxm5a521y27i" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Throwing/0_Valkyrie_Run Throwing_008.png" id="11_0y64g"]
 [ext_resource type="Texture2D" uid="uid://h6m3r7k4o3vw" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_009.png" id="11_ax2o6"]
 [ext_resource type="Texture2D" uid="uid://c7y8ot35tljfx" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_010.png" id="12_qd8nj"]
+[ext_resource type="Texture2D" uid="uid://bwsijcwlr71t3" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Throwing/0_Valkyrie_Run Throwing_009.png" id="12_ramv3"]
 [ext_resource type="Texture2D" uid="uid://c17e2dn6tbfsy" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_011.png" id="13_atirr"]
+[ext_resource type="Texture2D" uid="uid://clsya7bbj25px" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Throwing/0_Valkyrie_Run Throwing_010.png" id="13_hseb1"]
 [ext_resource type="Texture2D" uid="uid://c72lll3nuyc31" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_012.png" id="14_agi1k"]
+[ext_resource type="Texture2D" uid="uid://ctf86laqc602q" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Run Throwing/0_Valkyrie_Run Throwing_011.png" id="14_vinow"]
 [ext_resource type="Texture2D" uid="uid://cqtl3tmlmovnm" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_013.png" id="15_hynpm"]
 [ext_resource type="Texture2D" uid="uid://c548pmde0jupt" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Dying/0_Valkyrie_Dying_014.png" id="16_e2o0t"]
 [ext_resource type="Texture2D" uid="uid://huy3v5sh6fgm" path="res://Assets/Character/Valkyrie_2/PNG/PNG Sequences/Idle/0_Valkyrie_Idle_000.png" id="17_331or"]
@@ -79,6 +94,47 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ivnpj"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ue0p1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_isbcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_142e3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ts2c8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hcgbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mpfyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_un823")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_aclic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0y64g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ramv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_hseb1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vinow")
+}],
+"loop": false,
+"name": &"Attack_ranged",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_y6ibu")
@@ -328,14 +384,16 @@ size = Vector2(208, 254)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_hbt6w")
+projectile_scene = ExtResource("2_ue0p1")
+projectile_data = ExtResource("2_6yrdb")
+static_projectile_scene = ExtResource("2_ue0p1")
+static_projectile_data = ExtResource("4_142e3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-7.10543e-15, -3)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_ivnpj")
-animation = &"Dying"
-frame = 14
-frame_progress = 1.0
+animation = &"Attack_ranged"
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

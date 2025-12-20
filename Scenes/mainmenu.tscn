@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://c6fa57debf2rp"]
 
 [ext_resource type="Script" uid="uid://dc5xyavl8p06n" path="res://Scenes/mainmenu.gd" id="1_pposm"]
-[ext_resource type="Texture2D" uid="uid://b3naw0im2pfdj" path="res://Assets/fond_menu.png" id="2_eybw1"]
+[ext_resource type="Texture2D" uid="uid://c8xecpcvwivwh" path="res://Assets/fond_menu.jpg" id="2_c7wuu"]
 [ext_resource type="Texture2D" uid="uid://bhs4gtyledkkq" path="res://Assets/play.png" id="2_lah54"]
 [ext_resource type="Script" uid="uid://48pupaujdxsd" path="res://Scripts/play.gd" id="2_web8u"]
 [ext_resource type="Script" uid="uid://dv474hffycgdv" path="res://Scripts/settings.gd" id="3_rtnl3"]
@@ -20,8 +20,8 @@ script = ExtResource("1_pposm")
 
 [node name="FondMenu" type="Sprite2D" parent="."]
 position = Vector2(959.00006, 538)
-scale = Vector2(0.7013345, 0.70133466)
-texture = ExtResource("2_eybw1")
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("2_c7wuu")
 
 [node name="Title" type="Label" parent="."]
 offset_right = 1920.0

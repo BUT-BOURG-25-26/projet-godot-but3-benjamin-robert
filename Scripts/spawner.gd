@@ -158,6 +158,7 @@ func _on_timer_boss_timeout() -> void:
 # --- ANIMATION D'ALERTE (Nouveau) ---
 func _trigger_warning_animation() -> void:
 	if not warning_label: return
+	$Alarm.play()
 	var max_opacity = 0.6
 	warning_label.visible = true
 	warning_label.modulate.a = 0.0 # On commence transparent

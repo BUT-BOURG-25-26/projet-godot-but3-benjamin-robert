@@ -15,11 +15,23 @@ extends CharacterBody2D
 @onready var pitch_timer = $PitchResetTimer
 var current_pitch: float = 1.0
 
+# --- RANGED ATTACK ---
+@export var projectile_scene : PackedScene
+@export var projectile_data : Resource
+@export var fire_rate : float = 1 #(0.2 = très vite, 1.0 = lent)
+var current_fire_timer : float = 0.0
+
+# --- STATIC ATTACK ---
+@export var static_projectile_scene : PackedScene
+@export var static_projectile_data : Resource
+@export var static_fire_rate : float = 2.5
+var current_static_timer : float = 0.0
+
 # -----------------------------
 # INPUTS (JOYSTICKS)
 # -----------------------------
 var move_input: Vector2 = Vector2.ZERO      # joystick déplacement
-var attack_input: Vector2 = Vector2.ZERO    # joystick attaque (FUTUR)
+var attack_input: Vector2 = Vector2.ZERO    # joystick attaque
 
 # -----------------------------
 # STATS
@@ -64,7 +76,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
-
+	
 	if is_hurt:
 		velocity = velocity.move_toward(Vector2.ZERO, 1500 * delta)
 		move_and_slide()
@@ -74,16 +86,23 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.modulate.a = 0.5 + 0.3 * sin(Time.get_ticks_msec() * 0.02)
 
 	# -----------------------------
-	# ATTAQUE CLAVIER (DEBUG)
+	# ATTAQUE
 	# -----------------------------
 	if Input.is_action_just_pressed("ui_accept") and not is_attacking:
 		attack()
-
+		
+	if current_fire_timer > 0:
+		current_fire_timer -= delta
+		
+	if current_static_timer > 0:
+		current_static_timer -= delta
+	
+	drop_static_attack()
 	# -----------------------------
 	# MOUVEMENT (JOYSTICK + CLAVIER)
 	# -----------------------------
 	var input_vector := move_input
-
+	
 	if input_vector == Vector2.ZERO:
 		input_vector = Vector2(
 			Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
@@ -169,16 +188,49 @@ func attack() -> void:
 			body.take_damage(damage, global_position)
 			$HitSword.play()
 
-
 # -----------------------------
-# ATTAQUE À DISTANCE (FUTUR)
+# ATTAQUE À DISTANCE
 # -----------------------------
 func ranged_attack(direction: Vector2) -> void:
-	# SLOT FUTUR :
-	# - instancier projectile
-	# - utiliser direction.normalized()
-	pass
+	if is_dead: return
+	
+	if current_fire_timer > 0:
+		return
 
+	if not projectile_scene or not projectile_data:
+		return
+
+	var p = projectile_scene.instantiate()
+	get_tree().current_scene.add_child(p)
+	p.global_position = global_position
+	
+	if p.has_method("setup"):
+		p.setup(projectile_data, direction, "enemies", self)
+		
+	current_fire_timer = fire_rate
+
+# -----------------------------
+# ATTAQUE STATIQUE (PIÈGE)
+# -----------------------------
+func drop_static_attack() -> void:
+	if is_dead: return
+	
+	if current_static_timer > 0:
+		return
+
+	if not static_projectile_scene or not static_projectile_data:
+		return
+
+	var p = static_projectile_scene.instantiate()
+	
+	get_tree().current_scene.add_child(p)
+	
+	p.global_position = global_position
+	
+	if p.has_method("setup"):
+		p.setup(static_projectile_data, Vector2.ZERO, "enemies", self)
+		
+	current_static_timer = static_fire_rate
 
 # -----------------------------
 # CALLBACKS
