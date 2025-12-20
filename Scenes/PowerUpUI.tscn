@@ -11,28 +11,35 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2glyd")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel"]
 layout_mode = 0
 offset_right = 600.0
 offset_bottom = 300.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
-layout_mode = 0
-offset_right = 600.0
-offset_bottom = 300.0
-
-[node name="attaque" type="Button" parent="Panel/HBoxContainer"]
+[node name="attaque" type="Button" parent="CenterContainer/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "Attaque"
 
-[node name="vitesse" type="Button" parent="Panel/HBoxContainer"]
+[node name="vitesse" type="Button" parent="CenterContainer/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "Vitesse"
 
-[node name="portée" type="Button" parent="Panel/HBoxContainer"]
+[node name="portée" type="Button" parent="CenterContainer/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "Range"
 
-[connection signal="pressed" from="Panel/HBoxContainer/attaque" to="." method="_on_attaque_pressed"]
-[connection signal="pressed" from="Panel/HBoxContainer/vitesse" to="." method="_on_vitesse_pressed"]
-[connection signal="pressed" from="Panel/HBoxContainer/portée" to="." method="_on_portee_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/HBoxContainer/attaque" to="." method="_on_attaque_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/HBoxContainer/vitesse" to="." method="_on_vitesse_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/HBoxContainer/portée" to="." method="_on_portee_pressed"]

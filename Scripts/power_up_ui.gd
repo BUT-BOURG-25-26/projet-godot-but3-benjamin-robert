@@ -8,7 +8,7 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 
 	# 🔥 CRITIQUE : boutons actifs pendant la pause
-	for btn in $Panel/HBoxContainer.get_children():
+	for btn in $CenterContainer/Panel/HBoxContainer.get_children():
 		if btn is Button:
 			btn.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 
