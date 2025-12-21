@@ -185,7 +185,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walking",
-"speed": 10.0
+"speed": 15.0
 }]
 
 [resource]
@@ -195,6 +195,6 @@ sprite_frames = SubResource("SpriteFrames_y7kms")
 health = 120.405
 damage = 3.0
 speed = 400.0
-exp_drop = 30.0
+exp_drop = 150.0
 attack_range = 150.0
 metadata/_custom_type_script = "uid://dgv7uni4m1371"

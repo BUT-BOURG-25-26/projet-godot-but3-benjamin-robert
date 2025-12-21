@@ -31,9 +31,9 @@ func _init_pool():
 	
 	pool = [
 		# --- DÉGÂTS ---
-		{"id": "dmg_global", "text": "Puissance",        "val": 0.15, "desc": "Augmente tous les dégâts"},
-		{"id": "dmg_melee",  "text": "Maître d'Armes",   "val": 0.20, "desc": "Dégâts au corps-à-corps"},
-		{"id": "dmg_ranged", "text": "Tir Puissant",     "val": 0.20, "desc": "Dégâts des projectiles"},
+		{"id": "dmg_global", "text": "Puissance",        "val": 0.20, "desc": "Augmente tous les dégâts"},
+		{"id": "dmg_melee",  "text": "Maître d'Armes",   "val": 0.25, "desc": "Dégâts au corps-à-corps"},
+		{"id": "dmg_ranged", "text": "Tir Puissant",     "val": 0.25, "desc": "Dégâts des projectiles"},
 		
 		# --- VITESSE / SURVIE ---
 		{"id": "speed",      "text": "Pied Léger",       "val": 0.08, "desc": "Vitesse de déplacement"},
