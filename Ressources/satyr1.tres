@@ -1,0 +1,195 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=45 format=3 uid="uid://cj3ugm7etljrj"]
+
+[ext_resource type="Script" uid="uid://dgv7uni4m1371" path="res://Scripts/EnemyType.gd" id="1_x3741"]
+[ext_resource type="Texture2D" uid="uid://dtfi5lkdvjbut" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Attacking/Satyr_01_Attacking_000.png" id="2_6pcag"]
+[ext_resource type="Texture2D" uid="uid://dvacba5717k6f" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Attacking/Satyr_01_Attacking_001.png" id="3_hq2ni"]
+[ext_resource type="Texture2D" uid="uid://djdeho8llxpbr" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Attacking/Satyr_01_Attacking_002.png" id="4_6pfqt"]
+[ext_resource type="Texture2D" uid="uid://cisfxoepetds5" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Attacking/Satyr_01_Attacking_003.png" id="5_sarhw"]
+[ext_resource type="Texture2D" uid="uid://deo56acbgkvdn" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Attacking/Satyr_01_Attacking_004.png" id="6_tfasx"]
+[ext_resource type="Texture2D" uid="uid://dn4llnodxr5c5" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Attacking/Satyr_01_Attacking_005.png" id="7_ork7f"]
+[ext_resource type="Texture2D" uid="uid://bp683as46ekgk" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Attacking/Satyr_01_Attacking_006.png" id="8_ialpv"]
+[ext_resource type="Texture2D" uid="uid://bxxv6dhthtacn" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Attacking/Satyr_01_Attacking_007.png" id="9_ew4t6"]
+[ext_resource type="Texture2D" uid="uid://blx0j674trpji" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Attacking/Satyr_01_Attacking_008.png" id="10_7k0o3"]
+[ext_resource type="Texture2D" uid="uid://b5befbvmm4wsi" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Attacking/Satyr_01_Attacking_009.png" id="11_qrl7i"]
+[ext_resource type="Texture2D" uid="uid://bsnbccyrb6xiv" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Attacking/Satyr_01_Attacking_010.png" id="12_q1bu3"]
+[ext_resource type="Texture2D" uid="uid://dmvju8nd7vp6g" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Attacking/Satyr_01_Attacking_011.png" id="13_odhux"]
+[ext_resource type="Texture2D" uid="uid://bcciaxqgu2ix3" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Idle/Satyr_01_Idle_000.png" id="14_k8vwo"]
+[ext_resource type="Texture2D" uid="uid://dbb3xcei27vdr" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Idle/Satyr_01_Idle_001.png" id="15_l8d40"]
+[ext_resource type="Texture2D" uid="uid://basa1l3r80f8l" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Idle/Satyr_01_Idle_002.png" id="16_b6mt8"]
+[ext_resource type="Texture2D" uid="uid://c6gon7rq6aqi7" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Idle/Satyr_01_Idle_003.png" id="17_pk2x2"]
+[ext_resource type="Texture2D" uid="uid://bl3ukxowu5jll" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Idle/Satyr_01_Idle_004.png" id="18_iswu1"]
+[ext_resource type="Texture2D" uid="uid://cs6ll2h23m8ot" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Idle/Satyr_01_Idle_005.png" id="19_p3yns"]
+[ext_resource type="Texture2D" uid="uid://c3qn8rrwnc1xx" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Idle/Satyr_01_Idle_006.png" id="20_ntndj"]
+[ext_resource type="Texture2D" uid="uid://digy0i2rrnr5g" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Idle/Satyr_01_Idle_007.png" id="21_235uu"]
+[ext_resource type="Texture2D" uid="uid://ct0gafigpopqg" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Idle/Satyr_01_Idle_008.png" id="22_1evum"]
+[ext_resource type="Texture2D" uid="uid://drkigu58pvrsl" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Idle/Satyr_01_Idle_009.png" id="23_6thm0"]
+[ext_resource type="Texture2D" uid="uid://b1xgpa1l5kwxu" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Idle/Satyr_01_Idle_010.png" id="24_ol2cn"]
+[ext_resource type="Texture2D" uid="uid://dvqbpvu7f1aye" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Idle/Satyr_01_Idle_011.png" id="25_kcbtj"]
+[ext_resource type="Texture2D" uid="uid://kqv1eedn3cey" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Walking/Satyr_01_Walking_000.png" id="26_chf3v"]
+[ext_resource type="Texture2D" uid="uid://cru4ctjicrjfr" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Walking/Satyr_01_Walking_001.png" id="27_74gbg"]
+[ext_resource type="Texture2D" uid="uid://dj8u1nrdahgpt" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Walking/Satyr_01_Walking_002.png" id="28_2y13r"]
+[ext_resource type="Texture2D" uid="uid://dbkawejeu03g1" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Walking/Satyr_01_Walking_003.png" id="29_xlcex"]
+[ext_resource type="Texture2D" uid="uid://tbwgbqmrcqxn" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Walking/Satyr_01_Walking_004.png" id="30_nsehm"]
+[ext_resource type="Texture2D" uid="uid://lf4l8rvj4lkw" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Walking/Satyr_01_Walking_005.png" id="31_2eiv5"]
+[ext_resource type="Texture2D" uid="uid://v6ko2ajb06q4" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Walking/Satyr_01_Walking_006.png" id="32_q6w8i"]
+[ext_resource type="Texture2D" uid="uid://ba85huvhutipy" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Walking/Satyr_01_Walking_007.png" id="33_p87xn"]
+[ext_resource type="Texture2D" uid="uid://dvxvg6fna711e" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Walking/Satyr_01_Walking_008.png" id="34_hrkb6"]
+[ext_resource type="Texture2D" uid="uid://c2fdun8y6usoa" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Walking/Satyr_01_Walking_009.png" id="35_4hv6p"]
+[ext_resource type="Texture2D" uid="uid://5vtmqgj8gdgt" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Walking/Satyr_01_Walking_010.png" id="36_71y0i"]
+[ext_resource type="Texture2D" uid="uid://61wgmijgriu1" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Walking/Satyr_01_Walking_011.png" id="37_5ra5f"]
+[ext_resource type="Texture2D" uid="uid://c4e26nou7u8r8" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Walking/Satyr_01_Walking_012.png" id="38_jwnyk"]
+[ext_resource type="Texture2D" uid="uid://sdpsgm05eph5" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Walking/Satyr_01_Walking_013.png" id="39_mngvo"]
+[ext_resource type="Texture2D" uid="uid://bpgcv84rtdcj2" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Walking/Satyr_01_Walking_014.png" id="40_t8ptf"]
+[ext_resource type="Texture2D" uid="uid://oon7iwmh0llq" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Walking/Satyr_01_Walking_015.png" id="41_1c2vp"]
+[ext_resource type="Texture2D" uid="uid://doj82yj50t8m5" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Walking/Satyr_01_Walking_016.png" id="42_a4cyt"]
+[ext_resource type="Texture2D" uid="uid://b4idx1bfpf5w3" path="res://Assets/Character/Enemy/Satyr_01/PNG Sequences/Walking/Satyr_01_Walking_017.png" id="43_k732m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xnlvw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6pcag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hq2ni")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6pfqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sarhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tfasx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ork7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ialpv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ew4t6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7k0o3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qrl7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_q1bu3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_odhux")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_k8vwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_l8d40")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_b6mt8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_pk2x2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_iswu1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_p3yns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ntndj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_235uu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_1evum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_6thm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ol2cn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_kcbtj")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_chf3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_74gbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_2y13r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_xlcex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_nsehm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_2eiv5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_q6w8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_p87xn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_hrkb6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_4hv6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_71y0i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_5ra5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_jwnyk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_mngvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_t8ptf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_1c2vp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_a4cyt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_k732m")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 10.0
+}]
+
+[resource]
+script = ExtResource("1_x3741")
+sprite_frames = SubResource("SpriteFrames_xnlvw")
+health = 10.0
+metadata/_custom_type_script = "uid://dgv7uni4m1371"
