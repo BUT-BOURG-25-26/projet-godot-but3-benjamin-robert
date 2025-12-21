@@ -1,6 +1,15 @@
 class_name Player
 extends CharacterBody2D
 
+# --- MULTIPLICATEURS ---
+var global_damage_mult: float = 1.0
+var melee_damage_mult: float = 1.0
+var static_damage_mult: float = 1.0
+var ranged_damage_mult: float = 1.0
+var heart_recovery_mult: float = 1.0
+
+var static_attack_unlocked: bool = false # L'attaque statique commence bloquée
+
 @export var speed: float = 400.0
 @export var knockback_force: float = 600.0
 
@@ -18,7 +27,7 @@ var current_pitch: float = 1.0
 # --- RANGED ATTACK ---
 @export var projectile_scene : PackedScene
 @export var projectile_data : Resource
-@export var fire_rate : float = 1 #(0.2 = très vite, 1.0 = lent)
+@export var fire_rate : float = 1.0
 var current_fire_timer : float = 0.0
 
 # --- STATIC ATTACK ---
@@ -37,7 +46,7 @@ var attack_input: Vector2 = Vector2.ZERO    # joystick attaque
 # STATS
 # -----------------------------
 @export var max_health: float = 50.0
-@export var damage: float = 10
+@export var damage: float = 10.0
 
 var health: float
 var is_dead := false
@@ -182,10 +191,12 @@ func attack() -> void:
 	$MissSword.play()
 
 	await get_tree().process_frame
+	
+	var final_melee_damage = damage * global_damage_mult * melee_damage_mult
 
 	for body in hitbox.get_overlapping_bodies():
 		if body != self and body.has_method("take_damage") and body.is_in_group("enemies"): # a touché un ennemi
-			body.take_damage(damage, global_position)
+			body.take_damage(final_melee_damage, global_position)
 			$HitSword.play()
 
 # -----------------------------
@@ -207,13 +218,16 @@ func ranged_attack(direction: Vector2) -> void:
 	if p.has_method("setup"):
 		p.setup(projectile_data, direction, "enemies", self)
 		
+		if "damage" in p:
+			p.damage = projectile_data.damage * global_damage_mult * ranged_damage_mult
+		
 	current_fire_timer = fire_rate
 
 # -----------------------------
 # ATTAQUE STATIQUE (PIÈGE)
 # -----------------------------
 func drop_static_attack() -> void:
-	if is_dead: return
+	if is_dead or not static_attack_unlocked: return
 	
 	if current_static_timer > 0:
 		return
@@ -229,6 +243,9 @@ func drop_static_attack() -> void:
 	
 	if p.has_method("setup"):
 		p.setup(static_projectile_data, Vector2.ZERO, "enemies", self)
+		
+		if "damage" in p:
+			p.damage = static_projectile_data.damage * global_damage_mult * static_damage_mult
 		
 	current_static_timer = static_fire_rate
 
@@ -278,7 +295,8 @@ func _on_invincibility_timeout() -> void:
 
 
 func heal(amount: float) -> void:
-	health = min(health + amount, max_health)
+	var final_heal = amount * heart_recovery_mult
+	health = min(health + final_heal, max_health)
 	healthbar.health = health
 	$Heal.play()
 
@@ -288,7 +306,6 @@ func _die() -> void:
 	set_physics_process(false)
 	set_process(false)
 	$CollisionShape2D.set_deferred("disabled", true)
-	$GameOver.play()
 	GameManager.game_over()
 
 # -----------------------------

@@ -61,4 +61,5 @@ animations = [{
 [resource]
 script = ExtResource("13_tdlno")
 frames = SubResource("SpriteFrames_s5y0f")
+lifetime = 6.0
 metadata/_custom_type_script = "uid://c3o38ceyfauq1"

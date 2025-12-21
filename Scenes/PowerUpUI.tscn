@@ -17,29 +17,29 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="Panel" type="Panel" parent="CenterContainer"]
-custom_minimum_size = Vector2(600, 300)
+custom_minimum_size = Vector2(1200, 600)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel"]
 layout_mode = 0
-offset_right = 600.0
-offset_bottom = 300.0
+offset_right = 1200.0
+offset_bottom = 600.0
 
-[node name="attaque" type="Button" parent="CenterContainer/Panel/HBoxContainer"]
+[node name="opt1" type="Button" parent="CenterContainer/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Attaque"
+text = "Option 1"
 
-[node name="vitesse" type="Button" parent="CenterContainer/Panel/HBoxContainer"]
+[node name="opt2" type="Button" parent="CenterContainer/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Vitesse"
+text = "Option 2"
 
-[node name="portée" type="Button" parent="CenterContainer/Panel/HBoxContainer"]
+[node name="opt3" type="Button" parent="CenterContainer/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Range"
+text = "Option 3"
 
-[connection signal="pressed" from="CenterContainer/Panel/HBoxContainer/attaque" to="." method="_on_attaque_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/HBoxContainer/vitesse" to="." method="_on_vitesse_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/HBoxContainer/portée" to="." method="_on_portee_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/HBoxContainer/opt1" to="." method="_on_attaque_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/HBoxContainer/opt2" to="." method="_on_vitesse_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/HBoxContainer/opt3" to="." method="_on_portee_pressed"]

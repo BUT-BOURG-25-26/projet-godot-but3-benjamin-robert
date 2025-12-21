@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://d3ib53xnwaqds"]
+[gd_scene load_steps=95 format=3 uid="uid://d3ib53xnwaqds"]
 
 [ext_resource type="Script" uid="uid://hfssvtetbx0i" path="res://Scripts/player.gd" id="1_hbt6w"]
 [ext_resource type="Resource" uid="uid://bcylb54eirom" path="res://Ressources/tir_feu.tres" id="2_6yrdb"]
@@ -88,7 +88,6 @@
 [ext_resource type="PackedScene" uid="uid://cjgqm3ik54dca" path="res://Scenes/heathbar.tscn" id="71_3uvy8"]
 [ext_resource type="AudioStream" uid="uid://caxdkgadwfadq" path="res://Assets/Audio/SFX/HurtSound.wav" id="72_ss172"]
 [ext_resource type="AudioStream" uid="uid://cnda2ehg54nhd" path="res://Assets/Audio/SFX/MissSword.wav" id="73_jmelf"]
-[ext_resource type="AudioStream" uid="uid://c7xybvb4b5mrw" path="res://Assets/Audio/SFX/GameOver.wav" id="74_bjdqd"]
 [ext_resource type="AudioStream" uid="uid://c242f6mlcyrgm" path="res://Assets/Audio/SFX/HitSword.wav" id="75_feq18"]
 [ext_resource type="AudioStream" uid="uid://b8wrwcbch6yuk" path="res://Assets/Audio/SFX/CollectSound.wav" id="76_wcnj3"]
 [ext_resource type="AudioStream" uid="uid://6j03segu7cno" path="res://Assets/Audio/SFX/Heal.wav" id="92_142e3"]
@@ -430,9 +429,6 @@ volume_db = -5.0
 [node name="MissSword" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("73_jmelf")
 volume_db = -5.0
-
-[node name="GameOver" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("74_bjdqd")
 
 [node name="HitSword" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("75_feq18")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bq3dcjd7jik4v"]
+[gd_scene load_steps=12 format=3 uid="uid://bq3dcjd7jik4v"]
 
 [ext_resource type="Script" uid="uid://dc3vhqi06qiyk" path="res://Scripts/death_screen.gd" id="1_gva2g"]
 [ext_resource type="FontFile" uid="uid://tdf6cv67s386" path="res://Assets/Police/PressStart2P.ttf" id="2_3dlsw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bxfrm758o04yo" path="res://Scripts/bouton_effect.gd" id="4_xvfdw"]
 [ext_resource type="AudioStream" uid="uid://dk11dtp1e76ck" path="res://Assets/Audio/SFX/OnClick.wav" id="5_1j6q4"]
 [ext_resource type="AudioStream" uid="uid://byog4pmq00pgw" path="res://Assets/Audio/SFX/Hover.wav" id="6_xvfdw"]
+[ext_resource type="AudioStream" uid="uid://c7xybvb4b5mrw" path="res://Assets/Audio/SFX/GameOver.wav" id="8_5h3dq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1pog2"]
 font = ExtResource("2_3dlsw")
@@ -100,6 +101,9 @@ volume_db = -5.0
 unique_name_in_owner = true
 stream = ExtResource("6_xvfdw")
 volume_db = -5.0
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_5h3dq")
 
 [connection signal="button_up" from="VBoxContainer/HBoxContainer/replayButton" to="." method="_on_replay_button_button_up"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/replayButton" to="." method="_on_replay_button_pressed"]

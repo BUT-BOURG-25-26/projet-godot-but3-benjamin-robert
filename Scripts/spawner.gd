@@ -10,7 +10,7 @@ extends Node2D
 # Le script suppose que les index PAIRS (0, 2, 4...) sont des Mêlées et les IMPAIRS (1, 3, 5...) des Rangers.
 @export var regular_enemy_types : Array[Enemy] 
 
-# --- NOUVEAU : Paramètres de Difficulté Progressive ---
+# --- Paramètres de Difficulté Progressive ---
 @export_group("Difficulty Scaling")
 # Le temps (en minutes) pour atteindre le palier d'ennemis le plus fort.
 @export var time_to_max_tier_minutes : float = 5.0
@@ -162,7 +162,6 @@ func _get_probabilistic_enemy_index() -> int:
 	# Palier 0 -> index base 0. Palier 1 -> index base 2.
 	var base_index = int(final_tier) * 2
 	
-	# --- MODIFICATION ICI : Utilisation du ratio ---
 	# On utilise la variable melee_spawn_ratio au lieu de 0.5
 	# Si randf() (entre 0 et 1) est inférieur à 0.65, on prend le premier de la paire (Mêlée)
 	if randf() < melee_spawn_ratio:
@@ -207,9 +206,9 @@ func _on_timer_boss_timeout() -> void:
 		spawn_specific_boss(get_random_position(), boss_data_to_spawn)
 	_current_boss_index += 1
 	if _current_boss_index >= boss_data_list.size():
-		print("--- FIN DU CYCLE DE BOSS. Quantité augmentée ---")
+		print("--- FIN DU CYCLE DE BOSS. Quantité doublée ---")
 		_current_boss_index = 0
-		_current_spawn_amount += 1
+		_current_spawn_amount *= 2
 		
 # --- ANIMATION D'ALERTE ---
 func _trigger_warning_animation() -> void:
