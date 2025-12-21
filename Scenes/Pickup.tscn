@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6f8dwvk7ddqw"]
+
+[ext_resource type="Script" uid="uid://d3y3vsktqes4b" path="res://Scripts/pickup.gd" id="1_clep7"]
+[ext_resource type="Texture2D" uid="uid://dnwajxitv0b6g" path="res://Assets/Item/xp.png" id="1_tm65s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_clep7"]
+radius = 75.95393
+
+[node name="Node2D" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1_clep7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.3841858e-07, -1.8189894e-12)
+scale = Vector2(0.14166665, 0.14166665)
+texture = ExtResource("1_tm65s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_clep7")

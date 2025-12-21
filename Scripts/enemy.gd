@@ -32,6 +32,12 @@ var is_hurt : bool = false
 var knockback_force : float = 200.0 # Force du recul subi par l'ennemi
 var attack_range : float = 60.0 # valeur par défaut (à modifier surtout pour les boss melee)
 
+# --- DROPS ---
+@export var pickup_scene : PackedScene
+@export var xp_texture : Texture2D
+@export var heart_texture : Texture2D
+@export var heart_drop_rate : float = 0.05 # Chance de drop un coeur
+
 func _ready() -> void:
 	add_to_group("enemies")
 	add_to_group("allied_enemies")
@@ -172,11 +178,57 @@ func _show_damage_popup(amount: float) -> void:
 		
 func _die() -> void:
 	print(name + " est mort.")
-	# Donner l'XP au joueur
-	if is_instance_valid(player_reference) and player_reference.has_method("gain_exp"):
-		player_reference.gain_exp(int(exp_drop))
+	
+	# --- LOGIQUE D'EXPLOSION D'XP ---
+	var xp_restante = exp_drop
+	
+	# Tant qu'il reste de l'XP à distribuer
+	while xp_restante > 0:
+		var valeur_gemme = 40.0
+		
+		# Si c'est la fin (ex: il reste 5 XP), la dernière gemme vaudra 5
+		if xp_restante < valeur_gemme:
+			valeur_gemme = xp_restante
+			
+		# On fait apparaitre une gemme de cette valeur
+		spawn_pickup("XP", valeur_gemme)
+		
+		# On déduit ce qu'on vient de donner
+		xp_restante -= valeur_gemme
+
+	# --- DROP DE COEUR ---
+	if randf() < heart_drop_rate:
+		spawn_pickup("HEALTH", 20.0)
+		
 	GameManager.add_score(exp_drop)
-	queue_free() # Supprime l'ennemi
+	queue_free()
+	
+func spawn_pickup(type_name: String, amount: float) -> void:
+	if not pickup_scene: return
+		
+	var drop = pickup_scene.instantiate()
+	
+	if type_name == "XP":
+		drop.type = 0 
+		drop.value = amount
+		drop.sprite_texture = xp_texture
+	elif type_name == "HEALTH":
+		drop.type = 1 
+		drop.value = amount
+		drop.sprite_texture = heart_texture
+	
+	get_tree().current_scene.call_deferred("add_child", drop)
+	
+	# --- ICI : On étale les objets autour ---
+	# On choisit un angle au hasard (0 à 360 degrés)
+	var angle = randf() * TAU 
+	# On choisit une distance au hasard (entre 10 et 40 pixels)
+	var distance = randf_range(10.0, 40.0)
+	
+	# On calcule le vecteur de décalage
+	var offset = Vector2(cos(angle), sin(angle)) * distance
+	
+	drop.global_position = global_position + offset
 
 func _try_action():
 	match role:

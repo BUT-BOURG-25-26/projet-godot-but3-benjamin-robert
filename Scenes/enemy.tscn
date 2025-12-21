@@ -1,10 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://b2g66sf655rqf"]
+[gd_scene load_steps=21 format=3 uid="uid://b2g66sf655rqf"]
 
 [ext_resource type="Script" uid="uid://bwk8ep2rrn8yk" path="res://Scripts/enemy.gd" id="1_ofqcr"]
 [ext_resource type="PackedScene" uid="uid://dc3w3fatkl5p3" path="res://Scenes/projectile.tscn" id="2_m4x7e"]
 [ext_resource type="Texture2D" uid="uid://dply1ji7mv66" path="res://Assets/Character/Enemy/Wraith_03/PNG Sequences/Idle/Wraith_03_Idle_000.png" id="2_ta2yt"]
 [ext_resource type="Texture2D" uid="uid://bi2dvyi3kpwxx" path="res://Assets/Character/Enemy/Wraith_03/PNG Sequences/Idle/Wraith_03_Idle_001.png" id="3_m4x7e"]
+[ext_resource type="PackedScene" uid="uid://b6f8dwvk7ddqw" path="res://Scenes/Pickup.tscn" id="3_tk7xo"]
+[ext_resource type="Texture2D" uid="uid://dnwajxitv0b6g" path="res://Assets/Item/xp.png" id="4_scl1n"]
 [ext_resource type="Texture2D" uid="uid://b7rjx6mgmfwgo" path="res://Assets/Character/Enemy/Wraith_03/PNG Sequences/Idle/Wraith_03_Idle_002.png" id="4_vt4ob"]
+[ext_resource type="Texture2D" uid="uid://cv04dahs2hhgs" path="res://Assets/Item/hearth.png" id="5_dhkrs"]
 [ext_resource type="Texture2D" uid="uid://dmx5ppnvyw8jf" path="res://Assets/Character/Enemy/Wraith_03/PNG Sequences/Idle/Wraith_03_Idle_003.png" id="5_hgeoe"]
 [ext_resource type="Texture2D" uid="uid://bpiffmb8m5821" path="res://Assets/Character/Enemy/Wraith_03/PNG Sequences/Idle/Wraith_03_Idle_004.png" id="6_tk7xo"]
 [ext_resource type="Texture2D" uid="uid://c6d2n7pon7xck" path="res://Assets/Character/Enemy/Wraith_03/PNG Sequences/Idle/Wraith_03_Idle_005.png" id="7_scl1n"]
@@ -70,6 +73,9 @@ radius = 405.01974
 collision_layer = 4
 script = ExtResource("1_ofqcr")
 projectile_scene = ExtResource("2_m4x7e")
+pickup_scene = ExtResource("3_tk7xo")
+xp_texture = ExtResource("4_scl1n")
+heart_texture = ExtResource("5_dhkrs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2)

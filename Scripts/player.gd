@@ -281,6 +281,7 @@ func _on_invincibility_timeout() -> void:
 func heal(amount: float) -> void:
 	health = min(health + amount, max_health)
 	healthbar.health = health
+	$Heal.play()
 
 
 func _die() -> void:
@@ -309,6 +310,18 @@ func gain_exp(amount: int) -> void:
 		level += 1
 		_update_exp_curve()
 		_on_level_up()
+		
+	$CollectSound.pitch_scale = current_pitch
+	$CollectSound.play()
+	
+	current_pitch += 0.1
+	if current_pitch > 3:
+		current_pitch = 3
+		
+	pitch_timer.start()
+	
+func _on_pitch_reset() -> void:
+	current_pitch = 1.0
 
 
 func _update_exp_curve() -> void:
@@ -352,33 +365,3 @@ func _setup_map_limits():
 	camera.limit_top = int(min_y)
 	camera.limit_right = int(max_x)
 	camera.limit_bottom = int(max_y)
-
-
-# -----------------------------
-# EXP (à revoir avec corentin)
-# -----------------------------
-func gain_xp(amount: float) -> void:
-	# Sa logique d'XP existante
-	# exp_drop += amount ext... 
-
-	$CollectSound.pitch_scale = current_pitch
-	$CollectSound.play()
-	
-	current_pitch += 0.1
-	if current_pitch > 3:
-		current_pitch = 3
-		
-	pitch_timer.start()
-	
-func _on_pitch_reset() -> void:
-	current_pitch = 1.0
-
-# -----------------------------
-# DEBUG / TEST (A SUPPRIMER PLUS TARD)
-# -----------------------------
-func _input(event: InputEvent) -> void:
-	# Si on appuie sur la touche "T" du clavier
-	if event is InputEventKey and event.pressed and not event.echo:
-		if event.keycode == KEY_T:
-			print("Test XP Sound !")
-			gain_xp(10)
