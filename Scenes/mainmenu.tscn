@@ -1,13 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://c6fa57debf2rp"]
+[gd_scene load_steps=12 format=3 uid="uid://c6fa57debf2rp"]
 
 [ext_resource type="Script" uid="uid://dc5xyavl8p06n" path="res://Scenes/mainmenu.gd" id="1_pposm"]
 [ext_resource type="Texture2D" uid="uid://c8xecpcvwivwh" path="res://Assets/fond_menu.jpg" id="2_c7wuu"]
 [ext_resource type="Texture2D" uid="uid://bhs4gtyledkkq" path="res://Assets/play.png" id="2_lah54"]
-[ext_resource type="Script" uid="uid://48pupaujdxsd" path="res://Scripts/play.gd" id="2_web8u"]
-[ext_resource type="Script" uid="uid://dv474hffycgdv" path="res://Scripts/settings.gd" id="3_rtnl3"]
 [ext_resource type="Texture2D" uid="uid://kggn5kmu78fg" path="res://Assets/settings.png" id="4_5326e"]
-[ext_resource type="Script" uid="uid://vslicxl8vinw" path="res://Scripts/credit.gd" id="4_v4pkt"]
-[ext_resource type="Script" uid="uid://bxfrm758o04yo" path="res://Scripts/quit.gd" id="5_lah54"]
+[ext_resource type="Script" uid="uid://bxfrm758o04yo" path="res://Scripts/bouton_effect.gd" id="5_lah54"]
 [ext_resource type="Texture2D" uid="uid://bvwkaota3yu4k" path="res://Assets/credit.png" id="6_l2o7r"]
 [ext_resource type="Texture2D" uid="uid://bno2atpspaew" path="res://Assets/quit.png" id="7_juwjy"]
 [ext_resource type="AudioStream" uid="uid://b82x3sa02rsnk" path="res://Assets/Audio/SFX/OnClickStart.wav" id="11_c7wuu"]
@@ -47,12 +44,12 @@ theme_override_constants/separation = 16
 [node name="settings" type="TextureButton" parent="CenterContainer/MainButtons"]
 layout_mode = 2
 texture_normal = ExtResource("4_5326e")
-script = ExtResource("3_rtnl3")
+script = ExtResource("5_lah54")
 
 [node name="credit" type="TextureButton" parent="CenterContainer/MainButtons"]
 layout_mode = 2
 texture_normal = ExtResource("6_l2o7r")
-script = ExtResource("4_v4pkt")
+script = ExtResource("5_lah54")
 
 [node name="SettingsMenu" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
@@ -78,7 +75,7 @@ offset_bottom = 1035.0
 [node name="play" type="TextureButton" parent="Container"]
 layout_mode = 2
 texture_normal = ExtResource("2_lah54")
-script = ExtResource("2_web8u")
+script = ExtResource("5_lah54")
 
 [node name="MainMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_hu3kb")

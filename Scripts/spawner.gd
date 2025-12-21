@@ -76,6 +76,7 @@ func _animate_new_minute() -> void:
 # Timer pour l'apparition des ennemis normaux et la progression du temps
 func _on_timer_timeout() -> void:
 	second += 1
+	GameManager.update_time(minute, second)
 	amount(second % 2) # valeur temporaire
 
 

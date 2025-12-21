@@ -50,7 +50,7 @@ func _update_joystick(local_pos: Vector2):
 	if distance < deadzone:
 		input_vector = Vector2.ZERO
 	else:
-		offset = offset.limit_length(max_radius) # ✅ Godot 4
+		offset = offset.limit_length(max_radius)
 		input_vector = offset / max_radius
 
 	handle.position = center + offset - handle.size / 2

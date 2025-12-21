@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=3 uid="uid://bq3dcjd7jik4v"]
+
+[ext_resource type="Script" uid="uid://dc3vhqi06qiyk" path="res://Scripts/death_screen.gd" id="1_gva2g"]
+[ext_resource type="FontFile" uid="uid://tdf6cv67s386" path="res://Assets/Police/PressStart2P.ttf" id="2_3dlsw"]
+[ext_resource type="Texture2D" uid="uid://c0i83engjpquh" path="res://Assets/replay.png" id="3_4s8br"]
+[ext_resource type="Texture2D" uid="uid://db7wtop888ij0" path="res://Assets/menu.png" id="4_lernt"]
+[ext_resource type="Script" uid="uid://bxfrm758o04yo" path="res://Scripts/bouton_effect.gd" id="4_xvfdw"]
+[ext_resource type="AudioStream" uid="uid://dk11dtp1e76ck" path="res://Assets/Audio/SFX/OnClick.wav" id="5_1j6q4"]
+[ext_resource type="AudioStream" uid="uid://byog4pmq00pgw" path="res://Assets/Audio/SFX/Hover.wav" id="6_xvfdw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1pog2"]
+font = ExtResource("2_3dlsw")
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_4s8br"]
+font = ExtResource("2_3dlsw")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_lernt"]
+font = ExtResource("2_3dlsw")
+font_size = 40
+
+[node name="deathScreen" type="CanvasLayer"]
+script = ExtResource("1_gva2g")
+
+[node name="background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.58431375)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Game Over" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "GAME OVER
+"
+label_settings = SubResource("LabelSettings_1pog2")
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Score : 0
+"
+label_settings = SubResource("LabelSettings_4s8br")
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Temps : 00:00
+"
+label_settings = SubResource("LabelSettings_lernt")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="replayButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_4s8br")
+script = ExtResource("4_xvfdw")
+
+[node name="menuButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_lernt")
+script = ExtResource("4_xvfdw")
+
+[node name="OnClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1j6q4")
+volume_db = -5.0
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_xvfdw")
+volume_db = -5.0
+
+[connection signal="button_up" from="VBoxContainer/HBoxContainer/replayButton" to="." method="_on_replay_button_button_up"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/replayButton" to="." method="_on_replay_button_pressed"]
+[connection signal="button_up" from="VBoxContainer/HBoxContainer/menuButton" to="." method="_on_menu_button_up"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/menuButton" to="." method="_on_menu_button_pressed"]

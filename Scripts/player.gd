@@ -36,7 +36,7 @@ var attack_input: Vector2 = Vector2.ZERO    # joystick attaque
 # -----------------------------
 # STATS
 # -----------------------------
-@export var max_health: float = 100.0
+@export var max_health: float = 50.0
 @export var damage: float = 10
 
 var health: float
@@ -257,7 +257,6 @@ func take_damage(amount: float, source_position: Vector2 = Vector2.ZERO) -> void
 		is_dead = true
 		healthbar.health = 0
 		_die()
-		$GameOver.play()
 	else:
 		healthbar.health = health
 		is_hurt = true
@@ -289,6 +288,8 @@ func _die() -> void:
 	set_physics_process(false)
 	set_process(false)
 	$CollisionShape2D.set_deferred("disabled", true)
+	$GameOver.play()
+	GameManager.game_over()
 
 # -----------------------------
 # XP / LEVEL
