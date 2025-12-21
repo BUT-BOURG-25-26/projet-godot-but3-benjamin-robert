@@ -13,6 +13,7 @@ var player_reference : Node2D = null
 
 @export var projectile_scene : PackedScene 
 var projectile_stats : ProjectileData
+@export var projectile_speed : float
 
 var health : float
 var max_health : float
@@ -73,8 +74,12 @@ func _apply_stats() -> void:
 	if "projectile_data" in type and type.projectile_data:
 		projectile_stats = type.projectile_data
 	exp_drop  = type.exp_drop
-
-
+	if "projectile_data" in type and type.projectile_data:
+		projectile_stats = type.projectile_data
+		if "projectile_speed_multiplier" in type:
+			projectile_speed = projectile_stats.speed * type.projectile_speed_multiplier
+		else:
+			projectile_speed = projectile_stats.speed
 
 func _physics_process(delta: float) -> void:
 	if is_hurt:
@@ -184,7 +189,7 @@ func _die() -> void:
 	
 	# Tant qu'il reste de l'XP à distribuer
 	while xp_restante > 0:
-		var valeur_gemme = 40.0
+		var valeur_gemme = 10.0
 		
 		# Si c'est la fin (ex: il reste 5 XP), la dernière gemme vaudra 5
 		if xp_restante < valeur_gemme:
@@ -254,9 +259,7 @@ func _attack_player(attack_type: String):
 			p.global_position = global_position
 			
 			var dir = (player_reference.global_position - global_position).normalized()
-			
-			# On configure le projectile avec ses données
-			p.setup(projectile_stats, dir, "player", self)
+			p.setup(projectile_stats, dir, "player", self, projectile_speed)
 		else:
 			print("ERREUR: Projectile Scene ou Stats manquants sur " + name)
 			

@@ -295,7 +295,6 @@ func _die() -> void:
 # XP / LEVEL
 # -----------------------------
 @export var base_exp_to_next_level: int = 100
-@export var exp_growth_per_level: int = 50
 
 var current_exp: int = 0
 var level: int = 1
@@ -326,8 +325,8 @@ func _on_pitch_reset() -> void:
 
 
 func _update_exp_curve() -> void:
-	# +50 XP par niveau
-	exp_to_next_level = base_exp_to_next_level + (level - 1) * exp_growth_per_level
+	# On passe sur une progression exponentielle (ex: +20% à chaque niveau)
+	exp_to_next_level = int(base_exp_to_next_level * pow(1.2, level - 1))
 
 
 func _on_level_up() -> void:
@@ -338,7 +337,7 @@ func _on_level_up() -> void:
 	if ui:
 		ui.open()
 	else:
-		print("❌ PowerUpUI introuvable (pas dans le groupe powerup_ui ?)")
+		print("PowerUpUI introuvable (pas dans le groupe powerup_ui ?)")
 
 
 # -----------------------------

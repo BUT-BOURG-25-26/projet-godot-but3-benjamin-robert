@@ -13,7 +13,7 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 
 # Fonction de configuration (appelée par l'ennemi ou la tourelle au moment du tir)
-func setup(data: ProjectileData, dir: Vector2, target: String, shooter_node: Node2D) -> void:
+func setup(data: ProjectileData, dir: Vector2, target: String, shooter_node: Node2D, custom_speed: float = -1.0) -> void:
 	# 1. VISUEL
 	$AnimatedSprite2D.sprite_frames = data.frames
 	$AnimatedSprite2D.play(data.animation_name)
@@ -23,7 +23,11 @@ func setup(data: ProjectileData, dir: Vector2, target: String, shooter_node: Nod
 	target_group = target
 	
 	# 3. MOUVEMENT & PHYSIQUE
-	velocity = dir * data.speed
+	var final_speed = data.speed
+	if custom_speed > 0:
+		final_speed = custom_speed
+	velocity = dir * final_speed
+	
 	scale = Vector2(data.scale, data.scale)
 	rotation = dir.angle() # Le projectile tourne pour regarder sa cible
 	

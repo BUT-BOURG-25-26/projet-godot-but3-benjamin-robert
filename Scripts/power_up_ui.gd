@@ -7,7 +7,6 @@ func _ready():
 	visible = false
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 
-	# 🔥 CRITIQUE : boutons actifs pendant la pause
 	for btn in $CenterContainer/Panel/HBoxContainer.get_children():
 		if btn is Button:
 			btn.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
@@ -28,23 +27,23 @@ func close():
 	await get_tree().process_frame
 	print("[PowerUpUI] CLOSE paused after:", get_tree().paused)
 
-
 func _on_attaque_pressed():
-	print("ATTAQUE CLICK")
+	# +25% de Dégâts
 	if player:
-		player.damage += 5
+		player.damage *= 1.25
+		print("Dégâts actuels : ", player.damage)
 	close()
-
 
 func _on_vitesse_pressed():
-	print("VITESSE CLICK")
+	# +10% de Vitesse
 	if player:
-		player.speed += 40
+		player.speed *= 1.10
+		print("Vitesse actuelle : ", player.speed)
 	close()
 
-
 func _on_portee_pressed():
-	print("PORTEE CLICK")
+	# +20% de taille de Hitbox
 	if player:
-		player.hitbox.scale *= 1.25
+		player.hitbox.scale *= 1.20
+		print("Portée actuelle : ", player.hitbox.scale)
 	close()

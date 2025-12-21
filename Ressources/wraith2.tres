@@ -78,7 +78,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("14_n660u")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 20.0
 }, {
@@ -168,10 +168,11 @@ animations = [{
 [resource]
 script = ExtResource("2_dm644")
 sprite_frames = SubResource("SpriteFrames_xw6po")
-health = 20.0
-damage = 2.0
+health = 25.0
+damage = 10.0
 role = 1
-speed = 75.0
+speed = 200.0
 projectile_data = ExtResource("1_pb82b")
-exp_drop = 50.0
+projectile_speed_multiplier = 0.75
+exp_drop = 30.0
 metadata/_custom_type_script = "uid://dgv7uni4m1371"
