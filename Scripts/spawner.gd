@@ -16,10 +16,10 @@ extends Node2D
 @export var time_to_max_tier_minutes : float = 5.0
 
 # Nombre d'ennemis qui spawnent par seconde au tout début (temps 0).
-@export var base_spawns_per_second : float = 1.0
+@export var base_spawns_per_second : float = 0.5
 
 # Combien d'ennemis SUPPLÉMENTAIRES par seconde sont ajoutés chaque minute.
-@export var spawn_growth_per_minute : float = 1.0
+@export var spawn_growth_per_minute : float = 0.5
 
 # --- VARIABLE POUR LE RATIO ---
 # Probabilité (de 0.0 à 1.0) que l'ennemi choisi soit le premier de la paire (type Mêlée).
