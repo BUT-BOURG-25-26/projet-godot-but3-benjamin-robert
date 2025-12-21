@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6fa57debf2rp"]
+[gd_scene load_steps=13 format=3 uid="uid://c6fa57debf2rp"]
 
 [ext_resource type="Script" uid="uid://dc5xyavl8p06n" path="res://Scenes/mainmenu.gd" id="1_pposm"]
 [ext_resource type="Texture2D" uid="uid://c8xecpcvwivwh" path="res://Assets/fond_menu.jpg" id="2_c7wuu"]
 [ext_resource type="Texture2D" uid="uid://bhs4gtyledkkq" path="res://Assets/play.png" id="2_lah54"]
+[ext_resource type="Script" uid="uid://bhnkxt8jxva70" path="res://Scripts/play.gd" id="2_web8u"]
 [ext_resource type="Texture2D" uid="uid://kggn5kmu78fg" path="res://Assets/settings.png" id="4_5326e"]
 [ext_resource type="Script" uid="uid://bxfrm758o04yo" path="res://Scripts/bouton_effect.gd" id="5_lah54"]
 [ext_resource type="Texture2D" uid="uid://bvwkaota3yu4k" path="res://Assets/credit.png" id="6_l2o7r"]
@@ -75,7 +76,7 @@ offset_bottom = 1035.0
 [node name="play" type="TextureButton" parent="Container"]
 layout_mode = 2
 texture_normal = ExtResource("2_lah54")
-script = ExtResource("5_lah54")
+script = ExtResource("2_web8u")
 
 [node name="MainMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_hu3kb")
