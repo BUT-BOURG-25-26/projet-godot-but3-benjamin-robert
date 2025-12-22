@@ -3,6 +3,9 @@ extends Control
 @onready var player := get_tree().get_first_node_in_group("player")
 @onready var button_container := $CenterContainer/Panel/HBoxContainer
 
+@onready var hover_sound = $Hover
+@onready var click_sound = $SelectedUpgradeItem
+
 enum Rarity { COMMON, RARE, EPIC, LEGENDARY }
 
 var rarity_colors = {
@@ -28,7 +31,6 @@ func _ready():
 	_init_pool()
 
 func _init_pool():
-	
 	pool = [
 		# --- DÉGÂTS ---
 		{"id": "dmg_global", "text": "Puissance",        "val": 0.20, "desc": "Augmente tous les dégâts"},
@@ -41,7 +43,6 @@ func _init_pool():
 		{"id": "heal_bonus", "text": "Bénédiction",      "val": 0.25, "desc": "Efficacité des soins"},
 		
 		# --- CADENCE ---
-		# la cadence reste faible car c'est une stat très puissante
 		{"id": "fire_rate",  "text": "Gâchette Folle",   "val": -0.05, "desc": "Vitesse de tir"}, 
 		
 		# --- SPÉCIAL (PIÈGES) ---
@@ -81,14 +82,11 @@ func _generate_options():
 		
 		btn.modulate = rarity_colors[rarity]
 		
-		# GESTION DE L'AFFICHAGE TEXTE
 		if final_val == 0:
 			btn.text = "%s\n%s" % [power_data["text"], power_data["desc"]]
 		elif power_data["id"] == "dmg_flat":
-			# Affichage pour valeur fixe (+10 Dégâts)
 			btn.text = "%s\n%s (+%d)" % [power_data["text"], power_data["desc"], int(final_val)]
 		else:
-			# Affichage pour pourcentage (+15%)
 			var display_val = final_val * 100
 			if power_data["id"] in ["fire_rate", "static_rate"]:
 				btn.text = "%s\n%s (+%d%%)" % [power_data["text"], power_data["desc"], abs(display_val)]
@@ -98,10 +96,16 @@ func _generate_options():
 		if btn.pressed.is_connected(_apply_powerup):
 			btn.pressed.disconnect(_apply_powerup)
 		btn.pressed.connect(_apply_powerup.bind(power_data["id"], final_val))
+		
+		if btn.mouse_entered.is_connected(_on_button_hover):
+			btn.mouse_entered.disconnect(_on_button_hover)
+		btn.mouse_entered.connect(_on_button_hover)
 	
-	# Cache les boutons inutiles
 	for i in range(count, buttons.size()): buttons[i].visible = false
 	for i in range(count): buttons[i].visible = true
+
+func _on_button_hover():
+	hover_sound.play()
 
 func _roll_rarity() -> Rarity:
 	var r = randf()
@@ -111,13 +115,13 @@ func _roll_rarity() -> Rarity:
 	return Rarity.COMMON                 
 
 func _apply_powerup(id: String, value: float):
+	click_sound.play()
+	
 	if not player: 
 		close()
 		return
 
 	match id:
-		# --- LE BONUS HYBRIDE ---
-		
 		"dmg_global": player.global_damage_mult += value
 		"dmg_melee": player.melee_damage_mult += value
 		"dmg_ranged": player.ranged_damage_mult += value
