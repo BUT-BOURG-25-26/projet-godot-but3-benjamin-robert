@@ -30,7 +30,7 @@ var allies_in_range : Array = []
 var is_player_in_area : bool = false # Pour le Ranger
 var is_attacking : bool = false
 var is_hurt : bool = false
-var knockback_force : float = 100.0 # Force du recul subi par l'ennemi
+var knockback_force : float = 120.0 # Force du recul subi par l'ennemi
 var attack_range : float = 60.0 # valeur par défaut (à modifier surtout pour les boss melee)
 
 # --- DROPS ---

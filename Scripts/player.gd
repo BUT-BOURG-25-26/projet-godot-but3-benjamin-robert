@@ -315,7 +315,7 @@ func _die() -> void:
 # -----------------------------
 # XP / LEVEL
 # -----------------------------
-@export var base_exp_to_next_level: int = 100
+@export var base_exp_to_next_level: int = 40
 
 var current_exp: int = 0
 var level: int = 1
