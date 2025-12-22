@@ -80,6 +80,10 @@ func _ready() -> void:
 
 	_setup_map_limits()
 	pitch_timer.timeout.connect(_on_pitch_reset)
+	
+	var xp_ui = get_tree().get_first_node_in_group("xp_bar")
+	if xp_ui:
+		xp_ui.update_bar(current_exp, exp_to_next_level)
 
 
 func _physics_process(delta: float) -> void:
@@ -322,11 +326,22 @@ func gain_exp(amount: int) -> void:
 	current_exp += amount
 	print("XP +", amount, " -> ", current_exp, "/", exp_to_next_level)
 
+	var xp_ui = get_tree().get_first_node_in_group("xp_bar")
+
 	if current_exp >= exp_to_next_level:
 		current_exp -= exp_to_next_level
 		level += 1
 		_update_exp_curve()
 		_on_level_up()
+		
+		if xp_ui:
+			xp_ui.reset_bar()
+			xp_ui.update_bar(current_exp, exp_to_next_level)
+			xp_ui.update_level_display(level)
+			
+	else:
+		if xp_ui:
+			xp_ui.update_bar(current_exp, exp_to_next_level)
 		
 	$CollectSound.pitch_scale = current_pitch
 	$CollectSound.play()

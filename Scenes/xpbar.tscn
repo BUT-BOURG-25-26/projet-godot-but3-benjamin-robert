@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4rxqeerm282d"]
+
+[ext_resource type="Script" uid="uid://b6m4hjeil0jo3" path="res://Scenes/xpbar.gd" id="1_k3lm0"]
+[ext_resource type="FontFile" uid="uid://tdf6cv67s386" path="res://Assets/Police/PressStart2P.ttf" id="2_cjwii"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k3lm0"]
+bg_color = Color(2.502799e-05, 0.34368712, 0.9454097, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_qv48i"]
+font = ExtResource("2_cjwii")
+
+[node name="xpbar" type="ProgressBar"]
+offset_right = 350.0
+offset_bottom = 27.0
+theme_override_colors/font_outline_color = Color(0, 0.34502384, 0.59540755, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_k3lm0")
+script = ExtResource("1_k3lm0")
+
+[node name="levelLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 36.0
+offset_right = 164.0
+offset_bottom = 59.0
+text = "Niveau : 0"
+label_settings = SubResource("LabelSettings_qv48i")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://n7fyarxo4u0k"]
+[gd_scene load_steps=3 format=3 uid="uid://n7fyarxo4u0k"]
 
 [ext_resource type="Script" uid="uid://bnp6rat6oe2ct" path="res://Scripts/power_up_ui.gd" id="1_2glyd"]
+[ext_resource type="AudioStream" uid="uid://da6cp6jtgev1g" path="res://Assets/Audio/SFX/SelectedUpgradeItem.wav" id="2_t35c0"]
 
 [node name="PowerUpUi" type="Control" groups=["powerup_ui"]]
 layout_mode = 3
@@ -39,6 +40,12 @@ text = "Option 2"
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Option 3"
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_t35c0")
+
+[node name="SelectedUpgradeItem" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_t35c0")
 
 [connection signal="pressed" from="CenterContainer/Panel/HBoxContainer/opt1" to="." method="_on_attaque_pressed"]
 [connection signal="pressed" from="CenterContainer/Panel/HBoxContainer/opt2" to="." method="_on_vitesse_pressed"]
